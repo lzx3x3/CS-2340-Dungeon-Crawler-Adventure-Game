@@ -1,6 +1,8 @@
 package main;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,7 +17,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class InitialGameScreen extends Application {
+public class Main extends Application {
+
+    private static Player player = new Player();
 
     private int screenWidth = 800;
     private int screenHeight = 600;
@@ -35,12 +39,12 @@ public class InitialGameScreen extends Application {
         root1.getChildren().add(background);
 
         // 1-(1). add buttons to scene 1
-        Button exit1 = new Button("Go to initial configuration screen");
-        Button exit2 = new Button("Go to welcome screen");
+        Button exit1 = new Button("Go back to initial configuration screen");
+        Button exit2 = new Button("Go back to welcome screen");
         Button door = new Button("Choose your rooms!");
         door.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 
-        // add listener to door
+
         // change screen "scene1" - > "scene2" via button "door"
         door.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -69,12 +73,25 @@ public class InitialGameScreen extends Application {
 
 
         // 2. add Texts
-        Text money = new Text("YOUR MONEY: ");
-        money.setX(300);
+        Text money = new Text();
+        // money varies based on difficulty chosen
+        money.textProperty().bind(new SimpleStringProperty(("Your Initial Money: ")).concat(new SimpleIntegerProperty(player.getMoney()).asString()));
+
+        money.setX(250);
         money.setY(200);
         money.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         money.setFill(Color.WHITE);
-        root1.getChildren().add(money);
+
+        Text level = new Text();
+        // show current player level
+        level.textProperty().bind(new SimpleStringProperty(("Your Level: ")).concat(new SimpleIntegerProperty(player.getLevel()).asString()));
+
+        level.setX(350);
+        level.setY(300);
+        level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        level.setFill(Color.YELLOW);
+
+        root1.getChildren().addAll(money, level);
 
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Initial_Game_Screen");
@@ -83,7 +100,10 @@ public class InitialGameScreen extends Application {
     }
 
     public static void main(String[] args) {
+        // player select difficulty
+        player.setMoney(3);
         launch(args);
     }
+
 
 }
