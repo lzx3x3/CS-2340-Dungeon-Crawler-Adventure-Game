@@ -1,6 +1,8 @@
 package main;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -32,17 +34,38 @@ public class InitialGameScreen extends Application {
         background.setStyle("-fx-background-color: rgba(0,0,0,1)");
         root1.getChildren().add(background);
 
-        // 1. add buttons
+        // 1-(1). add buttons to scene 1
         Button exit1 = new Button("Go to initial configuration screen");
         Button exit2 = new Button("Go to welcome screen");
         Button door = new Button("Choose your rooms!");
         door.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+
         // add listener to door
-        door.setOnAction(e -> primaryStage.setScene(scene2));
+        // change screen "scene1" - > "scene2" via button "door"
+        door.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.setScene(scene2);
+                primaryStage.setTitle("Choose_Rooms");
+            }
+        });
 
         HBox buttons = new HBox(exit1, exit2, door);
 
         root1.getChildren().addAll(buttons);
+
+        // 1-(2). add buttons to scene 2
+        Button exit3 = new Button("X");
+        // change screen "scene2" - > "scene1" via button "X"
+        exit3.setOnAction(new EventHandler<ActionEvent>() {
+                              @Override
+                              public void handle(ActionEvent actionEvent) {
+                                  primaryStage.setScene(scene1);
+                                  primaryStage.setTitle("Initial_Game_Screen");
+                              }
+                          });
+
+        root2.getChildren().add(exit3);
 
 
         // 2. add Texts
