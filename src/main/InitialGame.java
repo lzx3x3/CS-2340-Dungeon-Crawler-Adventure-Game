@@ -17,15 +17,19 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class InitialGame extends Application {
 
-    private static Player player = new Player();
+    private Player player = new Player();
 
     private int screenWidth = 800;
     private int screenHeight = 600;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        // player select difficulty
+        player.setMoney("easy");
+
         Pane root1 = new Pane();
         Pane root2 = new Pane();
 
@@ -86,7 +90,7 @@ public class Main extends Application {
         // show current player level
         level.textProperty().bind(new SimpleStringProperty(("Your Level: ")).concat(new SimpleIntegerProperty(player.getLevel()).asString()));
 
-        level.setX(350);
+        level.setX(320);
         level.setY(300);
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         level.setFill(Color.YELLOW);
@@ -100,10 +104,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        // player select difficulty
-        player.setMoney(3);
         launch(args);
     }
-
 
 }
