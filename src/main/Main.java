@@ -28,9 +28,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Pane root1 = new Pane();
         Pane root2 = new Pane();
-
+        Room room0 = new Room(0, 15,15);
+        Pane roomPane = room0.drawRoom(root2, player);
         Scene scene1 = new Scene(root1, screenWidth, screenHeight);
-        Scene scene2 = new Scene(root2, screenWidth, screenHeight);
+        Scene scene2 = new Scene(roomPane, screenWidth, screenHeight);
 
         // add background
         Region background = new Region();
@@ -43,6 +44,7 @@ public class Main extends Application {
         Button exit2 = new Button("Go back to welcome screen");
         Button door = new Button("Choose your rooms!");
         door.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+
 
 
         // change screen "scene1" - > "scene2" via button "door"
@@ -69,7 +71,7 @@ public class Main extends Application {
                               }
                           });
 
-        root2.getChildren().add(exit3);
+        roomPane.getChildren().add(exit3);
 
 
         // 2. add Texts

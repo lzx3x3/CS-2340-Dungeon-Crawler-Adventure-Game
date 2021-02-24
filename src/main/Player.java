@@ -6,12 +6,15 @@ public class Player {
     private int health;
     private int money;
     private int level;
+    private int x,y;
 
     public Player() {
         health = 100;
         money = 0;
         level = 1;
         name = "";
+        x = 300;
+        y = 400;
     }
 
     // Edit by Siying: money varies based on difficulty
