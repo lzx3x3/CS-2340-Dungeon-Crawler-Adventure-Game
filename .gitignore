@@ -30,3 +30,6 @@ build/
 *.classpath
 *.project
 *.iml
+.DS_Store
+.idea
+.java-sdk
