@@ -6,6 +6,7 @@ public class Player {
     private int health;
     private int money;
     private int level;
+    private String difficulty;
     private int x,y;
 
     public Player() {
@@ -13,28 +14,37 @@ public class Player {
         money = 0;
         level = 1;
         name = "";
+        difficulty = "easy";
         x = 300;
         y = 400;
     }
 
     // Edit by Siying: money varies based on difficulty
     public void setMoney(String difficulty) {
-        if(difficulty.equals("easy")) {
+        if(difficulty.equals("Easy")) {
             money = 10000;
         }
-        if(difficulty.equals("medium")) {
+        if(difficulty.equals("Medium")) {
             money = 20000;
         }
-        if(difficulty.equals("difficult")) {
+        if(difficulty.equals("Hard")) {
             money = 30000;
         }
     }
 
     public int getMoney() {
-        return money;
+        return this.money;
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
+    }
+
+    public void setDiff(String diff) {
+        this.difficulty = diff;
+    }
+
+    public String getDiff() {
+        return this.difficulty;
     }
 }

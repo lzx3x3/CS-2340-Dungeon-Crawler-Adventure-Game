@@ -1,17 +1,24 @@
+package main;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.geometry.Pos;
 
 public class InitialConfig extends Application {
+
+    private Player player = new Player();
+    public Scene sceneConfig;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -33,6 +40,12 @@ public class InitialConfig extends Application {
         diffSelect.setPromptText("Select your difficulty");
         Label diffLabel = new Label("Difficulty:");
         diffSelect.setPrefWidth(300);
+        // set player difficulty
+        diffSelect.setOnAction(e -> {
+            String diff = diffSelect.getValue().toString();
+            player.setDiff(diff);
+            //System.out.println("Difficulty:"+player.getDiff());
+        });
 
 
         //player entries will be checked on button action
@@ -52,12 +65,31 @@ public class InitialConfig extends Application {
         name.setSpacing(10);
         name.setPadding(new Insets(0, 50, 0, 50));
 
+        // Button: Go to next screen (InitialGame)
+        Button nextScreen = new Button("NEXT");
+        nextScreen.setPrefWidth(300);
+
+        nextScreen.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                InitialGame game = new InitialGame();
+                try {
+                    game.start(primaryStage, player);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                primaryStage.setTitle("Initial_Game_Screen");
+            }
+        });
+
         //Difficulty label and drop down menu
         VBox difficulty = new VBox();
         difficulty.setAlignment(Pos.CENTER_LEFT);
-        difficulty.getChildren().addAll(diffLabel, diffSelect);
+        difficulty.getChildren().addAll(diffLabel, diffSelect, nextScreen);
         difficulty.setSpacing(10);
         difficulty.setPadding(new Insets(0, 50, 0, 50));
+
+
 
         //Everything that will go in the center of the border pane is together aligned in this VBOX
         VBox selections = new VBox(name, difficulty);
@@ -77,4 +109,5 @@ public class InitialConfig extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 }

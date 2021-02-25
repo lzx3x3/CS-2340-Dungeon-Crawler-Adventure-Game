@@ -1,6 +1,5 @@
 package main;
 
-import javafx.application.Application;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -17,18 +16,17 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class InitialGame extends Application {
+public class InitialGame {
 
-    private Player player = new Player();
-
+    public Scene sceneInitGame;
     private int screenWidth = 800;
     private int screenHeight = 600;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage, Player player) throws Exception {
 
         // player select difficulty
-        player.setMoney("easy");
+        player.setMoney(player.getDiff());
+        //System.out.println("Player Money: "+player.getMoney());
 
         Pane root1 = new Pane();
         Pane root2 = new Pane();
@@ -49,7 +47,18 @@ public class InitialGame extends Application {
         Button door = new Button("Choose your rooms!");
         door.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 
-
+        exit1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                InitialConfig config = new InitialConfig();
+                try {
+                    config.start(primaryStage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                primaryStage.setTitle("Initial_Config_Screen");
+            }
+        });
 
         // change screen "scene1" - > "scene2" via button "door"
         door.setOnAction(new EventHandler<ActionEvent>() {
@@ -105,8 +114,8 @@ public class InitialGame extends Application {
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 
 }
