@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
@@ -37,14 +36,14 @@ public class InitialConfig extends Application {
 
 
         //player entries will be checked on button action
-//        String playerName = nameInput.getCharacters().toString();
-//        if (playerName == null || playerName.trim().isEmpty()) {
-//            Alert nameAlert = new Alert(Alert.AlertType.ERROR);
-//            nameAlert.setTitle("Error");
-//            nameAlert.setHeaderText("Invalid Name");
-//            nameAlert.setContentText("Your name must include at least one character");
-//            nameAlert.showAndWait();
-//        }
+        //String playerName = nameInput.getCharacters().toString();
+        //if (playerName == null || playerName.trim().isEmpty()) {
+        //    Alert nameAlert = new Alert(Alert.AlertType.ERROR);
+        //    nameAlert.setTitle("Error");
+        //    nameAlert.setHeaderText("Invalid Name");
+        //    nameAlert.setContentText("Your name must include at least one character");
+        //    nameAlert.showAndWait();
+        //    }
 
         //Name label and text field
         VBox name = new VBox();
@@ -64,7 +63,8 @@ public class InitialConfig extends Application {
         VBox selections = new VBox(name, difficulty);
         selections.setSpacing(20);
 
-        //Border pane with all selections in the center, the title in the Top, and the Start button can be in the bottom
+        //Border pane with all selections in the center, the title in the Top,
+        // and the Start button can be in the bottom
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(screenTitle);
         borderPane.setAlignment(screenTitle, Pos.BOTTOM_CENTER);
