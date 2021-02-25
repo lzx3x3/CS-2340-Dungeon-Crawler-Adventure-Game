@@ -18,14 +18,14 @@ public class Player {
     }
 
     // Edit by Siying: money varies based on difficulty
-    public void setMoney(int difficulty) {
-        if(difficulty == 1) {
+    public void setMoney(String difficulty) {
+        if(difficulty.equals("easy")) {
             money = 10000;
         }
-        if(difficulty == 2) {
+        if(difficulty.equals("medium")) {
             money = 20000;
         }
-        if(difficulty == 3) {
+        if(difficulty.equals("difficult")) {
             money = 30000;
         }
     }
