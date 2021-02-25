@@ -1,0 +1,71 @@
+.statusText {
+    -fx-font-size: 30em;
+    -fx-alignment: center;
+}
+.nameInputText {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
+    -fx-max-width: 300px;
+}
+.label {
+    -fx-font-size: 15px;
+    -fx-pref-width: 200px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}
+.diffSelectBox {
+    -fx-pref-width: 300px;
+}
+.wpn1Button {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-image: url("../images/stick.png");
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.wpn2Button {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-image: url("../images/sword.png");
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.wpn3Button {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-image: url("../images/bow.png");
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.wpnHBox {
+    -fx-padding: 0px 0px 30px 0px;
+    -fx-spacing: 10px;
+}
+.startButton {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 25px;
+    -fx-alignment: center;
+}
+.innerVBox {
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+    -fx-padding: 0px, 50px, 0px, 50px;
+}
+.outerVBox {
+    -fx-spacing: 25px;
+    -fx-alignment: center;
+    -fx-padding: 50px, 0px, 0px, 0px;
+}
+.outerHBox {
+    -fx-alignment: center;
+}
+#pane{
+    -fx-background-image: url("../images/dungeon.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
