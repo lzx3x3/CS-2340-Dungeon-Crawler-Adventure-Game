@@ -3,8 +3,13 @@
   <component name="CheckStyle-IDEA">
     <option name="configuration">
       <map>
+<<<<<<< HEAD
         <entry key="active-configuration" value="LOCAL_FILE:/Users/USER/Desktop/GaTech/2020 Summer/CS 1332/intelliJ/CS1332-checkstyle.xml:CS 1332" />
         <entry key="checkstyle-version" value="8.14" />
+=======
+        <entry key="active-configuration" value="LOCAL_FILE:C:/Users/kayla/OneDrive/Desktop/CS1332/CS1332-checkstyle.xml:1332CS" />
+        <entry key="checkstyle-version" value="8.24" />
+>>>>>>> c41e63c00da358df7604de2e53d19844ef354cdb
         <entry key="copy-libs" value="true" />
         <entry key="location-0" value="BUNDLED:(bundled):Sun Checks" />
         <entry key="location-1" value="BUNDLED:(bundled):Google Checks" />
