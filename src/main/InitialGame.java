@@ -22,7 +22,7 @@ public class InitialGame {
     private int screenWidth = 800;
     private int screenHeight = 600;
 
-    public void start(Stage primaryStage, Player player) throws Exception {
+    public void InitialGameScreen(Stage primaryStage, Player player) throws Exception {
 
         // player select difficulty
         player.setMoney(player.getDiff());
@@ -43,7 +43,7 @@ public class InitialGame {
 
         // 1-(1). add buttons to scene 1
         Button exit1 = new Button("Go back to initial configuration screen");
-        Button exit2 = new Button("Go back to welcome screen");
+//        Button exit2 = new Button("Go back to welcome screen");
         Button door = new Button("Choose your rooms!");
         door.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 
@@ -69,7 +69,7 @@ public class InitialGame {
             }
         });
 
-        HBox buttons = new HBox(exit1, exit2, door);
+        HBox buttons = new HBox(exit1, door);
 
         root1.getChildren().addAll(buttons);
 

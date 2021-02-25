@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 public class InitialConfig extends Application {
 
     private Player player = new Player();
-    public Scene sceneConfig;
 
     public static void main(String[] args) {
         launch(args);
@@ -74,7 +73,7 @@ public class InitialConfig extends Application {
             public void handle(ActionEvent actionEvent) {
                 InitialGame game = new InitialGame();
                 try {
-                    game.start(primaryStage, player);
+                    game.InitialGameScreen(primaryStage, player);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
