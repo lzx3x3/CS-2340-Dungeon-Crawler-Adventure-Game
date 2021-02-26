@@ -19,6 +19,16 @@ public class Player {
         y = 400;
     }
 
+    public Player(String name, String difficulty) {
+        health = 100;
+        money = 0;
+        level = 1;
+        this.name = name;
+        this.difficulty = difficulty;
+        x = 300;
+        y = 400;
+    }
+
     // Edit by Siying: money varies based on difficulty
     public void setMoney(String difficulty) {
         if(difficulty.equals("Easy")) {

@@ -3,7 +3,11 @@ package controller;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.InitialGame;
+import main.Player;
 import model.GameModel;
 import view.InitialConfigScreen;
 import view.WelcomeScreen;
@@ -43,7 +47,7 @@ public class Controller extends Application {
     private void initInitialConfigScreen() {
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
-        startButton.setOnAction(e -> goToInitialGameScreen());
+        startButton.setOnAction(e -> goToInitialGameScreen(screen.getNameInput(), screen.getDiffSelect()));
         Scene scene = screen.getScene();
         mainWindow.setTitle("Start a new game");
         mainWindow.setScene(scene);
@@ -53,7 +57,8 @@ public class Controller extends Application {
     /**
      *
      */
-    private void goToInitialGameScreen() {
+    private void goToInitialGameScreen(TextField playerName, ComboBox<String> difficulty) {
+
     }
 
     /**
