@@ -1,19 +1,8 @@
 package view;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Player;
 
@@ -28,7 +17,7 @@ public class InitialGame {
     public InitialGame(int w, int h) {
         this.width = w;
         this.height = h;
-        exit3 = new Button("Go back to initial configuration screen");
+        exit3 = new Button("BACK");
     }
 
     public Scene start(Stage primaryStage, Player player) {
