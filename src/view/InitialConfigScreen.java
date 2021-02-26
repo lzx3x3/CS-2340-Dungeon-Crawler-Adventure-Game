@@ -21,6 +21,7 @@ public class InitialConfigScreen {
     private Button wpn2Button;
     private Button wpn3Button;
     private Button startButton;
+    Alert nameAlert;
 
     /**
      * Private constructor
@@ -41,6 +42,7 @@ public class InitialConfigScreen {
         wpn2Button = new Button();
         wpn3Button = new Button();
         startButton = new Button("Start");
+        Alert nameAlert = new Alert(Alert.AlertType.ERROR);
     }
 
     /**
@@ -87,15 +89,6 @@ public class InitialConfigScreen {
 
         //start game
         startButton.getStyleClass().add("startButton");
-        startButton.setOnAction(e -> {
-            if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
-                Alert nameAlert = new Alert(Alert.AlertType.ERROR);
-                nameAlert.setTitle("Error");
-                nameAlert.setHeaderText("Invalid Name");
-                nameAlert.setContentText("Your name must include at least one character");
-                nameAlert.show();
-            }
-        });
 
         //inner VBoxes
         VBox name = new VBox();
@@ -156,5 +149,13 @@ public class InitialConfigScreen {
      */
     public Button getStartButton() {
         return startButton;
+    }
+
+    /**
+     *
+     * @return Invalid name alert
+     */
+    public Alert getNameAlert() {
+        return nameAlert;
     }
 }

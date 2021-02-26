@@ -22,7 +22,7 @@ public class InitialGame {
     private int screenWidth = 800;
     private int screenHeight = 600;
 
-    public void InitialGameScreen(Stage primaryStage, Player player) throws Exception {
+    public Scene InitialGameScreen(Stage primaryStage, Player player) throws Exception {
 
         // player select difficulty
         player.setMoney(player.getDiff());
@@ -107,10 +107,11 @@ public class InitialGame {
         level.setFill(Color.YELLOW);
 
         root1.getChildren().addAll(money, level);
+        return scene1;
 
-        primaryStage.setScene(scene1);
-        primaryStage.setTitle("Initial_Game_Screen");
-        primaryStage.show();
+//        primaryStage.setScene(scene1);
+//        primaryStage.setTitle("Initial_Game_Screen");
+//        primaryStage.show();
 
     }
 

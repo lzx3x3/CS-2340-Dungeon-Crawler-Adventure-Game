@@ -2,6 +2,7 @@ package controller;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -47,7 +48,22 @@ public class Controller extends Application {
     private void initInitialConfigScreen() {
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
-        startButton.setOnAction(e -> goToInitialGameScreen(screen.getNameInput(), screen.getDiffSelect()));
+        TextField nameInput = screen. getNameInput();
+        startButton.setOnAction(e -> {
+            try {
+                if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
+                    Alert nameAlert = screen.getNameAlert();
+                    nameAlert.setTitle("Error");
+                    nameAlert.setHeaderText("Invalid Name");
+                    nameAlert.setContentText("Your name must include at least one character");
+                    nameAlert.show();
+                } else {
+                    goToInitialGameScreen(nameInput, screen.getDiffSelect());
+                }
+            } catch (Exception f) {
+                f.printStackTrace();
+            }
+        });
         Scene scene = screen.getScene();
         mainWindow.setTitle("Start a new game");
         mainWindow.setScene(scene);
@@ -57,8 +73,12 @@ public class Controller extends Application {
     /**
      *
      */
-    private void goToInitialGameScreen(TextField playerName, ComboBox<String> difficulty) {
-
+    private void goToInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
+        InitialGame screen = new InitialGame();
+        Player player = new Player(playerName.getText(), difficulty.getValue());
+        Scene scene = screen.InitialGameScreen(mainWindow, player);
+        mainWindow.setScene(scene);
+        mainWindow.show();
     }
 
     /**
