@@ -8,14 +8,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.InitialGame;
-import main.Player;
 import model.GameModel;
 import view.InitialConfigScreen;
 import view.WelcomeScreen;
+import model.Player;
 
 public class Controller extends Application {
     private GameModel gameModel;
     private Stage mainWindow;
+    private Player player;
     private final int width = 500;
     private final int height = 500;
 
@@ -58,7 +59,7 @@ public class Controller extends Application {
                     nameAlert.setContentText("Your name must include at least one character");
                     nameAlert.show();
                 } else {
-                    goToInitialGameScreen(nameInput, screen.getDiffSelect());
+                    initInitialGameScreen(nameInput, screen.getDiffSelect());
                 }
             } catch (Exception f) {
                 f.printStackTrace();
@@ -73,9 +74,9 @@ public class Controller extends Application {
     /**
      *
      */
-    private void goToInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
+    private void initInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
         InitialGame screen = new InitialGame();
-        Player player = new Player(playerName.getText(), difficulty.getValue());
+        player = new Player(playerName.getText(), difficulty.getValue());
         Scene scene = screen.InitialGameScreen(mainWindow, player);
         mainWindow.setScene(scene);
         mainWindow.show();

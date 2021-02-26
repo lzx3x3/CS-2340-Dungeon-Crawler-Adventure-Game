@@ -1,4 +1,4 @@
-package main;
+package view;
 
 public class Door {
     private int x = 0;
