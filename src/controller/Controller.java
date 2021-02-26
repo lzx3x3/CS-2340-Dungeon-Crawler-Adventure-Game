@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.InitialGame;
+import view.InitialGame;
 import model.GameModel;
 import view.InitialConfigScreen;
 import view.WelcomeScreen;
@@ -49,7 +49,7 @@ public class Controller extends Application {
     private void initInitialConfigScreen() {
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
-        TextField nameInput = screen. getNameInput();
+        TextField nameInput = screen.getNameInput();
         startButton.setOnAction(e -> {
             try {
                 if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
@@ -75,9 +75,10 @@ public class Controller extends Application {
      *
      */
     private void initInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
-        InitialGame screen = new InitialGame();
+        // We need to have a standard resolution!!!!
+        InitialGame screen = new InitialGame(800, 600);
         player = new Player(playerName.getText(), difficulty.getValue());
-        Scene scene = screen.InitialGameScreen(mainWindow, player);
+        Scene scene = screen.start(mainWindow, player);
         mainWindow.setScene(scene);
         mainWindow.show();
     }

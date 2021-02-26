@@ -21,15 +21,17 @@ public class InitialGame {
 
     private int width;
     private int height;
+    private Button exit3;
 
     private InitialGame() {}
 
     public InitialGame(int w, int h) {
         this.width = w;
         this.height = h;
+        exit3 = new Button("Go back to initial configuration screen");
     }
 
-    public void start(Stage primaryStage, Player player) {
+    public Scene start(Stage primaryStage, Player player) {
 
 //        Pane root1 = new Pane();
         Pane root2 = new Pane();
@@ -66,7 +68,6 @@ public class InitialGame {
 //        root1.getChildren().addAll(buttons);
 
         // 1-(2). add buttons to scene 2
-        Button exit3 = new Button("Go back to initial configuration screen");
 
 
         //        @Jason: You can link button exit3 to "InitialConfigScreen"
@@ -107,9 +108,11 @@ public class InitialGame {
 //
 //        root1.getChildren().addAll(money, level);
 
-        primaryStage.setScene(scene2);
-        primaryStage.setTitle("Initial_Game_Screen");
-        primaryStage.show();
+        return scene2;
+
+//        primaryStage.setScene(scene2);
+//        primaryStage.setTitle("Initial_Game_Screen");
+//        primaryStage.show();
 
     }
 
