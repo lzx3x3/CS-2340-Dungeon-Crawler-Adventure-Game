@@ -77,6 +77,10 @@ public class Controller extends Application {
     private void initInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
         // We need to have a standard resolution!!!!
         InitialGame screen = new InitialGame(800, 600);
+        Button exit3 = screen.getExit3();
+        exit3.setOnAction(e -> {
+            initInitialConfigScreen();
+        });
         player = new Player(playerName.getText(), difficulty.getValue());
         Scene scene = screen.start(mainWindow, player);
         mainWindow.setScene(scene);

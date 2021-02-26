@@ -116,4 +116,7 @@ public class InitialGame {
 
     }
 
+    public Button getExit3() {
+        return exit3;
+    }
 }
