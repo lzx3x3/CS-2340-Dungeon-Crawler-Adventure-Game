@@ -42,7 +42,7 @@ public class InitialConfigScreen {
         wpn2Button = new Button();
         wpn3Button = new Button();
         startButton = new Button("Start");
-        Alert nameAlert = new Alert(Alert.AlertType.ERROR);
+        nameAlert = new Alert(Alert.AlertType.ERROR);
     }
 
     /**
