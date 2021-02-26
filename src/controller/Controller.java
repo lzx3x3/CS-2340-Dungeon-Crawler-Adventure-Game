@@ -82,6 +82,7 @@ public class Controller extends Application {
             initInitialConfigScreen();
         });
         player = new Player(playerName.getText(), difficulty.getValue());
+        player.setMoney(player.getDiff());
         Scene scene = screen.start(mainWindow, player);
         mainWindow.setScene(scene);
         mainWindow.show();
