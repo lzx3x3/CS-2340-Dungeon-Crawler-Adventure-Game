@@ -39,13 +39,13 @@ public class WelcomeScreen {
 
     public Scene getScene()  {
         StackPane root = new StackPane();
-        Image background = new Image("file:assets/WelcomeScreenImage.png");
+        Image background = new Image("file:resources/WelcomeScreenImage.png");
         root.getChildren().add(new ImageView(background));
         BorderPane welcomeScreen = new BorderPane();
         // Title screen Title text
         Label gameTitle = new Label("Dungeon Crawler Game");
         gameTitle.setAlignment(Pos.CENTER);
-        Font titleFont = Font.loadFont("file:assets/fonts/BreatheFireIi-2z9W.ttf", 70);
+        Font titleFont = Font.loadFont("file:resources/fonts/BreatheFireIi-2z9W.ttf", 70);
         gameTitle.setStyle("-fx-text-fill: white; -fx-stroke: black;");
         gameTitle.setFont(titleFont);
         // Title screen start button

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.GameModel;
 import view.InitialConfigScreen;
+import view.WelcomeScreen;
 
 public class Controller extends Application {
     private GameModel gameModel;
@@ -17,10 +18,25 @@ public class Controller extends Application {
     public void start(Stage primaryStage) throws Exception {
         gameModel = new GameModel();
         mainWindow = primaryStage;
-        mainWindow.setTitle("Start a New Game");
-        initInitialConfigScreen();
+        initFirstScreen();
+        mainWindow.setTitle("Dungeon Crawler Game");
+        // initInitialConfigScreen();
     }
 
+    private void initFirstScreen() {
+        WelcomeScreen screen = new WelcomeScreen(width, height);
+        Button start = screen.getStart();
+        start.setOnAction(e -> {
+            initInitialConfigScreen();
+        });
+        Button quit = screen.getQuit();
+        quit.setOnAction(e -> {
+            mainWindow.close();
+        });
+        Scene scene = screen.getScene();
+        mainWindow.setScene(scene);
+        mainWindow.show();
+    }
     /**
      * Initializes InitialConfigScreen
      */
@@ -28,8 +44,8 @@ public class Controller extends Application {
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
         startButton.setOnAction(e -> goToInitialGameScreen());
-
         Scene scene = screen.getScene();
+        mainWindow.setTitle("Start a new game");
         mainWindow.setScene(scene);
         mainWindow.show();
     }

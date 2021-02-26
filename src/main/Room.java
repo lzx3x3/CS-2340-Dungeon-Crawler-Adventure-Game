@@ -37,8 +37,8 @@ public class Room {
 
     }
     public Pane drawRoom(Pane root, Player player) {
-        Image wooden_floor = new Image("file:assets/wooden_floor.png");
-        Image door = new Image("file:assets/doors.png");
+        Image wooden_floor = new Image("file:resources/wooden_floor.png");
+        Image door = new Image("file:resources/doors.png");
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 ImageView iV = new ImageView();
