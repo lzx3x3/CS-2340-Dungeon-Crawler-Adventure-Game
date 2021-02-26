@@ -21,6 +21,7 @@ public class InitialConfigScreen {
     private Button wpn2Button;
     private Button wpn3Button;
     private Button startButton;
+    private BorderPane borderPane;
     Alert nameAlert;
 
     /**
@@ -67,13 +68,14 @@ public class InitialConfigScreen {
 
         //select weapon
         wpn1Button.getStyleClass().add("wpn1Button");
+        wpn1Button.setId("wpn");
         wpn2Button.getStyleClass().add("wpn2Button");
         wpn3Button.getStyleClass().add("wpn3Button");
 
         HBox wpnButtons = new HBox(wpn1Button, wpn2Button, wpn3Button);
         wpnButtons.getStyleClass().add("wpnHBox");
         Label wpnLabel = new Label("Weapon:  None");
-        wpnLabel.getStyleClass().add("label");
+        wpnLabel.getStyleClass().add("wpnLabel");
 
         //show text when weapon is selected
         wpn1Button.setOnAction(e -> {
@@ -120,7 +122,7 @@ public class InitialConfigScreen {
 //        borderPane.setAlignment(startButton, Pos.CENTER);
 //        borderPane.getStyleClass().add("borderPane");
 
-        BorderPane borderPane = new BorderPane(selectionsWrapper);
+        borderPane = new BorderPane(selectionsWrapper);
         borderPane.setId("pane");
         Scene scene = new Scene(borderPane, width, height);
         scene.getStylesheets().add("file:resources/css/InitialConfigScreen.css");
@@ -157,5 +159,13 @@ public class InitialConfigScreen {
      */
     public Alert getNameAlert() {
         return nameAlert;
+    }
+
+    /**
+     *
+     * @return Border pane
+     */
+    public BorderPane getBorderPane() {
+        return borderPane;
     }
 }
