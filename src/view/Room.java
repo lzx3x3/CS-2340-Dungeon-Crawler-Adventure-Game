@@ -1,11 +1,7 @@
-package main;
+package view;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -13,8 +9,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
+import model.Player;
+
 import java.util.ArrayList;
 
 public class Room {
@@ -64,14 +61,21 @@ public class Room {
         money.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         money.setFill(Color.GREEN);
 
+        Text diff = new Text();
+        diff.textProperty().bind(new SimpleStringProperty(("Current Difficulty: ")).concat(new SimpleStringProperty(player.getDiff())));
+        diff.setX(600);
+        diff.setY(40);
+        diff.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        diff.setFill(Color.RED);
+
         Text level = new Text();
         level.textProperty().bind(new SimpleStringProperty(("Current Level: ")).concat(new SimpleIntegerProperty(player.getLevel()).asString()));
         level.setX(600);
-        level.setY(40);
+        level.setY(60);
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
-        root.getChildren().addAll(money, level);
+        root.getChildren().addAll(money, diff, level);
 
         return root;
     }
