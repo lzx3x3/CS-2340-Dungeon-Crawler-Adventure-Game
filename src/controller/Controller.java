@@ -16,8 +16,8 @@ public class Controller extends Application {
     private GameModel gameModel;
     private Stage mainWindow;
     private Player player;
-    private final int width = 500;
-    private final int height = 500;
+    private final int width = 800;
+    private final int height = 600;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
