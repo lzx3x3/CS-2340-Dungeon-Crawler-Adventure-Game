@@ -17,6 +17,7 @@ public class InitialConfigTest extends ApplicationTest {
         InitialConfigScreen initConfig = new InitialConfigScreen(500, 500);
         stage.setScene(initConfig.getScene());
         stage.show();
+
     }
 
     //edited by Pei Yi
@@ -25,4 +26,19 @@ public class InitialConfigTest extends ApplicationTest {
         clickOn(".wpn1Button");
         verifyThat("Weapon:  Stick", NodeMatchers.isNotNull());
     }
+
+    //edited by Kayla
+
+    @Test
+    public void testWeapon2() {
+        clickOn(".wpn2Button");
+        verifyThat("Weapon:  Sword", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testStartGame() {
+        clickOn("Start");
+        verifyThat("BACK", NodeMatchers.isNotNull());
+    }
+
 }

@@ -23,6 +23,7 @@ public class InitialConfigScreen {
     private Button startButton;
     private BorderPane borderPane;
     Alert nameAlert;
+    Alert diffAlert;
 
     /**
      * Private constructor
@@ -44,6 +45,7 @@ public class InitialConfigScreen {
         wpn3Button = new Button();
         startButton = new Button("Start");
         nameAlert = new Alert(Alert.AlertType.ERROR);
+        diffAlert = new Alert(Alert.AlertType.ERROR);
     }
 
     /**
@@ -157,9 +159,13 @@ public class InitialConfigScreen {
      *
      * @return Invalid name alert
      */
-    public Alert getNameAlert() {
-        return nameAlert;
-    }
+    public Alert getNameAlert() {return nameAlert;}
+
+    /**
+     *
+     * @return Invalid difficulty alert
+     */
+    public Alert getDiffAlert() {return diffAlert;}
 
     /**
      *

@@ -21,9 +21,14 @@ There are 3 screens in our game: Welcome Screen, Initial Configuration Screen, I
     testWeapon() in InitialConfigTest.java tests whether the weapon label
     displays the weapon selected. When weapon button 1 is clicked, the label
     should be changed to "Weapon:  Stick".
+    testStartGame() in InitialConfigTest.java tests whether the InitialGame screen is shown after clicking
+        on the "Start" button.
+    testWeapon2() in InitialConfigTest.java tests whether the weapon label "Weapon: Sword" is shown when the second
+        weapon is selected.
     
     testBack() in InitialGameTest.java tests that the InitialConfig screen is shown after clicking on "BACK" button in the initial game screen.
     testDifficulty() in InitialGameTest.java tests that the correct difficulty is being displayed on the initial game screen.
     testStartingMoney() in InitialGameTest.java tests that the correct starting money is being displayed on the inital game screen.
     
     testGetMoney() in PlayerTest.java tests that after setting the difficulty in player, the player's initial money will change together with the difficulty.
+

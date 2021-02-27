@@ -50,4 +50,6 @@ public class InitialGameTest extends ApplicationTest {
         clickOn("Start");
         verifyThat("Current Money: 20000", NodeMatchers.isNotNull());
     }
+
+
 }

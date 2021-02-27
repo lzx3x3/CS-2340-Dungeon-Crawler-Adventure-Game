@@ -54,6 +54,8 @@ public class Player {
         return this.level;
     }
 
+    public String getName() {return this.name;}
+
     public void setDiff(String diff) {
         this.difficulty = diff;
     }

@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+
 public class PlayerTest {
 
     // Edited by siying
@@ -12,4 +13,6 @@ public class PlayerTest {
         player.setMoney("Easy");
         assertEquals(10000, player.getMoney());
     }
+
+
 }

@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import model.GameModel;
 import model.Player;
@@ -50,6 +51,7 @@ public class Controller extends Application {
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
         TextField nameInput = screen.getNameInput();
+        ComboBox<String> diffSelect = screen.getDiffSelect();
         startButton.setOnAction(e -> {
             try {
                 if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
@@ -58,6 +60,12 @@ public class Controller extends Application {
                     nameAlert.setHeaderText("Invalid Name");
                     nameAlert.setContentText("Your name must include at least one character");
                     nameAlert.show();
+                } else if (diffSelect.getValue() == null) {
+                    Alert diffAlert = screen.getDiffAlert();
+                    diffAlert.setTitle("Error");
+                    diffAlert.setHeaderText("Invalid Difficulty");
+                    diffAlert.setContentText("Please choose a difficulty");
+                    diffAlert.show();
                 } else {
 //                    initInitialGameScreen(nameInput, screen.getDiffSelect());
                     player.setName(nameInput.getText());
