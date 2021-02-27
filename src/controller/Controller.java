@@ -4,14 +4,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import view.InitialGame;
 import model.GameModel;
-import view.InitialConfigScreen;
-import view.WelcomeScreen;
 import model.Player;
+import view.InitialConfigScreen;
+import view.InitialGame;
+import view.WelcomeScreen;
 
 public class Controller extends Application {
     private GameModel gameModel;
@@ -23,6 +22,7 @@ public class Controller extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         gameModel = new GameModel();
+        player = new Player();
         mainWindow = primaryStage;
         initFirstScreen();
         mainWindow.setTitle("Dungeon Crawler Game");
@@ -59,7 +59,10 @@ public class Controller extends Application {
                     nameAlert.setContentText("Your name must include at least one character");
                     nameAlert.show();
                 } else {
-                    initInitialGameScreen(nameInput, screen.getDiffSelect());
+//                    initInitialGameScreen(nameInput, screen.getDiffSelect());
+                    player.setName(nameInput.getText());
+                    player.setDiff(screen.getDiffSelect().getValue());
+                    initInitialGameScreen(player);
                 }
             } catch (Exception f) {
                 f.printStackTrace();
@@ -74,18 +77,23 @@ public class Controller extends Application {
     /**
      *
      */
-    private void initInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
+//    private void initInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
+    public void initInitialGameScreen(Player player) throws Exception {
         // We need to have a standard resolution!!!!
         InitialGame screen = new InitialGame(800, 600);
         Button exit3 = screen.getExit3();
         exit3.setOnAction(e -> {
             initInitialConfigScreen();
         });
-        player = new Player(playerName.getText(), difficulty.getValue());
+//        player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
         Scene scene = screen.start(mainWindow, player);
         mainWindow.setScene(scene);
         mainWindow.show();
+    }
+
+    public void setMainWindow(Stage stage) {
+        this.mainWindow = stage;
     }
 
     /**
