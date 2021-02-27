@@ -13,7 +13,7 @@ public class InitialConfigTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        JFXPanel fxPanel = new JFXPanel();
+        JFXPanel fxPanel = new JFXPanel(); //work around for JavaFX Toolkit Not Initialized exception
         InitialConfigScreen initConfig = new InitialConfigScreen(500, 500);
         stage.setScene(initConfig.getScene());
         stage.show();
