@@ -15,3 +15,5 @@ There are 3 screens in our game: Welcome Screen, Initial Configuration Screen, I
     with the difficulty level chosen in the "Initial Config screen". When click
     on the "BACK" button, it takes you back to the "Initial Config screen" and
     you can reset your configuration.
+    testDifficulty() in InitialGameTest.java tests that the correct difficulty is being displayed on the initial game screen.
+    testStartingMoney() in InitialGameTest.java tests that the correct starting money is being displayed on the inital game screen. 
