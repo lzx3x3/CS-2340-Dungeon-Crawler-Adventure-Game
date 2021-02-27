@@ -69,7 +69,7 @@ public class Controller extends Application {
             }
         });
         Scene scene = screen.getScene();
-        mainWindow.setTitle("Start a new game");
+        mainWindow.setTitle("Initial Configutation Screen");
         mainWindow.setScene(scene);
         mainWindow.show();
     }
@@ -88,6 +88,7 @@ public class Controller extends Application {
 //        player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
         Scene scene = screen.start(mainWindow, player);
+        mainWindow.setTitle("Initial Game Screen");
         mainWindow.setScene(scene);
         mainWindow.show();
     }
