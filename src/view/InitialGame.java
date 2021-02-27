@@ -17,7 +17,7 @@ public class InitialGame {
     public InitialGame(int w, int h) {
         this.width = w;
         this.height = h;
-        exit3 = new Button("BACK");
+        this.exit3 = new Button("BACK");
     }
 
     public Scene start(Stage primaryStage, Player player) {

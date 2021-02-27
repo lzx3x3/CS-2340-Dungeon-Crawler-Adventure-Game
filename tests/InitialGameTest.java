@@ -9,19 +9,19 @@ import static org.testfx.api.FxAssert.verifyThat;
 
 public class InitialGameTest extends ApplicationTest {
 
-    private final InitialGame initGame = new InitialGame(500, 500);
+     private InitialGame initGame = new InitialGame(500, 500);
+     private Player player = new Player();
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(initGame.start(stage, new Player()));
+        stage.setScene(initGame.start(stage, player));
         stage.show();
-        stage.toFront();
     }
 
     //edited by Siying
     @Test
     public void testBack() {
-        clickOn(".exit3");
-        verifyThat("current Money", NodeMatchers.isNotNull());
+        clickOn("#BACK");
+        verifyThat("Start a New Game", NodeMatchers.isNotNull());
     }
 }
