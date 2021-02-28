@@ -12,7 +12,7 @@ There are 3 screens in our game: Welcome Screen, Initial Configuration Screen, I
     and the start button correctly takes you to the Initial Game screen.
     
  3). Initial Game screen: It contains 4 rooms and 1 button.
-    The tests show "current money", "current difficulty" and "current level" of the player, and the player with higher difficulty is provided with higher
+    The screen show "current money", "current difficulty" and "current level" of the player, and the player with higher difficulty is provided with higher
     initial money. The difficulty level in "Initial Game screen" is consistent with the difficulty level chosen in the "Initial Config screen". When click
     on the "BACK" button, it takes you back to the "Initial Config screen" and you can reset your configuration.
     
