@@ -19,14 +19,14 @@ There are 3 screens in our game: Welcome Screen, Initial Configuration Screen, I
     
     # Tests description:
 
-    1). Pei Yei
+    1). Pei Yi
         testStart() in WelcomeTest.java tests whether the next scene is correctly loaded when the Start button is pressed.
     
         testWeapon() in InitialConfigTest.java tests whether the weapon label displays the weapon selected. When weapon button 1 is clicked, the label
-        should be changed to "Weapon:  Stick".
+        should be changed to "Stick".
 
     2). Kayla Hunt
-        testWeapon2() in InitialConfigTest.java tests whether the weapon label "Weapon: Sword" is shown when the second
+        testWeapon2() in InitialConfigTest.java tests whether the weapon label "Sword" is shown when the second
         weapon is selected.
 
         testStartGame() in InitialGameTest.java tests whether the InitialGame screen is shown after clicking on the "Start" button in
