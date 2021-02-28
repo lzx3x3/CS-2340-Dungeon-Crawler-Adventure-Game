@@ -52,33 +52,15 @@ public class WelcomeScreen {
         welcomeScreen.setTop(gameTitle);
         welcomeScreen.setAlignment(gameTitle, Pos.CENTER);
         welcomeScreen.setMargin(gameTitle, new Insets(50, 10, 10, 10));
-        VBox buttons = new VBox();
+        VBox buttons = new VBox(start, quit);
         buttons.setSpacing(20);
-        start.setStyle(" -fx-background-color: \n"
-                + "        #000000,\n"
-                + "        linear-gradient(#7ebcea, #2f4b8f),\n"
-                + "        linear-gradient(#426ab7, #263e75),\n"
-                + "        linear-gradient(#395cab, #223768);\n"
-                + "    -fx-background-insets: 0,1,2,3;\n"
-                + "    -fx-background-radius: 3,2,2,2;\n"
-                + "    -fx-padding: 12 30 12 30;\n"
-                + "    -fx-text-fill: white;\n"
-                + "    -fx-font-size: 12px;");
-        quit.setStyle("-fx-background-color: \n"
-                + "        #000000,\n"
-                + "        linear-gradient(#7ebcea, #2f4b8f),\n"
-                + "        linear-gradient(#426ab7, #263e75),\n"
-                + "        linear-gradient(#395cab, #223768);\n"
-                + "    -fx-background-insets: 0,1,2,3;\n"
-                + "    -fx-background-radius: 3,2,2,2;\n"
-                + "    -fx-padding: 12 30 12 30;\n"
-                + "    -fx-text-fill: white;\n"
-                + "    -fx-font-size: 12px;");
+        start.getStyleClass().add("buttons");
+        quit.getStyleClass().add("buttons");
         root.getChildren().add(welcomeScreen);
-        buttons.getChildren().addAll(start, quit);
         buttons.setAlignment(Pos.CENTER);
         welcomeScreen.setCenter(buttons);
         Scene scene = new Scene(root, width, height);
+        scene.getStylesheets().add("file:resources/css/WelcomeScreen.css");
         return scene;
     }
 }
