@@ -82,10 +82,7 @@ public class Controller extends Application {
         mainWindow.show();
     }
 
-    /**
-     *
-     */
-//    private void initInitialGameScreen(TextField playerName, ComboBox<String> difficulty) throws Exception {
+
     public void initInitialGameScreen(Player player) throws Exception {
         // We need to have a standard resolution!!!!
         InitialGame screen = new InitialGame(800, 600);
@@ -93,7 +90,7 @@ public class Controller extends Application {
         exit3.setOnAction(e -> {
             initInitialConfigScreen();
         });
-//        player = new Player(playerName.getText(), difficulty.getValue());
+        //player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
         Scene scene = screen.start(mainWindow, player);
         mainWindow.setTitle("Initial Game Screen");

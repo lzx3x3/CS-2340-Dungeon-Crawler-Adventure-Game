@@ -11,14 +11,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
+
 
 public class WelcomeScreen {
     private int width;
     private int height;
     private Button start;
     private Button quit;
-    private WelcomeScreen() {}
+    private WelcomeScreen() { }
 
     public Button getStart() {
         return start;
@@ -54,26 +54,26 @@ public class WelcomeScreen {
         welcomeScreen.setMargin(gameTitle, new Insets(50, 10, 10, 10));
         VBox buttons = new VBox();
         buttons.setSpacing(20);
-        start.setStyle(" -fx-background-color: \n" +
-                "        #000000,\n" +
-                "        linear-gradient(#7ebcea, #2f4b8f),\n" +
-                "        linear-gradient(#426ab7, #263e75),\n" +
-                "        linear-gradient(#395cab, #223768);\n" +
-                "    -fx-background-insets: 0,1,2,3;\n" +
-                "    -fx-background-radius: 3,2,2,2;\n" +
-                "    -fx-padding: 12 30 12 30;\n" +
-                "    -fx-text-fill: white;\n" +
-                "    -fx-font-size: 12px;");
-        quit.setStyle("-fx-background-color: \n" +
-                "        #000000,\n" +
-                "        linear-gradient(#7ebcea, #2f4b8f),\n" +
-                "        linear-gradient(#426ab7, #263e75),\n" +
-                "        linear-gradient(#395cab, #223768);\n" +
-                "    -fx-background-insets: 0,1,2,3;\n" +
-                "    -fx-background-radius: 3,2,2,2;\n" +
-                "    -fx-padding: 12 30 12 30;\n" +
-                "    -fx-text-fill: white;\n" +
-                "    -fx-font-size: 12px;");
+        start.setStyle(" -fx-background-color: \n"
+                + "        #000000,\n"
+                + "        linear-gradient(#7ebcea, #2f4b8f),\n"
+                + "        linear-gradient(#426ab7, #263e75),\n"
+                + "        linear-gradient(#395cab, #223768);\n"
+                + "    -fx-background-insets: 0,1,2,3;\n"
+                + "    -fx-background-radius: 3,2,2,2;\n"
+                + "    -fx-padding: 12 30 12 30;\n"
+                + "    -fx-text-fill: white;\n"
+                + "    -fx-font-size: 12px;");
+        quit.setStyle("-fx-background-color: \n"
+                + "        #000000,\n"
+                + "        linear-gradient(#7ebcea, #2f4b8f),\n"
+                + "        linear-gradient(#426ab7, #263e75),\n"
+                + "        linear-gradient(#395cab, #223768);\n"
+                + "    -fx-background-insets: 0,1,2,3;\n"
+                + "    -fx-background-radius: 3,2,2,2;\n"
+                + "    -fx-padding: 12 30 12 30;\n"
+                + "    -fx-text-fill: white;\n"
+                + "    -fx-font-size: 12px;");
         root.getChildren().add(welcomeScreen);
         buttons.getChildren().addAll(start, quit);
         buttons.setAlignment(Pos.CENTER);

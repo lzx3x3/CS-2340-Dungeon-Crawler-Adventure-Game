@@ -1,6 +1,5 @@
 package view;
 
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -8,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert;
 
@@ -22,8 +21,8 @@ public class InitialConfigScreen {
     private Button wpn3Button;
     private Button startButton;
     private BorderPane borderPane;
-    Alert nameAlert;
-    Alert diffAlert;
+    private Alert nameAlert;
+    private Alert diffAlert;
 
     /**
      * Private constructor
@@ -114,16 +113,6 @@ public class InitialConfigScreen {
         HBox selectionsWrapper = new HBox(selections);
         selectionsWrapper.getStyleClass().add("outerHBox");
 
-        //Border pane with all selections in the center, the title in the Top, and the Start button can be in the bottom
-//        BorderPane borderPane = new BorderPane();
-//        borderPane.setTop(screenTitle);
-//        borderPane.setAlignment(screenTitle, Pos.BOTTOM_CENTER);
-//        borderPane.setCenter(selections);
-//        borderPane.setAlignment(selections, Pos.CENTER);
-//        borderPane.setBottom(startButton);
-//        borderPane.setAlignment(startButton, Pos.CENTER);
-//        borderPane.getStyleClass().add("borderPane");
-
         borderPane = new BorderPane(selectionsWrapper);
         borderPane.setId("pane");
         Scene scene = new Scene(borderPane, width, height);
@@ -159,13 +148,17 @@ public class InitialConfigScreen {
      *
      * @return Invalid name alert
      */
-    public Alert getNameAlert() {return nameAlert;}
+    public Alert getNameAlert() {
+        return nameAlert;
+    }
 
     /**
      *
      * @return Invalid difficulty alert
      */
-    public Alert getDiffAlert() {return diffAlert;}
+    public Alert getDiffAlert() {
+        return diffAlert;
+    }
 
     /**
      *

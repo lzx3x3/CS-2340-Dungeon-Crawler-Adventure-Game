@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Room {
     private int height = 0;
     private int width = 0;
-    int index = 0;
+    private int index = 0;
     private ArrayList<Door> doors;
 
     Room(int index, int height, int width) {
@@ -34,14 +34,14 @@ public class Room {
 
     }
     public Pane drawRoom(Pane root, Player player) {
-        Image wooden_floor = new Image("file:resources/wooden_floor.png");
+        Image woodenFloor = new Image("file:resources/wooden_floor.png");
         Image door = new Image("file:resources/doors.png");
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 ImageView iV = new ImageView();
-                iV.setImage(wooden_floor);
-                iV.setX(i*32 + 50);
-                iV.setY(j*32 + 50);
+                iV.setImage(woodenFloor);
+                iV.setX(i * 32 + 50);
+                iV.setY(j * 32 + 50);
                 root.getChildren().add(iV);
             }
         }
@@ -49,27 +49,30 @@ public class Room {
         for (Door one :doors) {
             ImageView iV = new ImageView();
             iV.setImage(door);
-            iV.setX(one.getX()*32 + 50);
-            iV.setY(one.getY()*32 + 50);
+            iV.setX(one.getX() * 32 + 50);
+            iV.setY(one.getY() * 32 + 50);
             root.getChildren().add(iV);
         }
 
         Text money = new Text();
-        money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(new SimpleIntegerProperty(player.getMoney()).asString()));
+        money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
+                new SimpleIntegerProperty(player.getMoney()).asString()));
         money.setX(600);
         money.setY(20);
         money.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         money.setFill(Color.GREEN);
 
         Text diff = new Text();
-        diff.textProperty().bind(new SimpleStringProperty(("Current Difficulty: ")).concat(new SimpleStringProperty(player.getDiff())));
+        diff.textProperty().bind(new SimpleStringProperty(("Current Difficulty: ")).concat(
+                new SimpleStringProperty(player.getDiff())));
         diff.setX(600);
         diff.setY(40);
         diff.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         diff.setFill(Color.RED);
 
         Text level = new Text();
-        level.textProperty().bind(new SimpleStringProperty(("Current Level: ")).concat(new SimpleIntegerProperty(player.getLevel()).asString()));
+        level.textProperty().bind(new SimpleStringProperty(("Current Level: ")).concat(
+                new SimpleIntegerProperty(player.getLevel()).asString()));
         level.setX(600);
         level.setY(60);
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));

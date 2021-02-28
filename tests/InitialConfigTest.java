@@ -1,9 +1,6 @@
-import controller.Controller;
-import javafx.application.Application;
 import javafx.embed.swing.JFXPanel;
 import javafx.stage.Stage;
 import org.junit.Test;
-import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
 import view.InitialConfigScreen;
@@ -14,7 +11,7 @@ public class InitialConfigTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        JFXPanel fxPanel = new JFXPanel(); //work around for JavaFX Toolkit Not Initialized exception
+        JFXPanel fxPanel = new JFXPanel(); //work around for JavaFX ToolkitNotInitialized exception
         InitialConfigScreen initConfig = new InitialConfigScreen(500, 500);
         stage.setScene(initConfig.getScene());
         stage.show();
