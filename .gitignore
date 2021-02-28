@@ -4,6 +4,11 @@
 # Log file
 *.log
 
+#Checktyle files
+run_checkstyle.py
+cs2340_checks.xml
+checkstyle-8.24-all.jar
+
 # BlueJ files
 *.ctxt
 

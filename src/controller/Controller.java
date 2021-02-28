@@ -67,7 +67,7 @@ public class Controller extends Application {
                     diffAlert.setContentText("Please choose a difficulty");
                     diffAlert.show();
                 } else {
-//                    initInitialGameScreen(nameInput, screen.getDiffSelect());
+                    //initInitialGameScreen(nameInput, screen.getDiffSelect());
                     player.setName(nameInput.getText());
                     player.setDiff(screen.getDiffSelect().getValue());
                     initInitialGameScreen(player);
