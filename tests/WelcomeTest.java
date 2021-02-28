@@ -19,4 +19,10 @@ public class WelcomeTest extends ApplicationTest {
         clickOn("Start");
         verifyThat("Start a New Game", NodeMatchers.isNotNull());
     }
+
+    //edited by Jason
+    @Test
+    public void testFirstScreen() {
+        verifyThat("Dungeon Crawler Game", NodeMatchers.isNotNull());
+    }
 }

@@ -51,5 +51,13 @@ public class InitialGameTest extends ApplicationTest {
         verifyThat("Current Money: 20000", NodeMatchers.isNotNull());
     }
 
+    // Edited by Jason
+    @Test
+    public void testNameAlert() {
+        clickOn("Start");
+        clickOn("Start");
+        verifyThat("OK", NodeMatchers.isNotNull());
+    }
+
 
 }

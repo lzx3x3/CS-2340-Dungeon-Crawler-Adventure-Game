@@ -32,3 +32,7 @@ There are 3 screens in our game: Welcome Screen, Initial Configuration Screen, I
     
     testGetMoney() in PlayerTest.java tests that after setting the difficulty in player, the player's initial money will change together with the difficulty.
 
+    testFirstScreen() in WelcomeTest.java tests that the Controller correctly launches to the Welcome Screen.
+    testNameAlert() in InitialGame.java tests that if an invalid name is entered into the TextField
+        that an Alert dialog is correctly displayed.
+
