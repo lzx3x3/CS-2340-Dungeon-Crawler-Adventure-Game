@@ -3,36 +3,64 @@ This is a class project in course 2340
 Group: 86 ers
 
 There are 3 screens in our game: Welcome Screen, Initial Configuration Screen, Initial Game Screen
- 1). Welcome screen:
+ 1). Welcome screen: It contains 1 Start and 1 Quit button
+    The tests verify that this screen shows when you first launch the game and that clicking the start button correctly
+    takes you to the Initial Configuration Screen.
     
- 2). Initial Config screen:
+ 2). Initial Config screen: It contains input options for player Name, Difficulty level, and Weapon selection, Start button
+    The tests verify Alerts to catch any unwanted inputs in the name or difficulty fields, the weapon buttons change text as desired,
+    and the start button correctly takes you to the Initial Game screen.
     
  3). Initial Game screen: It contains 4 rooms and 1 button.
-    The test shows "current money", "current difficulty" and "current level" of the player, and the player with higher difficulty is provided with higher
-    intial money. The difficulty level in "Initial Game screen" is consistent with the difficulty level chosen in the "Initial Config screen". When click
+    The tests show "current money", "current difficulty" and "current level" of the player, and the player with higher difficulty is provided with higher
+    initial money. The difficulty level in "Initial Game screen" is consistent with the difficulty level chosen in the "Initial Config screen". When click
     on the "BACK" button, it takes you back to the "Initial Config screen" and you can reset your configuration.
     
     
     # Tests description:
-    
-    testStart() in WelcomeTest.java tests whether the next scene is correctly
-    loaded when the Start button is pressed.
-    
-    testWeapon() in InitialConfigTest.java tests whether the weapon label
-    displays the weapon selected. When weapon button 1 is clicked, the label
-    should be changed to "Weapon:  Stick".
-    testStartGame() in InitialConfigTest.java tests whether the InitialGame screen is shown after clicking
-        on the "Start" button.
-    testWeapon2() in InitialConfigTest.java tests whether the weapon label "Weapon: Sword" is shown when the second
-        weapon is selected.
-    
-    testBack() in InitialGameTest.java tests that the InitialConfig screen is shown after clicking on "BACK" button in the initial game screen.
-    testDifficulty() in InitialGameTest.java tests that the correct difficulty is being displayed on the initial game screen.
-    testStartingMoney() in InitialGameTest.java tests that the correct starting money is being displayed on the inital game screen.
-    
-    testGetMoney() in PlayerTest.java tests that after setting the difficulty in player, the player's initial money will change together with the difficulty.
 
-    testFirstScreen() in WelcomeTest.java tests that the Controller correctly launches to the Welcome Screen.
-    testNameAlert() in InitialGame.java tests that if an invalid name is entered into the TextField
+    1). Pei Yei
+        testStart() in WelcomeTest.java tests whether the next scene is correctly loaded when the Start button is pressed.
+    
+        testWeapon() in InitialConfigTest.java tests whether the weapon label displays the weapon selected. When weapon button 1 is clicked, the label
+        should be changed to "Weapon:  Stick".
+
+    2). Kayla Hunt
+        testWeapon2() in InitialConfigTest.java tests whether the weapon label "Weapon: Sword" is shown when the second
+        weapon is selected.
+
+        testStartGame() in InitialGameTest.java tests whether the InitialGame screen is shown after clicking on the "Start" button in
+        the InitialConfig screen
+
+        testDifficultyAlert() in InitialGameTest.java tests whether the Alert is shown when no difficulty level is selected
+        so that a player cannot enter the game without a difficulty level.
+
+    3). Siying Cen
+        testBack() in InitialGameTest.java tests that the InitialConfig screen is shown after clicking on "BACK" button in the initial game screen.
+
+        testGetMoney() in PlayerTest.java tests that after setting the difficulty in player, the player's initial money will change together with the difficulty.
+
+    4). Jessica Jacobs
+        testDifficulty() in InitialGameTest.java tests that the correct difficulty is being displayed on the initial game screen.
+
+        testStartingMoney() in InitialGameTest.java tests that the correct starting money is being displayed on the inital game screen.
+
+    5). Jason Pham
+        testFirstScreen() in WelcomeTest.java tests that the Controller correctly launches to the Welcome Screen.
+
+        testNameAlert() in InitialGame.java tests that if an invalid name is entered into the TextField
         that an Alert dialog is correctly displayed.
+
+
+    # Choosing implementation components to test:
+      Our first choices for tests were to test the buttons transitioning from screen to screen, since this is the main
+      functionality of our game in this milestone. Our next choices were making sure that everything was set or updated
+      correctly. This includes the name, difficulty, player attributes, starting money, and starting weapon. These tests
+      were chosen because these attributes are essential to the differentiation between our different game variations
+      (different difficulties of play, different experiences with different weapons, the personalization of the player
+      avatar with your name, etc.) We wrote our tests after deciding on our game requirements. We tested the changing of
+      the screen to verify that they appeared in logical order, tested the user inputs and alerts based on the validity
+      of inputs, and tested user input results based on the requirements of the milestone. This included how the
+      different difficulties would change the game play.
+
 

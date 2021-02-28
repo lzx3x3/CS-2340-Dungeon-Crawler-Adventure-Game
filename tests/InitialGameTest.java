@@ -59,5 +59,25 @@ public class InitialGameTest extends ApplicationTest {
         verifyThat("OK", NodeMatchers.isNotNull());
     }
 
+    //edited by Kayla
+    @Test
+    public void testDifficultyAlert() {
+        clickOn("Start");
+        write("test");
+        clickOn(".wpn2Button");
+        clickOn("Start");
+        verifyThat("OK", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testStartGame() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn(".wpn2Button");
+        clickOn("Start");
+        verifyThat("BACK", NodeMatchers.isNotNull());
+    }
+
 
 }

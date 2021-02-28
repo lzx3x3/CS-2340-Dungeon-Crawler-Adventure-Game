@@ -1,3 +1,4 @@
+import controller.Controller;
 import javafx.application.Application;
 import javafx.embed.swing.JFXPanel;
 import javafx.stage.Stage;
@@ -28,17 +29,11 @@ public class InitialConfigTest extends ApplicationTest {
     }
 
     //edited by Kayla
-
     @Test
     public void testWeapon2() {
         clickOn(".wpn2Button");
         verifyThat("Weapon:  Sword", NodeMatchers.isNotNull());
     }
 
-    @Test
-    public void testStartGame() {
-        clickOn("Start");
-        verifyThat("BACK", NodeMatchers.isNotNull());
-    }
 
 }
