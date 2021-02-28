@@ -74,6 +74,7 @@ public class InitialGameTest extends ApplicationTest {
         clickOn("Start");
         write("test");
         clickOn("Select your difficulty");
+        clickOn("Medium");
         clickOn(".wpn2Button");
         clickOn("Start");
         verifyThat("BACK", NodeMatchers.isNotNull());
