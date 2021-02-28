@@ -7,22 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Alert;
 
 public class InitialConfigScreen {
     private int width;
     private int height;
     private TextField nameInput;
     private ComboBox<String> diffSelect;
-    private Button wpn1Button;
-    private Button wpn2Button;
-    private Button wpn3Button;
+    private Label wpnSelect;
     private Button startButton;
-    private BorderPane borderPane;
-    private Alert nameAlert;
-    private Alert diffAlert;
 
     /**
      * Private constructor
@@ -39,12 +32,8 @@ public class InitialConfigScreen {
         this.height = height;
         nameInput = new TextField();
         diffSelect = new ComboBox<>();
-        wpn1Button = new Button();
-        wpn2Button = new Button();
-        wpn3Button = new Button();
+        wpnSelect = new Label("None");
         startButton = new Button("Start");
-        nameAlert = new Alert(Alert.AlertType.ERROR);
-        diffAlert = new Alert(Alert.AlertType.ERROR);
     }
 
     /**
@@ -68,26 +57,32 @@ public class InitialConfigScreen {
         diffSelect.getStyleClass().add("diffSelectBox");
 
         //select weapon
+        Label wpnLabel = new Label("Weapon:  ");
+        //        wpnLabel.getStyleClass().add("wpnLabel");
+        //        wpnSelect.getStyleClass().add("wpnSelect");
+        VBox wpnLabels = new VBox(wpnLabel, wpnSelect);
+        wpnLabels.getStyleClass().add("wpnLabelHBox");
+
+        Button wpn1Button = new Button();
         wpn1Button.getStyleClass().add("wpn1Button");
         wpn1Button.setId("wpn");
+        Button wpn2Button = new Button();
         wpn2Button.getStyleClass().add("wpn2Button");
+        Button wpn3Button = new Button();
         wpn3Button.getStyleClass().add("wpn3Button");
 
         HBox wpnButtons = new HBox(wpn1Button, wpn2Button, wpn3Button);
-        wpnButtons.getStyleClass().add("wpnHBox");
-        Label wpnLabel = new Label("Weapon:  None");
-        wpnLabel.getStyleClass().add("wpnLabel");
+        wpnButtons.getStyleClass().add("wpnButHBox");
 
         //show text when weapon is selected
         wpn1Button.setOnAction(e -> {
-            wpnLabel.setText("Weapon:  Stick");
-            Label label = new Label("Weapon 1 selected!");
+            wpnSelect.setText("Stick");
         });
         wpn2Button.setOnAction(e -> {
-            wpnLabel.setText("Weapon:  Sword");
+            wpnSelect.setText("Sword");
         });
         wpn3Button.setOnAction(e -> {
-            wpnLabel.setText("Weapon:  Bow");
+            wpnSelect.setText("Bow");
         });
 
         //start game
@@ -103,7 +98,7 @@ public class InitialConfigScreen {
         difficulty.getStyleClass().add("innerVBox");
 
         VBox wpn = new VBox();
-        wpn.getChildren().addAll(wpnLabel, wpnButtons);
+        wpn.getChildren().addAll(wpnLabels, wpnButtons);
         wpn.getStyleClass().add("innerVBox");
 
         //Everything is together aligned in this VBOX
@@ -113,7 +108,7 @@ public class InitialConfigScreen {
         HBox selectionsWrapper = new HBox(selections);
         selectionsWrapper.getStyleClass().add("outerHBox");
 
-        borderPane = new BorderPane(selectionsWrapper);
+        BorderPane borderPane = new BorderPane(selectionsWrapper);
         borderPane.setId("pane");
         Scene scene = new Scene(borderPane, width, height);
         scene.getStylesheets().add("file:resources/css/InitialConfigScreen.css");
@@ -138,33 +133,17 @@ public class InitialConfigScreen {
 
     /**
      *
+     * @return Weapon select label
+     */
+    public Label getWpnSelect() {
+        return wpnSelect;
+    }
+
+    /**
+     *
      * @return Start button
      */
     public Button getStartButton() {
         return startButton;
-    }
-
-    /**
-     *
-     * @return Invalid name alert
-     */
-    public Alert getNameAlert() {
-        return nameAlert;
-    }
-
-    /**
-     *
-     * @return Invalid difficulty alert
-     */
-    public Alert getDiffAlert() {
-        return diffAlert;
-    }
-
-    /**
-     *
-     * @return Border pane
-     */
-    public BorderPane getBorderPane() {
-        return borderPane;
     }
 }

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
@@ -30,6 +31,9 @@ public class Controller extends Application {
         // initInitialConfigScreen();
     }
 
+    /**
+     * Initializes welcome screen
+     */
     private void initFirstScreen() {
         WelcomeScreen screen = new WelcomeScreen(width, height);
         Button start = screen.getStart();
@@ -52,20 +56,26 @@ public class Controller extends Application {
         Button startButton = screen.getStartButton();
         TextField nameInput = screen.getNameInput();
         ComboBox<String> diffSelect = screen.getDiffSelect();
+        Label wpnSelect = screen.getWpnSelect();
+
         startButton.setOnAction(e -> {
             try {
-                if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
-                    Alert nameAlert = screen.getNameAlert();
-                    nameAlert.setTitle("Error");
-                    nameAlert.setHeaderText("Invalid Name");
-                    nameAlert.setContentText("Your name must include at least one character");
-                    nameAlert.show();
-                } else if (diffSelect.getValue() == null) {
-                    Alert diffAlert = screen.getDiffAlert();
-                    diffAlert.setTitle("Error");
-                    diffAlert.setHeaderText("Invalid Difficulty");
-                    diffAlert.setContentText("Please choose a difficulty");
-                    diffAlert.show();
+                if (nameInput.getText() == null || nameInput.getText().isEmpty()
+                        || diffSelect.getValue() == null || wpnSelect.getText() == "None") {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Invalid selection");
+                    if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
+                        alert.setContentText("- Your name must include at least one character\n");
+                    }
+                    if (diffSelect.getValue() == null) {
+                        alert.setContentText(alert.getContentText()
+                                + "- Please choose a difficulty\n");
+                    }
+                    if (wpnSelect.getText() == "None") {
+                        alert.setContentText(alert.getContentText() + "- Please choose a weapon");
+                    }
+                    alert.show();
                 } else {
                     //initInitialGameScreen(nameInput, screen.getDiffSelect());
                     player.setName(nameInput.getText());
@@ -82,9 +92,12 @@ public class Controller extends Application {
         mainWindow.show();
     }
 
-
+    /**
+     *
+     * @param player Player instance
+     * @throws Exception Throws a NullPointerException when fields are null
+     */
     public void initInitialGameScreen(Player player) throws Exception {
-        // We need to have a standard resolution!!!!
         InitialGame screen = new InitialGame(800, 600);
         Button exit3 = screen.getExit3();
         exit3.setOnAction(e -> {
@@ -98,6 +111,10 @@ public class Controller extends Application {
         mainWindow.show();
     }
 
+    /**
+     *
+     * @param stage Sets the stage for the mainWindow to display
+     */
     public void setMainWindow(Stage stage) {
         this.mainWindow = stage;
     }

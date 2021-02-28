@@ -22,14 +22,14 @@ public class InitialConfigTest extends ApplicationTest {
     @Test
     public void testWeapon() {
         clickOn(".wpn1Button");
-        verifyThat("Weapon:  Stick", NodeMatchers.isNotNull());
+        verifyThat("Stick", NodeMatchers.isNotNull());
     }
 
     //edited by Kayla
     @Test
     public void testWeapon2() {
         clickOn(".wpn2Button");
-        verifyThat("Weapon:  Sword", NodeMatchers.isNotNull());
+        verifyThat("Sword", NodeMatchers.isNotNull());
     }
 
 
