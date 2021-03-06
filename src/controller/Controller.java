@@ -2,17 +2,14 @@ package controller;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.GameModel;
 import model.Player;
 import view.InitialConfigScreen;
 import view.InitialGame;
 import view.WelcomeScreen;
+import view.WinScreen;
 
 public class Controller extends Application {
     private GameModel gameModel;
@@ -27,8 +24,8 @@ public class Controller extends Application {
         player = new Player();
         mainWindow = primaryStage;
         initFirstScreen();
-        mainWindow.setTitle("Dungeon Crawler Game");
         // initInitialConfigScreen();
+        // initEndScreen();
     }
 
     /**
@@ -46,6 +43,7 @@ public class Controller extends Application {
         });
         Scene scene = screen.getScene();
         mainWindow.setScene(scene);
+        mainWindow.setTitle("Dungeon Crawler Game");
         mainWindow.show();
     }
     /**
@@ -97,7 +95,7 @@ public class Controller extends Application {
      * @param player Player instance
      * @throws Exception Throws a NullPointerException when fields are null
      */
-    public void initInitialGameScreen(Player player) throws Exception {
+    private void initInitialGameScreen(Player player) throws Exception {
         InitialGame screen = new InitialGame(800, 600);
         Button exit3 = screen.getExit3();
         exit3.setOnAction(e -> {
@@ -107,6 +105,25 @@ public class Controller extends Application {
         player.setMoney(player.getDiff());
         Scene scene = screen.start(mainWindow, player);
         mainWindow.setTitle("Initial Game Screen");
+        mainWindow.setScene(scene);
+        mainWindow.show();
+    }
+
+    /**
+     * Initializes end(win) screen
+     */
+    private void initEndScreen() {
+        WinScreen screen = new WinScreen(width, height);
+        Button startOver = screen.getStartOver();
+        startOver.setOnAction(e -> {
+            initInitialConfigScreen();
+        });
+        Button exit = screen.getExit();
+        exit.setOnAction(e -> {
+            mainWindow.close();
+        });
+        Scene scene = screen.getScene();
+        mainWindow.setTitle("End Screen");
         mainWindow.setScene(scene);
         mainWindow.show();
     }

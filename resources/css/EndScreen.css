@@ -1,0 +1,12 @@
+.buttons {
+    -fx-background-color:
+            #000001,
+            linear-gradient(#ea7e97, #8f372f),
+            linear-gradient(#b77542, #752632),
+            linear-gradient(#ab3d39, #662268);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 20 12 20;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
