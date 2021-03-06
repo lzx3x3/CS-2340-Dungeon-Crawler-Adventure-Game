@@ -46,7 +46,7 @@ public class Room {
             }
         }
 
-        for (Door one :doors) {
+        for (Door one : doors) {
             ImageView iV = new ImageView();
             iV.setImage(door);
             iV.setX(one.getX() * 32 + 50);

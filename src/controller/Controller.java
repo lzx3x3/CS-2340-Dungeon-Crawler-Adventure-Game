@@ -60,12 +60,12 @@ public class Controller extends Application {
 
         startButton.setOnAction(e -> {
             try {
-                if (nameInput.getText() == null || nameInput.getText().isEmpty()
+                if (nameInput.getText() == null || nameInput.getText().trim().isEmpty()
                         || diffSelect.getValue() == null || wpnSelect.getText() == "None") {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText("Invalid selection");
-                    if (nameInput.getText() == null || nameInput.getText().isEmpty()) {
+                    if (nameInput.getText() == null || nameInput.getText().trim().isEmpty()) {
                         alert.setContentText("- Your name must include at least one character\n");
                     }
                     if (diffSelect.getValue() == null) {
