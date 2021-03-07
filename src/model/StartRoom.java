@@ -1,58 +1,62 @@
-package view;
+package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-import model.Player;
 
-import java.util.ArrayList;
+public class StartRoom extends Room{
 
-public class Room {
-    private int height = 0;
-    private int width = 0;
-    private int index = 0;
-    private ArrayList<Door> doors;
-
-    Room(int index, int height, int width) {
-        this.index = index;
-        this.height = height;
-        this.width = width;
-        doors = new ArrayList<Door>();
-        //This will probably be replaced with a addDoor() method
-        doors.add(new Door(7, 0, null));
-        doors.add(new Door(0, 7, null));
-        doors.add(new Door(7, 14, null));
-        doors.add(new Door(14, 7, null));
-
-
+    public StartRoom(int index, int height, int width) {
+        super(index, height, width);
     }
+    @Override
+    public void createTileArray() {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                super.tileArray[j][i] = new Tile(j, i, "Wooden Floor",
+                        new Image("file:resources/wooden_floor.png"));
+            }
+        }
+        //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); // top door
+        //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); // left door
+        tileArray[14][7] = new Tile(8, 0, "Door", new Image("file:resources/doors.png")); // right door
+        tileArray[7][14] = new Tile(8, 0, "Door", new Image("file:resources/doors.png")); // bottom door
+    }
+
+    @Override
+    public Tile[][] getTileArray() {
+        return tileArray;
+    }
+
+    @Override
     public Pane drawRoom(Pane root, Player player) {
+        createTileArray();
         Image woodenFloor = new Image("file:resources/wooden_floor.png");
         Image door = new Image("file:resources/doors.png");
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 ImageView iV = new ImageView();
-                iV.setImage(woodenFloor);
+                iV.setImage(tileArray[j][i].getImage());
                 iV.setX(i * 32 + 50);
                 iV.setY(j * 32 + 50);
                 root.getChildren().add(iV);
             }
         }
 
-        for (Door one : doors) {
-            ImageView iV = new ImageView();
-            iV.setImage(door);
-            iV.setX(one.getX() * 32 + 50);
-            iV.setY(one.getY() * 32 + 50);
-            root.getChildren().add(iV);
-        }
+//        for (Door one : doors) {
+//            ImageView iV = new ImageView();
+//            iV.setImage(door);
+//            iV.setX(one.getX() * 32 + 50);
+//            iV.setY(one.getY() * 32 + 50);
+//            root.getChildren().add(iV);
+//        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
@@ -82,5 +86,4 @@ public class Room {
 
         return root;
     }
-
 }

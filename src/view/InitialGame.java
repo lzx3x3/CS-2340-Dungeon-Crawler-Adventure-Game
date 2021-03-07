@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Player;
+import model.Room;
+import model.StartRoom;
+import model.WoodenRoom;
 
 public class InitialGame {
 
@@ -24,7 +27,7 @@ public class InitialGame {
 
         //Pane root1 = new Pane();
         Pane root2 = new Pane();
-        Room room0 = new Room(0, 15, 15);
+        Room room0 = new StartRoom(0, 15, 15);
         Pane roomPane = room0.drawRoom(root2, player);
 
         // create two scenes

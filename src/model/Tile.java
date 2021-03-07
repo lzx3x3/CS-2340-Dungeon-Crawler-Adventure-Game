@@ -38,10 +38,6 @@ public class Tile {
         return y;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public void setX(int newX) {
         x = newX;
     }
@@ -58,5 +54,9 @@ public class Tile {
         if (validTypes.contains(newType)) {
             type = newType;
         }
+    }
+
+    public Image getImage() {
+        return image;
     }
 }
