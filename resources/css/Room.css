@@ -1,0 +1,6 @@
+.playerInfo {
+    -fx-font-size: 15px;
+    -fx-pref-width: 200px;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+}

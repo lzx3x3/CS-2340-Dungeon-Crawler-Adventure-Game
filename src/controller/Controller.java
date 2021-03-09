@@ -8,6 +8,7 @@ import model.GameModel;
 import model.Player;
 import view.InitialConfigScreen;
 import view.InitialGame;
+import view.Room1;
 import view.WelcomeScreen;
 import view.WinScreen;
 
@@ -78,7 +79,8 @@ public class Controller extends Application {
                     //initInitialGameScreen(nameInput, screen.getDiffSelect());
                     player.setName(nameInput.getText());
                     player.setDiff(screen.getDiffSelect().getValue());
-                    initInitialGameScreen(player);
+//                    initInitialGameScreen(player);
+                    initRoom1(player);
                 }
             } catch (Exception f) {
                 f.printStackTrace();
@@ -124,6 +126,15 @@ public class Controller extends Application {
         });
         Scene scene = screen.getScene();
         mainWindow.setTitle("End Screen");
+        mainWindow.setScene(scene);
+        mainWindow.show();
+    }
+
+    public void initRoom1(Player player) {
+        Room1 screen = new Room1(height, width); //swapped on purpose
+        player.setMoney(player.getDiff());
+        Scene scene = screen.getScene(player);
+        mainWindow.setTitle("Room 1");
         mainWindow.setScene(scene);
         mainWindow.show();
     }
