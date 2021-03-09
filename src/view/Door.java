@@ -1,11 +1,13 @@
 package view;
 
+import model.WoodenRoom;
+
 public class Door {
     private int x = 0;
     private int y = 0;
-    private Room nextRoom;
+    private WoodenRoom nextRoom;
 
-    Door(int x, int y, Room nextRoom) {
+    public Door(int x, int y, WoodenRoom nextRoom) {
         this.x = x;
         this.y = y;
         this.nextRoom = nextRoom;
@@ -19,7 +21,7 @@ public class Door {
         return y;
     }
 
-    public Room getNextRoom() {
+    public WoodenRoom getNextRoom() {
         return nextRoom;
     }
 }

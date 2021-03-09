@@ -3,16 +3,16 @@
   <component name="CheckStyle-IDEA">
     <option name="configuration">
       <map>
-        <entry key="active-configuration" value="LOCAL_FILE:/Users/USER/Desktop/GaTech/2020 Summer/CS 1332/intelliJ/CS1332-checkstyle.xml:CS 1332" />
-        <entry key="checkstyle-version" value="8.0" />
+        <entry key="checkstyle-version" value="8.24" />
         <entry key="copy-libs" value="false" />
         <entry key="location-0" value="BUNDLED:(bundled):Sun Checks" />
         <entry key="location-1" value="BUNDLED:(bundled):Google Checks" />
         <entry key="location-2" value="LOCAL_FILE:/Users/USER/Desktop/GaTech/2020 Summer/CS 1332/intelliJ/CS1332-checkstyle.xml:CS 1332" />
+        <entry key="location-3" value="LOCAL_FILE:$PROJECT_DIR$/cs2340_checks.xml:CS 2340" />
         <entry key="scan-before-checkin" value="false" />
         <entry key="scanscope" value="JavaOnly" />
         <entry key="suppress-errors" value="false" />
-        <entry key="thirdparty-classpath" value="$PROJECT_DIR$/../../../../2020 Summer/CS 1332/intelliJ/CS1332-checkstyle.xml" />
+        <entry key="thirdparty-classpath" value="$USER_HOME$/2020 Summer/CS 1332/intelliJ/CS1332-checkstyle.xml" />
       </map>
     </option>
   </component>

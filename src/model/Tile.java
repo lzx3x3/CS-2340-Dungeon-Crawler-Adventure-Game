@@ -55,10 +55,6 @@ public class Tile {
         return y;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public void setX(int newX) {
         x = newX;
     }
@@ -73,6 +69,7 @@ public class Tile {
         }
     }
 
+
     /**
      *
      * @param index 0: floor, 1: door, 2: obstacle
@@ -83,5 +80,4 @@ public class Tile {
         woodFloorTile.setImage(textures[index]);
 
         return woodFloorTile;
-    }
 }
