@@ -9,11 +9,13 @@ public class Tile {
     private int y;
     private String type;
     private Image image;
+    private Room oldRoom;
+    private Room newRoom;
 
     private ArrayList<String> validTypes;
 
 
-    Tile(int x, int y, String type, Image image) {
+    public Tile(int x, int y, String type, Image image) {
         this.x = x;
         this.y = y;
         this.type = type;
@@ -23,11 +25,18 @@ public class Tile {
         validTypes.add("Door");
         validTypes.add("Obstacle");
         validTypes.add("Enemy");
+        validTypes.add("Ladder");
         this.image = image;
+        oldRoom = null;
+        newRoom = null;
     }
 
     public void setImage(Image newImage) {
         image = newImage;
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public int getX() {
@@ -56,7 +65,23 @@ public class Tile {
         }
     }
 
-    public Image getImage() {
-        return image;
+    public void setOldRoom(Room room) {
+        if (type.equals("Door")) {
+            oldRoom = room;
+        }
+    }
+
+    public Room getOldRoom() {
+        return oldRoom;
+    }
+
+    public void setNewRoom(Room room) {
+        if (type.equals("Door")) {
+            newRoom = room;
+        }
+    }
+
+    public Room getNewRoom() {
+        return newRoom;
     }
 }
