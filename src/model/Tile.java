@@ -10,42 +10,40 @@ public class Tile {
     private int y;
     private String type;
     private Image image;
+    private Room oldRoom;
+    private Room newRoom;
 
     private ArrayList<String> validTypes;
     private static Image[] textures;
-
-//    public Tile(int x, int y, String type, Image image) {
-//        this.x = x;
-//        this.y = y;
-//        this.type = type;
-//        validTypes = new ArrayList<>();
-//        validTypes.add("Wooden Floor");
-//        validTypes.add("Stone Floor");
-//        validTypes.add("Door");
-//        validTypes.add("Obstacle");
-//        validTypes.add("Enemy");
-//        this.image = image;
-//    }
 
     public Tile(int x, int y, String type) {
         this.x = x;
         this.y = y;
         this.type = type;
+        oldRoom = null;
+        newRoom = null;
+
         validTypes = new ArrayList<>();
         validTypes.add("Wooden Floor");
         validTypes.add("Stone Floor");
         validTypes.add("Door");
         validTypes.add("Obstacle");
         validTypes.add("Enemy");
+        validTypes.add("Ladder");
+
         textures = new Image[5];
         textures[0] = new Image("file:resources/wooden_floor.png"); // floor
         textures[1] = new Image("file:resources/doors.png"); // door
         textures[2] = new Image("file:resources/images/box.jpg"); // obstacle
     }
 
-    public void setImage(Image newImage) {
-        image = newImage;
-    }
+//    public void setImage(Image newImage) {
+//        image = newImage;
+//    }
+//
+//    public Image getImage() {
+//        return image;
+//    }
 
     public int getX() {
         return x;
@@ -73,13 +71,27 @@ public class Tile {
         }
     }
 
-
-    /**
-     *
-     * @param index 0: floor, 1: door, 2: obstacle
-     * @return
-     */
     public static Image getImage(int index) {
         return textures[index];
+    }
+
+    public void setOldRoom(Room room) {
+        if (type.equals("Door")) {
+            oldRoom = room;
+        }
+    }
+
+    public Room getOldRoom() {
+        return oldRoom;
+    }
+
+    public void setNewRoom(Room room) {
+        if (type.equals("Door")) {
+            newRoom = room;
+        }
+    }
+
+    public Room getNewRoom() {
+        return newRoom;
     }
 }
