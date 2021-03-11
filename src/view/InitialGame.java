@@ -24,12 +24,11 @@ public class InitialGame {
         this.exit3 = new Button("BACK");
     }
 
-    public Scene start(Stage primaryStage, Player player) {
+    public Scene start(Player player) {
         Maze maze = new Maze();
-        //Pane root1 = new Pane();
-        Pane root2 = new Pane();
-        Room room0 =  maze.maze[1][1];
-        Pane roomPane = room0.drawRoom(root2, player);
+        Pane root = new Pane();
+        StartRoom room0 =  new StartRoom(0, height, width);
+        Pane roomPane = room0.drawRoom(root, player);
 
         // create two scenes
         //Scene scene1 = new Scene(root1, width, height);

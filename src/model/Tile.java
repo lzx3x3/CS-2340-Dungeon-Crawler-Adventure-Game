@@ -39,8 +39,8 @@ public class Tile {
         validTypes.add("Enemy");
         textures = new Image[5];
         textures[0] = new Image("file:resources/wooden_floor.png"); // floor
-        textures[1] = new Image("file:resources/images/stone.png"); // door
-        textures[2] = new Image("file:resources/images/box.png"); // obstacle
+        textures[1] = new Image("file:resources/doors.png"); // door
+        textures[2] = new Image("file:resources/images/box.jpg"); // obstacle
     }
 
     public void setImage(Image newImage) {
@@ -63,6 +63,10 @@ public class Tile {
         y = newY;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public void setType(String newType) {
         if (validTypes.contains(newType)) {
             type = newType;
@@ -75,9 +79,7 @@ public class Tile {
      * @param index 0: floor, 1: door, 2: obstacle
      * @return
      */
-    public static ImageView getImageView(int index) {
-        ImageView woodFloorTile = new ImageView();
-        woodFloorTile.setImage(textures[index]);
-
-        return woodFloorTile;
+    public static Image getImage(int index) {
+        return textures[index];
+    }
 }

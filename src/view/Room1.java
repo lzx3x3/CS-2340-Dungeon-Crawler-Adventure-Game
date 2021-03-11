@@ -72,59 +72,59 @@ public class Room1 {
      * Returns the room scene drawn from the tile layout
      * @return scene
      */
-    public Scene getScene(Player player) {
-        Pane pane = new Pane();
-        for (int i = 0; i < height / tileSize; i++) {
-            for (int j = 0; j < width / tileSize; j++) {
-                Tile tile = tileLayout[i][j];
-                ImageView tileImgview = tile.getImageView(0);
-                if (tile.getType() == "Wooden Floor") {
-                    tileImgview = tile.getImageView(0);
-                } else if (tile.getType() == "Door") {
-                    tileImgview = tile.getImageView(1);
-                } else if (tile.getType() == "Obstacle") {
-                    tileImgview = tile.getImageView(2);
-                }
-                tileImgview.setX(tile.getX());
-                tileImgview.setY(tile.getY());
-                pane.getChildren().add(tileImgview);
-            }
-        }
-
-        // player info
-        Text money = new Text();
-        money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
-                new SimpleIntegerProperty(player.getMoney()).asString()));
-        money.setX(width - 200);
-        money.setY(20);
-        money.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        money.setFill(Color.DARKBLUE);
-//        money.getStyleClass().add("playerInfo");
-
-        Text diff = new Text();
-        diff.textProperty().bind(new SimpleStringProperty(("Current Difficulty: ")).concat(
-                new SimpleStringProperty(player.getDiff())));
-        diff.setX(width - 200);
-        diff.setY(40);
-        diff.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        diff.setFill(Color.DARKBLUE);
-//        diff.getStyleClass().add("playerInfo");
-
-        Text level = new Text();
-        level.textProperty().bind(new SimpleStringProperty(("Current Level: ")).concat(
-                new SimpleIntegerProperty(player.getLevel()).asString()));
-        level.setX(width - 200);
-        level.setY(60);
-        level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        level.setFill(Color.DARKBLUE);
-//        level.getStyleClass().add("playerInfo");
-
-
-        pane.getChildren().addAll(money, diff, level);
-        Scene scene = new Scene(pane, width, height);
-//        scene.getStylesheets().add("file:resources/css/Room.css");
-        return scene;
-    }
+//    public Scene getScene(Player player) {
+//        Pane pane = new Pane();
+//        for (int i = 0; i < height / tileSize; i++) {
+//            for (int j = 0; j < width / tileSize; j++) {
+//                Tile tile = tileLayout[i][j];
+//                ImageView tileImgview = tile.getImageView(0);
+//                if (tile.getType() == "Wooden Floor") {
+//                    tileImgview = tile.getImageView(0);
+//                } else if (tile.getType() == "Door") {
+//                    tileImgview = tile.getImageView(1);
+//                } else if (tile.getType() == "Obstacle") {
+//                    tileImgview = tile.getImageView(2);
+//                }
+//                tileImgview.setX(tile.getX());
+//                tileImgview.setY(tile.getY());
+//                pane.getChildren().add(tileImgview);
+//            }
+//        }
+//
+//        // player info
+//        Text money = new Text();
+//        money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
+//                new SimpleIntegerProperty(player.getMoney()).asString()));
+//        money.setX(width - 200);
+//        money.setY(20);
+//        money.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+//        money.setFill(Color.DARKBLUE);
+////        money.getStyleClass().add("playerInfo");
+//
+//        Text diff = new Text();
+//        diff.textProperty().bind(new SimpleStringProperty(("Current Difficulty: ")).concat(
+//                new SimpleStringProperty(player.getDiff())));
+//        diff.setX(width - 200);
+//        diff.setY(40);
+//        diff.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+//        diff.setFill(Color.DARKBLUE);
+////        diff.getStyleClass().add("playerInfo");
+//
+//        Text level = new Text();
+//        level.textProperty().bind(new SimpleStringProperty(("Current Level: ")).concat(
+//                new SimpleIntegerProperty(player.getLevel()).asString()));
+//        level.setX(width - 200);
+//        level.setY(60);
+//        level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+//        level.setFill(Color.DARKBLUE);
+////        level.getStyleClass().add("playerInfo");
+//
+//
+//        pane.getChildren().addAll(money, diff, level);
+//        Scene scene = new Scene(pane, width, height);
+////        scene.getStylesheets().add("file:resources/css/Room.css");
+//        return scene;
+//    }
 
     /**
      * Returns the tile layout array, each element is a Tile obj

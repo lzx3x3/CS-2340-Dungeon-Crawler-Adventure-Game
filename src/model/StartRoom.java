@@ -18,16 +18,15 @@ public class StartRoom extends Room{
     }
     @Override
     public void createTileArray() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                super.tileArray[j][i] = new Tile(j, i, "Wooden Floor",
-                        new Image("file:resources/wooden_floor.png"));
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                super.tileArray[j][i] = new Tile(j, i, "Wooden Floor");
             }
         }
         //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); // top door
         //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); // left door
-        tileArray[14][7] = new Tile(8, 0, "Door", new Image("file:resources/doors.png")); // right door
-        tileArray[7][14] = new Tile(8, 0, "Door", new Image("file:resources/doors.png")); // bottom door
+        tileArray[14][7] = new Tile(8, 0, "Door"); // right door
+        tileArray[7][14] = new Tile(8, 0, "Door"); // bottom door
     }
 
     @Override
@@ -38,12 +37,14 @@ public class StartRoom extends Room{
     @Override
     public Pane drawRoom(Pane root, Player player) {
         createTileArray();
-        Image woodenFloor = new Image("file:resources/wooden_floor.png");
-        Image door = new Image("file:resources/doors.png");
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 ImageView iV = new ImageView();
-                iV.setImage(tileArray[j][i].getImage());
+                if (tileArray[j][i].getType() == "Wooden Floor") {
+                    iV.setImage(tileArray[j][i].getImage(0));
+                } else if (tileArray[j][i].getType() == "Door") {
+                    iV.setImage(tileArray[j][i].getImage(1));
+                }
                 iV.setX(i * 32 + 50);
                 iV.setY(j * 32 + 50);
                 root.getChildren().add(iV);

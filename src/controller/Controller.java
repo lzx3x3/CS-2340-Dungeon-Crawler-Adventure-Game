@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.GameModel;
 import model.Player;
+import model.WoodenRoom;
 import view.InitialConfigScreen;
 import view.InitialGame;
 import view.Room1;
@@ -79,8 +80,7 @@ public class Controller extends Application {
                     //initInitialGameScreen(nameInput, screen.getDiffSelect());
                     player.setName(nameInput.getText());
                     player.setDiff(screen.getDiffSelect().getValue());
-//                    initInitialGameScreen(player);
-                    initRoom1(player);
+                    initInitialGameScreen(player);
                 }
             } catch (Exception f) {
                 f.printStackTrace();
@@ -99,13 +99,13 @@ public class Controller extends Application {
      */
     private void initInitialGameScreen(Player player) throws Exception {
         InitialGame screen = new InitialGame(800, 600);
-        Button exit3 = screen.getExit3();
-        exit3.setOnAction(e -> {
-            initInitialConfigScreen();
-        });
+//        Button exit3 = screen.getExit3();
+//        exit3.setOnAction(e -> {
+//            initInitialConfigScreen();
+//        });
         //player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
-        Scene scene = screen.start(mainWindow, player);
+        Scene scene = screen.start(player);
         mainWindow.setTitle("Initial Game Screen");
         mainWindow.setScene(scene);
         mainWindow.show();
@@ -126,15 +126,6 @@ public class Controller extends Application {
         });
         Scene scene = screen.getScene();
         mainWindow.setTitle("End Screen");
-        mainWindow.setScene(scene);
-        mainWindow.show();
-    }
-
-    public void initRoom1(Player player) {
-        Room1 screen = new Room1(height, width); //swapped on purpose
-        player.setMoney(player.getDiff());
-        Scene scene = screen.getScene(player);
-        mainWindow.setTitle("Room 1");
         mainWindow.setScene(scene);
         mainWindow.show();
     }
