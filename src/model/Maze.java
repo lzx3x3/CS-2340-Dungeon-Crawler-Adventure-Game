@@ -23,6 +23,9 @@ public class Maze {
         } else if (direction.equals("LEFT")) {
             X--;
         }
+        if (maze[X][Y] == null) {
+            maze[X][Y] = new WoodenRoom(0, 15, 15);
+        }
     }
 
     public void createMaze() {
@@ -39,5 +42,17 @@ public class Maze {
             maze[i][6] = new WoodenRoom(i, 15, 15);
             maze[i][0] = new WoodenRoom(i, 15, 15);
         }
+    }
+
+    public Room getCurrentRoom() {
+        return maze[X][Y];
+    }
+
+    public int getX() {
+        return X;
+    }
+
+    public  int getY() {
+        return Y;
     }
 }

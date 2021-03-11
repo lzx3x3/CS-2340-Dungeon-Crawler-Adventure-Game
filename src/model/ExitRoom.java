@@ -2,6 +2,7 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -17,6 +18,26 @@ import java.util.ArrayList;
 public class ExitRoom extends Room {
     public ExitRoom(int index, int height, int width) {
         super(index, height, width);
+    }
+
+    @Override
+    public Button getRightDoor() {
+        return null;
+    }
+
+    @Override
+    public Button getLeftDoor() {
+        return null;
+    }
+
+    @Override
+    public Button getTopDoor() {
+        return null;
+    }
+
+    @Override
+    public Button getBottomDoor() {
+        return null;
     }
 
     @Override

@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.GameModel;
+import model.Maze;
 import model.Player;
 import view.InitialConfigScreen;
 import view.InitialGame;
@@ -103,7 +104,17 @@ public class Controller extends Application {
         });
         //player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
-        Scene scene = screen.start(mainWindow, player);
+        Maze maze = new Maze();
+        Scene scene = screen.start(mainWindow, player, maze);
+        MazeTest test = new MazeTest(this);
+        maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
+            maze.updateRoom("RIGHT");
+            test.initNextRoom(mainWindow, maze, player);
+        });
+        maze.getCurrentRoom().getBottomDoor().setOnAction(e -> {
+            maze.updateRoom("DOWN");
+            test.initNextRoom(mainWindow, maze, player);
+        });
         mainWindow.setTitle("Initial Game Screen");
         mainWindow.setScene(scene);
         mainWindow.show();
@@ -112,7 +123,7 @@ public class Controller extends Application {
     /**
      * Initializes end(win) screen
      */
-    private void initEndScreen() {
+    public void initEndScreen() {
         WinScreen screen = new WinScreen(width, height);
         Button startOver = screen.getStartOver();
         startOver.setOnAction(e -> {

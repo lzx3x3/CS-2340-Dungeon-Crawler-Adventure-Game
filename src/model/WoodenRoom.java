@@ -3,6 +3,7 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.embed.swing.JFXPanel;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -11,6 +12,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import junit.framework.Test;
 import model.Player;
 import view.Door;
 
@@ -18,16 +20,21 @@ import java.util.ArrayList;
 
 public class WoodenRoom extends Room{
     private ArrayList<Door> doors;
+    Button rightDoor;
+    Button leftDoor;
+    Button topDoor;
+    Button bottomDoor;
+
 
     public WoodenRoom(int index, int height, int width) {
         super(index, height, width);
         doors = new ArrayList<Door>();
         //createTileArray();
         //This will probably be replaced with a addDoor() method
-        doors.add(new Door(7, 0, null));
-        doors.add(new Door(0, 7, null));
-        doors.add(new Door(7, 14, null));
-        doors.add(new Door(14, 7, null));
+        leftDoor = new Button("Left Door");
+        bottomDoor = new Button("Bottom Door");
+        rightDoor = new Button("Right Door");
+        topDoor = new Button("Top Door");
 
 
     }
@@ -54,8 +61,6 @@ public class WoodenRoom extends Room{
 
     public Pane drawRoom(Pane root, Player player) {
         createTileArray();
-        Image woodenFloor = new Image("file:resources/wooden_floor.png");
-        Image door = new Image("file:resources/doors.png");
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 ImageView iV = new ImageView();
@@ -97,10 +102,37 @@ public class WoodenRoom extends Room{
         level.setY(60);
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
-
-        root.getChildren().addAll(money, diff, level);
+        rightDoor.setLayoutX(700);
+        rightDoor.setLayoutY(150);
+        topDoor.setLayoutY(100);
+        topDoor.setLayoutX(650);
+        leftDoor.setLayoutX(600);
+        leftDoor.setLayoutY(150);
+        bottomDoor.setLayoutY(200);
+        bottomDoor.setLayoutX(650);
+        root.getChildren().addAll(money, diff, level, topDoor, rightDoor, bottomDoor, leftDoor);
 
         return root;
     }
 
+
+    @Override
+    public Button getRightDoor() {
+        return rightDoor;
+    }
+
+    @Override
+    public Button getLeftDoor() {
+        return leftDoor;
+    }
+
+    @Override
+    public Button getTopDoor() {
+        return topDoor;
+    }
+
+    @Override
+    public Button getBottomDoor() {
+        return bottomDoor;
+    }
 }
