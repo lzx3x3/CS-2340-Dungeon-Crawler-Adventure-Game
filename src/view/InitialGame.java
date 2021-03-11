@@ -1,5 +1,7 @@
 package view;
 
+import controller.Draw;
+import controller.Motion;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -31,7 +33,12 @@ public class InitialGame {
         //Pane root1 = new Pane();
         Pane root2 = new Pane();
         Room room0 =  maze.getCurrentRoom();
-        Pane roomPane = room0.drawRoom(root2, player);
+        player.setMaze(maze);
+        player.setCurrRoom(room0);
+        Draw draw = new Draw();
+        Pane roomPane = draw.draw(player);
+
+
 
         // create two scenes
         //Scene scene1 = new Scene(root1, width, height);

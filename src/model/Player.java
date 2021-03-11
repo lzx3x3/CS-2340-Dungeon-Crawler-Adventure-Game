@@ -1,5 +1,10 @@
 package model;
 
+import controller.Draw;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
 public class Player {
 
     private String name;
@@ -9,6 +14,9 @@ public class Player {
     private String difficulty;
     private int x;
     private int y;
+    private Room currRoom;
+    private Maze currMaze;
+    private Draw draw;
 
     public Player() {
         health = 100;
@@ -16,8 +24,9 @@ public class Player {
         level = 1;
         name = "";
         difficulty = "easy";
-        x = 300;
-        y = 400;
+        x = 7;
+        y = 7;
+        currRoom = null;
     }
 
     public Player(String name, String difficulty) {
@@ -26,8 +35,9 @@ public class Player {
         level = 1;
         this.name = name;
         this.difficulty = difficulty;
-        x = 300;
-        y = 400;
+        x = 7;
+        y = 7;
+        currRoom = null;
     }
 
     public void setName(String name) {
@@ -65,5 +75,92 @@ public class Player {
 
     public String getDiff() {
         return this.difficulty;
+    }
+
+    public void setX(int newX) {
+        x = newX;
+    }
+
+    public void setY(int newY) {
+        y = newY;
+    }
+
+    public void increaseX() {
+        x++;
+        checkCollision(x, y);
+    }
+
+    public void increaseY() {
+        y++;
+        checkCollision(x, y);
+    }
+
+    public void decreaseX() {
+        x--;
+        checkCollision(x, y);
+    }
+
+    public void decreaseY() {
+        y--;
+        checkCollision(x, y);
+    }
+
+    public Room getCurrRoom() {
+        return currRoom;
+    }
+
+    public void setCurrRoom(Room room) {
+        currRoom = room;
+    }
+
+    public void setMaze(Maze maze) {
+        currMaze = maze;
+    }
+
+    public Maze getMaze() {
+        return currMaze;
+    }
+
+    public Pane drawPlayer(Pane root) {
+        ImageView iV = new ImageView();
+        iV.setImage(new Image("file:resources/player.png"));
+        iV.setX(x * 32 + 50);
+        iV.setY(y * 32 + 50);
+        root.getChildren().add(iV);
+
+        return root;
+
+    }
+
+    private void checkCollision(int x, int y) {
+        Tile[][] array = currRoom.getTileArray();
+
+        if (array[x][y].getType() == "Door") {
+            if (x == 14 && y == 7) {
+                //right
+                currMaze.updateRoom("RIGHT");
+                currRoom = currMaze.getCurrentRoom();
+                setX(0);
+                setY(7);
+            } else if (x == 7 && y == 0) {
+                //top
+                currMaze.updateRoom("UP");
+                currRoom = currMaze.getCurrentRoom();
+                setX(7);
+                setY(14);
+            } else if (x == 0 && y == 7) {
+                //left
+                currMaze.updateRoom("LEFT");
+                currRoom = currMaze.getCurrentRoom();
+                setX(14);
+                setY(7);
+            } else if (x == 7 && y == 14) {
+                //bottom
+                currMaze.updateRoom("DOWN");
+                currRoom = currMaze.getCurrentRoom();
+                setX(7);
+                setY(0);
+            }
+        }
     }
 }
