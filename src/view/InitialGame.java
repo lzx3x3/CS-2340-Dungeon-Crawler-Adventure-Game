@@ -29,7 +29,7 @@ public class InitialGame {
 
     }
 
-    public Scene start(Player player, Maze maze) {
+    public Scene start(Player player, Maze maze, Stage stage) {
         //Pane root1 = new Pane();
         Pane root2 = new Pane();
         Room room0 =  maze.getCurrentRoom();
@@ -48,6 +48,7 @@ public class InitialGame {
         roomPane.getChildren().add(currentRoom);
         Scene scene2 = new Scene(roomPane, width, height);
 
+        new Motion(player, roomPane, scene2, stage, draw);
 
         /*     add background
        Region background = new Region();

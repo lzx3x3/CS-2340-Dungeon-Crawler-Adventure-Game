@@ -24,7 +24,7 @@ public class MazeTest {
         });
         //player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
-        Scene scene = screen.start(player, maze);
+        Scene scene = screen.start(player, maze, stage);
         maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
             maze.updateRoom("RIGHT");
             if (maze.getCurrentRoom() instanceof ExitRoom) {
