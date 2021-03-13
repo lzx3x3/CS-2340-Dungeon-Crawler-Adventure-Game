@@ -19,8 +19,12 @@ public class MazeTest  extends ApplicationTest {
 
     // Edited by Siying
     @Test
-    public void testRightRoom() {
+    public void testOldRoom() {
         clickOn("Right Door");
-        verifyThat("Current level:21", NodeMatchers.isNotNull());
+        clickOn("Bottom Door");
+        clickOn("Top Door");
+        clickOn("Left Door");
+        verifyThat("Current level:11", NodeMatchers.isNotNull());
     }
+
 }
