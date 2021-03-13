@@ -3,7 +3,6 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -12,11 +11,11 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class StartRoom extends Room{
-    Button leftDoor;
-    Button bottomDoor;
-    Button topDoor;
-    Button rightDoor;
+public class StartRoom extends Room {
+    private Button leftDoor;
+    private Button bottomDoor;
+    private Button topDoor;
+    private Button rightDoor;
     public StartRoom(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
@@ -29,8 +28,8 @@ public class StartRoom extends Room{
                 super.tileArray[j][i] = new Tile(j, i, "Wooden Floor");
             }
         }
-        //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); // top door
-        //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); // left door
+        //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); top door
+        //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); left door
         tileArray[14][7] = new Tile(8, 0, "Door"); // right door
         tileArray[7][14] = new Tile(8, 0, "Door"); // bottom door
     }
@@ -57,13 +56,13 @@ public class StartRoom extends Room{
             }
         }
 
-//        for (Door one : doors) {
-//            ImageView iV = new ImageView();
-//            iV.setImage(door);
-//            iV.setX(one.getX() * 32 + 50);
-//            iV.setY(one.getY() * 32 + 50);
-//            root.getChildren().add(iV);
-//        }
+        //        for (Door one : doors) {
+        //            ImageView iV = new ImageView();
+        //            iV.setImage(door);
+        //            iV.setX(one.getX() * 32 + 50);
+        //            iV.setY(one.getY() * 32 + 50);
+        //            root.getChildren().add(iV);
+        //        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(

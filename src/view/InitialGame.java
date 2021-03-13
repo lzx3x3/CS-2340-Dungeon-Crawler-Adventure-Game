@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import model.Maze;
 import model.Player;
 import model.Room;
-import model.StartRoom;
-import model.WoodenRoom;
 
 public class InitialGame {
 
@@ -42,7 +40,8 @@ public class InitialGame {
 
         // create two scenes
         //Scene scene1 = new Scene(root1, width, height);
-        Text currentRoom = new Text("Current level:" + Integer.toString(maze.getX()) + Integer.toString(maze.getY()));
+        Text currentRoom = new Text("Current level:"
+                + Integer.toString(maze.getX()) + Integer.toString(maze.getY()));
         currentRoom.setX(650);
         currentRoom.setY(400);
         roomPane.getChildren().add(currentRoom);

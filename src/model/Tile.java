@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Tile {
 
@@ -37,13 +36,13 @@ public class Tile {
         textures[2] = new Image("file:resources/images/box.jpg"); // obstacle
     }
 
-//    public void setImage(Image newImage) {
-//        image = newImage;
-//    }
-//
-//    public Image getImage() {
-//        return image;
-//    }
+    //    public void setImage(Image newImage) {
+    //        image = newImage;
+    //    }
+    //
+    //    public Image getImage() {
+    //        return image;
+    //    }
 
     public int getX() {
         return x;

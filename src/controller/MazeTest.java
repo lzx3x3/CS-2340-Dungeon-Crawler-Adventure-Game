@@ -2,7 +2,6 @@ package controller;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ExitRoom;
 import model.Maze;
@@ -11,7 +10,7 @@ import model.StartRoom;
 import view.InitialGame;
 
 public class MazeTest {
-    Controller controller;
+    private Controller controller;
 
     public MazeTest(Controller controller) {
         this.controller = controller;
@@ -75,6 +74,10 @@ public class MazeTest {
             });
         }
         stage.setScene(scene);
+    }
+
+    public Controller getController() {
+        return controller;
 
     }
 }

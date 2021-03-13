@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
  * Top deadend room of the maze
  */
 public class Deadend1 extends Room {
-    Button bottomDoor;
+    private Button bottomDoor;
     public Deadend1(int index, int height, int width) {
         super(index, height, width);
         bottomDoor = new Button("Bottom Door");
@@ -73,13 +73,13 @@ public class Deadend1 extends Room {
             }
         }
 
-//        for (Door one : doors) {
-//            ImageView iV = new ImageView();
-//            iV.setImage(door);
-//            iV.setX(one.getX() * 32 + 50);
-//            iV.setY(one.getY() * 32 + 50);
-//            root.getChildren().add(iV);
-//        }
+        //        for (Door one : doors) {
+        //            ImageView iV = new ImageView();
+        //            iV.setImage(door);
+        //            iV.setX(one.getX() * 32 + 50);
+        //            iV.setY(one.getY() * 32 + 50);
+        //            root.getChildren().add(iV);
+        //        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(

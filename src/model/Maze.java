@@ -3,28 +3,28 @@ package model;
 import java.util.Random;
 
 public class Maze {
-    public Room[][] maze;
-    private int X;
-    private int Y;
+    private Room[][] maze;
+    private int x;
+    private int y;
     public Maze() {
         maze = new Room[7][7];
-        X = 1;
-        Y = 1;
+        x = 1;
+        y = 1;
         createMaze();
     }
 
     public void updateRoom(String direction) {
         if (direction.equals("UP")) {
-            Y--;
+            y--;
         } else if (direction.equals("DOWN")) {
-            Y++;
+            y++;
         } else if (direction.equals("RIGHT")) {
-            X++;
+            x++;
         } else if (direction.equals("LEFT")) {
-            X--;
+            x--;
         }
-        if (maze[X][Y] == null) {
-            maze[X][Y] = new WoodenRoom(0, 15, 15);
+        if (maze[x][y] == null) {
+            maze[x][y] = new WoodenRoom(0, 15, 15);
         }
     }
 
@@ -45,14 +45,14 @@ public class Maze {
     }
 
     public Room getCurrentRoom() {
-        return maze[X][Y];
+        return maze[x][y];
     }
 
     public int getX() {
-        return X;
+        return x;
     }
 
     public  int getY() {
-        return Y;
+        return y;
     }
 }
