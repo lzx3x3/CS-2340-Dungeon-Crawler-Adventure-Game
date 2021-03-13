@@ -107,7 +107,7 @@ public class Controller extends Application {
 //        player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
         Maze maze = new Maze();
-        Scene scene = screen.start(player, maze);
+        Scene scene = screen.start(player, maze, mainWindow, this);
         MazeTest test = new MazeTest(this);
         maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
             maze.updateRoom("RIGHT");

@@ -16,6 +16,7 @@ public class MazeTest {
     public MazeTest(Controller controller) {
         this.controller = controller;
     }
+
     public void initNextRoom(Stage stage, Maze maze, Player player) {
         InitialGame screen = new InitialGame(800, 600);
         Button exit3 = screen.getExit3();
@@ -24,10 +25,13 @@ public class MazeTest {
         });
         //player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
-        Scene scene = screen.start(player, maze);
+        Scene scene = screen.start(player, maze, stage, controller);
+//        Scene scene = screen.start(player, maze);
         if (maze.getCurrentRoom().getRightDoor() != null) {
             maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
                 maze.updateRoom("RIGHT");
+//        maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
+//            maze.updateRoom("RIGHT");
                 if (maze.getCurrentRoom() instanceof ExitRoom) {
                     controller.initEndScreen();
                 } else {
@@ -48,27 +52,29 @@ public class MazeTest {
             });
         }
         if (!(maze.getCurrentRoom() instanceof StartRoom)) {
-            if (maze.getCurrentRoom().getLeftDoor() != null) {
-                maze.getCurrentRoom().getLeftDoor().setOnAction(e -> {
-                    maze.updateRoom("LEFT");
-                    if (maze.getCurrentRoom() instanceof ExitRoom) {
-                        controller.initEndScreen();
-                    } else {
-                        initNextRoom(stage, maze, player);
-                    }
-                });
-            }
-            if (maze.getCurrentRoom().getTopDoor() != null) {
-                maze.getCurrentRoom().getTopDoor().setOnAction(e -> {
-                    maze.updateRoom("UP");
-                    if (maze.getCurrentRoom() instanceof ExitRoom) {
-                        controller.initEndScreen();
-                    } else {
-                        initNextRoom(stage, maze, player);
-                    }
-                });
-            }
+            maze.getCurrentRoom().getLeftDoor().setOnAction(e -> {
+                maze.updateRoom("LEFT");
+
+                if (maze.getCurrentRoom() instanceof ExitRoom) {
+                    controller.initEndScreen();
+                } else {
+                    initNextRoom(stage, maze, player);
+                }
+
+            });
         }
-       stage.setScene(scene);
+
+        if (maze.getCurrentRoom().getTopDoor() != null) {
+            maze.getCurrentRoom().getTopDoor().setOnAction(e -> {
+                maze.updateRoom("UP");
+                if (maze.getCurrentRoom() instanceof ExitRoom) {
+                    controller.initEndScreen();
+                } else {
+                    initNextRoom(stage, maze, player);
+                }
+            });
+        }
+        stage.setScene(scene);
+
     }
 }
