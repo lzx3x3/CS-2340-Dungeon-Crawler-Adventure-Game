@@ -9,17 +9,13 @@ import javafx.scene.layout.Pane;
 public class Motion {
 
     private Player player;
-    private Pane pane;
     private Scene scene;
     private Stage stage;
-    private Draw draw;
 
-    public Motion(Player player, Pane pane, Scene scene, Stage stage, Draw draw, Controller controller) {
+    public Motion(Player player, Scene scene, Stage stage, Controller controller) {
         this.player = player;
-        this.pane = pane;
         this.scene = scene;
         this.stage = stage;
-        this.draw = draw;
         keyHandler(controller);
     }
 
@@ -27,19 +23,19 @@ public class Motion {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();
-                scene.setRoot(draw.draw(player));
+                scene.setRoot(Draw.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.A) {
                 player.decreaseX();
-                scene.setRoot(draw.draw(player));
+                scene.setRoot(Draw.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.S) {
                 player.increaseY();
-                scene.setRoot(draw.draw(player));
+                scene.setRoot(Draw.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.D) {
                 player.increaseX();
-                scene.setRoot(draw.draw(player));
+                scene.setRoot(Draw.draw(player));
                 stage.setScene(scene);
             }
             if (player.getCurrRoom() instanceof ExitRoom) {

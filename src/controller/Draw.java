@@ -6,9 +6,9 @@ import javafx.scene.text.Text;
 import model.Player;
 import model.Room;
 
-public class Draw {
+ public class Draw {
 
-    public Pane draw(Player player) {
+    static public Pane draw(Player player) {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
         root = room.drawRoom(root, player);
