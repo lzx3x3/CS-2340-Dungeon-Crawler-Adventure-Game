@@ -1,4 +1,5 @@
 package controller;
+import model.ExitRoom;
 import model.Player;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,16 +14,16 @@ public class Motion {
     private Stage stage;
     private Draw draw;
 
-    public Motion(Player player, Pane pane, Scene scene, Stage stage, Draw draw) {
+    public Motion(Player player, Pane pane, Scene scene, Stage stage, Draw draw, Controller controller) {
         this.player = player;
         this.pane = pane;
         this.scene = scene;
         this.stage = stage;
         this.draw = draw;
-        keyHandler();
+        keyHandler(controller);
     }
 
-    private void keyHandler() {
+    private void keyHandler(Controller controller) {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();
@@ -40,6 +41,9 @@ public class Motion {
                 player.increaseX();
                 scene.setRoot(draw.draw(player));
                 stage.setScene(scene);
+            }
+            if (player.getCurrRoom() instanceof ExitRoom) {
+                controller.initEndScreen();
             }
         });
     }
