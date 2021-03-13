@@ -14,7 +14,7 @@ public abstract class Room {
         this.height = height;
         this.width = width;
         tileArray = new Tile[width][height];
-//        createTileArray();
+        //createTileArray();
     }
     public abstract Button getRightDoor();
     public abstract Button getLeftDoor();

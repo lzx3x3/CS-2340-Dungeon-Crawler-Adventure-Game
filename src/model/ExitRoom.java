@@ -3,7 +3,6 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -11,9 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import view.Door;
 
-import java.util.ArrayList;
 
 public class ExitRoom extends Room {
     public ExitRoom(int index, int height, int width) {
@@ -74,13 +71,13 @@ public class ExitRoom extends Room {
             }
         }
 
-//        for (Door one : doors) {
-//            ImageView iV = new ImageView();
-//            iV.setImage(door);
-//            iV.setX(one.getX() * 32 + 50);
-//            iV.setY(one.getY() * 32 + 50);
-//            root.getChildren().add(iV);
-//        }
+        //        for (Door one : doors) {
+        //            ImageView iV = new ImageView();
+        //            iV.setImage(door);
+        //            iV.setX(one.getX() * 32 + 50);
+        //            iV.setY(one.getY() * 32 + 50);
+        //            root.getChildren().add(iV);
+        //        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(

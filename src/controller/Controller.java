@@ -7,10 +7,8 @@ import javafx.stage.Stage;
 import model.GameModel;
 import model.Maze;
 import model.Player;
-import model.WoodenRoom;
 import view.InitialConfigScreen;
 import view.InitialGame;
-import view.Room1;
 import view.WelcomeScreen;
 import view.WinScreen;
 
@@ -28,7 +26,7 @@ public class Controller extends Application {
         mainWindow = primaryStage;
         initFirstScreen();
         // initInitialConfigScreen();
-//         initEndScreen();
+        //initEndScreen();
     }
 
     /**
@@ -104,7 +102,7 @@ public class Controller extends Application {
         exit3.setOnAction(e -> {
             initInitialConfigScreen();
         });
-//        player = new Player(playerName.getText(), difficulty.getValue());
+        //        player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
         Maze maze = new Maze();
         Scene scene = screen.start(player, maze);

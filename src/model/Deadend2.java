@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 public class Deadend2 extends Room {
 
-    Button leftDoor;
+    private Button leftDoor;
     public Deadend2(int index, int height, int width) {
         super(index, height, width);
         leftDoor = new Button("Left Door");
@@ -71,13 +71,13 @@ public class Deadend2 extends Room {
             }
         }
 
-//        for (Door one : doors) {
-//            ImageView iV = new ImageView();
-//            iV.setImage(door);
-//            iV.setX(one.getX() * 32 + 50);
-//            iV.setY(one.getY() * 32 + 50);
-//            root.getChildren().add(iV);
-//        }
+        //        for (Door one : doors) {
+        //            ImageView iV = new ImageView();
+        //            iV.setImage(door);
+        //            iV.setX(one.getX() * 32 + 50);
+        //            iV.setY(one.getY() * 32 + 50);
+        //            root.getChildren().add(iV);
+        //        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(

@@ -11,9 +11,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class Deadend3 extends Room{
+public class Deadend3 extends Room {
 
-    Button topDoor;
+    private Button topDoor;
     public Deadend3(int index, int height, int width) {
         super(index, height, width);
         topDoor = new Button("Top Door");
@@ -71,13 +71,13 @@ public class Deadend3 extends Room{
             }
         }
 
-//        for (Door one : doors) {
-//            ImageView iV = new ImageView();
-//            iV.setImage(door);
-//            iV.setX(one.getX() * 32 + 50);
-//            iV.setY(one.getY() * 32 + 50);
-//            root.getChildren().add(iV);
-//        }
+        //        for (Door one : doors) {
+        //            ImageView iV = new ImageView();
+        //            iV.setImage(door);
+        //            iV.setX(one.getX() * 32 + 50);
+        //            iV.setY(one.getY() * 32 + 50);
+        //            root.getChildren().add(iV);
+        //        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
