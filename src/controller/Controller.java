@@ -28,7 +28,7 @@ public class Controller extends Application {
         mainWindow = primaryStage;
         initFirstScreen();
         // initInitialConfigScreen();
-        // initEndScreen();
+//         initEndScreen();
     }
 
     /**
@@ -98,7 +98,7 @@ public class Controller extends Application {
      * @param player Player instance
      * @throws Exception Throws a NullPointerException when fields are null
      */
-    private void initInitialGameScreen(Player player) throws Exception {
+    public void initInitialGameScreen(Player player) throws Exception {
         InitialGame screen = new InitialGame(800, 600);
         Button exit3 = screen.getExit3();
         exit3.setOnAction(e -> {
