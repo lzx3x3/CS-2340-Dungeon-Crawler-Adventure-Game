@@ -37,10 +37,10 @@ public class Maze {
         maze[position][5] = new ExitRoom(position, 15, 15);
         for (int i = 0; i < 6; i++) {
             // Dead-end room creation (WIP)
-            maze[0][i] = new WoodenRoom(i, 15, 15);
-            maze[6][i] = new WoodenRoom(i, 15, 15);
-            maze[i][6] = new WoodenRoom(i, 15, 15);
-            maze[i][0] = new WoodenRoom(i, 15, 15);
+            maze[0][i] = new Deadend4(i, 15, 15);
+            maze[6][i] = new Deadend2(i, 15, 15);
+            maze[i][6] = new Deadend3(i, 15, 15);
+            maze[i][0] = new Deadend1(i, 15, 15);
         }
     }
 

@@ -3,7 +3,6 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -12,16 +11,34 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class StartRoom extends Room{
-    Button leftDoor;
-    Button bottomDoor;
-    Button topDoor;
+public class Deadend4 extends Room{
+
     Button rightDoor;
-    public StartRoom(int index, int height, int width) {
+    public Deadend4(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
-        bottomDoor = new Button("Bottom Door");
     }
+
+    @Override
+    public Button getRightDoor() {
+        return rightDoor;
+    }
+
+    @Override
+    public Button getLeftDoor() {
+        return null;
+    }
+
+    @Override
+    public Button getTopDoor() {
+        return null;
+    }
+
+    @Override
+    public Button getBottomDoor() {
+        return null;
+    }
+
     @Override
     public void createTileArray() {
         for (int i = 0; i < 15; i++) {
@@ -29,10 +46,7 @@ public class StartRoom extends Room{
                 super.tileArray[j][i] = new Tile(j, i, "Wooden Floor");
             }
         }
-        //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); // top door
-        //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); // left door
-        tileArray[14][7] = new Tile(8, 0, "Door"); // right door
-        tileArray[7][14] = new Tile(8, 0, "Door"); // bottom door
+        tileArray[14][7] = new Tile(0, 7, "Door"); // right door
     }
 
     @Override
@@ -89,31 +103,10 @@ public class StartRoom extends Room{
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
-
-        rightDoor.setLayoutX(700);
         rightDoor.setLayoutY(150);
-        bottomDoor.setLayoutY(200);
-        bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, rightDoor, bottomDoor);
+        rightDoor.setLayoutX(700);
+        root.getChildren().addAll(money, diff, level, rightDoor);
 
         return root;
-    }
-    @Override
-    public Button getLeftDoor() {
-        return null;
-    }
-    @Override
-    public Button getBottomDoor() {
-        return bottomDoor;
-    }
-
-    @Override
-    public Button getRightDoor() {
-        return rightDoor;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return null;
     }
 }
