@@ -115,6 +115,16 @@ public class Controller extends Application {
             maze.updateRoom("DOWN");
             test.initNextRoom(mainWindow, maze, player);
         });
+        if (maze.getCurrentRoom().getLeftDoor() != null) {
+            maze.getCurrentRoom().getLeftDoor().setOnAction(e -> {
+                maze.updateRoom("LEFT");
+                test.initNextRoom(mainWindow, maze, player);
+            });
+        }
+        maze.getCurrentRoom().getTopDoor().setOnAction(e -> {
+            maze.updateRoom("UP");
+            test.initNextRoom(mainWindow, maze, player);
+        });
         mainWindow.setTitle("Initial Game Screen");
         mainWindow.setScene(scene);
         mainWindow.show();

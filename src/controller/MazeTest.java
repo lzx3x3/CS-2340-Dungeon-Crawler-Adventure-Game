@@ -50,7 +50,7 @@ public class MazeTest {
 
             });
         }
-        if (!(maze.getCurrentRoom() instanceof StartRoom)) {
+        if (maze.getCurrentRoom().getLeftDoor() != null) {
             maze.getCurrentRoom().getLeftDoor().setOnAction(e -> {
                 maze.updateRoom("LEFT");
 
