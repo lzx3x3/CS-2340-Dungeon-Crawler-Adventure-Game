@@ -86,28 +86,28 @@ public class Player {
     }
 
     public void increaseX() {
-        if(x<14) {
+        if (x < 14) {
             x++;
             checkCollision(x, y);
         }
     }
 
     public void increaseY() {
-        if(y<14) {
+        if (y < 14) {
             y++;
             checkCollision(x, y);
         }
     }
 
     public void decreaseX() {
-        if(x>0) {
+        if (x > 0) {
             x--;
             checkCollision(x, y);
         }
     }
 
     public void decreaseY() {
-        if(y>0) {
+        if (y > 0) {
             y--;
             checkCollision(x, y);
         }
@@ -146,7 +146,7 @@ public class Player {
         if (array[x][y].getType() == "Door") {
             if (x == 14 && y == 7) {
                 //right
-                if(currRoom.getRightDoor() != null) {
+                if (currRoom.getRightDoor() != null) {
                     currMaze.updateRoom("RIGHT");
                     currRoom = currMaze.getCurrentRoom();
                     setX(0);
@@ -155,7 +155,7 @@ public class Player {
 
             } else if (x == 7 && y == 0) {
                 //top
-                if(currRoom.getTopDoor() != null) {
+                if (currRoom.getTopDoor() != null) {
                     currMaze.updateRoom("UP");
                     currRoom = currMaze.getCurrentRoom();
                     setX(7);
@@ -164,7 +164,7 @@ public class Player {
 
             } else if (x == 0 && y == 7) {
                 //left
-                if(currRoom.getLeftDoor() != null) {
+                if (currRoom.getLeftDoor() != null) {
                     currMaze.updateRoom("LEFT");
                     currRoom = currMaze.getCurrentRoom();
                     setX(14);
@@ -173,7 +173,7 @@ public class Player {
 
             } else if (x == 7 && y == 14) {
                 //bottom
-                if(currRoom.getBottomDoor() != null) {
+                if (currRoom.getBottomDoor() != null) {
                     currMaze.updateRoom("DOWN");
                     currRoom = currMaze.getCurrentRoom();
                     setX(7);
