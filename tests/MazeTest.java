@@ -24,7 +24,7 @@ public class MazeTest  extends ApplicationTest {
         controller.initInitialGameScreen(player);
     }
 
-    // Edited by Siying
+    // edited by Siying
     @Test
     public void testOldRoom() {
         clickOn("Right Door");
@@ -34,13 +34,27 @@ public class MazeTest  extends ApplicationTest {
         verifyThat("Current level:11", NodeMatchers.isNotNull());
     }
 
-    //edited by Kayla
+    // edited by Kayla
     @Test
     public void testThrowAway() {
-        Player player = new Player();
         type(KeyCode.D, 7);
         type(KeyCode.D, 7);
         type(KeyCode.W, 7);
         verifyThat("Current level:20", NodeMatchers.isNotNull());
+    }
+
+    // edited by Pei Yi
+    @Test
+    public void testDoorLocation() {
+        type(KeyCode.W, 7);
+        verifyThat("Current level:11", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testOldRoomPlayer() {
+        type(KeyCode.D, 7);
+        type(KeyCode.D, 1);
+        type(KeyCode.A, 1);
+        verifyThat("Current level:11", NodeMatchers.isNotNull());
     }
 }

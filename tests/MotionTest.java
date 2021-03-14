@@ -40,7 +40,7 @@ public class MotionTest extends ApplicationTest {
         verifyThat("Current level:12", NodeMatchers.isNotNull());
     }
 
-    //edited by Kayla
+    // edited by Kayla
     @Test
     public void testExitRoom() {
         clickOn("Start");

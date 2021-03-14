@@ -13,6 +13,4 @@ public class PlayerTest {
         player.setMoney("Easy");
         assertEquals(10000, player.getMoney());
     }
-
-
 }
