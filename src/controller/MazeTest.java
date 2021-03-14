@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 import model.ExitRoom;
 import model.Maze;
 import model.Player;
-import model.StartRoom;
 import view.InitialGame;
 
 public class MazeTest {
