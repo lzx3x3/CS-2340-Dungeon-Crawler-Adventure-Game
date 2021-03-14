@@ -1,17 +1,24 @@
+import com.sun.javafx.robot.FXRobot;
 import controller.Controller;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import model.Player;
+import model.Room;
+import model.WoodenRoom;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
+import org.testfx.service.query.NodeQuery;
+import org.testfx.service.query.impl.NodeQueryImpl;
+
 import static org.testfx.api.FxAssert.verifyThat;
 
 public class MazeTest  extends ApplicationTest {
-
+    Controller controller = new Controller();
     @Override
     public void start(Stage stage) throws Exception {
-        Controller controller = new Controller();
+
         Player player = new Player();
         controller.setMainWindow(stage);
         controller.initInitialGameScreen(player);
@@ -37,4 +44,12 @@ public class MazeTest  extends ApplicationTest {
         verifyThat("Current level:20", NodeMatchers.isNotNull());
     }
 
+    // edited by Jason
+    @Test
+    public void testRight() {
+        for (int i = 0; i < 5; i++) {
+            clickOn("Right Door");
+        }
+        verifyThat("Current level:61", NodeMatchers.isNotNull());
+    }
 }

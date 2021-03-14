@@ -47,6 +47,7 @@ public class Controller extends Application {
         mainWindow.setTitle("Dungeon Crawler Game");
         mainWindow.show();
     }
+
     /**
      * Initializes InitialConfigScreen
      */
@@ -92,7 +93,6 @@ public class Controller extends Application {
     }
 
     /**
-     *
      * @param player Player instance
      * @throws Exception Throws a NullPointerException when fields are null
      */
@@ -140,7 +140,6 @@ public class Controller extends Application {
     }
 
     /**
-     *
      * @param stage Sets the stage for the mainWindow to display
      */
     public void setMainWindow(Stage stage) {
@@ -148,10 +147,14 @@ public class Controller extends Application {
     }
 
     /**
-     *
      * @param args main method argument
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+
+    public Stage getMainWindow() {
+        return mainWindow;
     }
 }
