@@ -11,11 +11,13 @@ public class Motion {
     private Player player;
     private Scene scene;
     private Stage stage;
+    private Draw draw;
 
-    public Motion(Player player, Scene scene, Stage stage, Controller controller) {
+    public Motion(Player player, Scene scene, Stage stage, Controller controller, Draw draw) {
         this.player = player;
         this.scene = scene;
         this.stage = stage;
+        this.draw = draw;
         keyHandler(controller);
     }
 
@@ -23,19 +25,19 @@ public class Motion {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();
-                scene.setRoot(Draw.draw(player));
+                scene.setRoot(draw.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.A) {
                 player.decreaseX();
-                scene.setRoot(Draw.draw(player));
+                scene.setRoot(draw.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.S) {
                 player.increaseY();
-                scene.setRoot(Draw.draw(player));
+                scene.setRoot(draw.draw(player));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.D) {
                 player.increaseX();
-                scene.setRoot(Draw.draw(player));
+                scene.setRoot(draw.draw(player));
                 stage.setScene(scene);
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
