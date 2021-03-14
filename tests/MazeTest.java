@@ -43,13 +43,4 @@ public class MazeTest  extends ApplicationTest {
         type(KeyCode.W, 7);
         verifyThat("Current level:20", NodeMatchers.isNotNull());
     }
-
-    // edited by Jason
-    @Test
-    public void testRight() {
-        for (int i = 0; i < 5; i++) {
-            clickOn("Right Door");
-        }
-        verifyThat("Current level:61", NodeMatchers.isNotNull());
-    }
 }

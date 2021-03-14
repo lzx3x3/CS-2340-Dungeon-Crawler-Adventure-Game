@@ -75,5 +75,33 @@ public class MotionTest extends ApplicationTest {
         verifyThat("STARTOVER", NodeMatchers.isNotNull());
     }
 
+    // edited by Jason
+    @Test
+    public void testBottom() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        for (int i = 0; i < 5; i++) {
+            clickOn("Bottom Door");
+        }
+        verifyThat("Current level:16", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testWallCollision() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.W, 1);
+        type(KeyCode.D, 8);
+        type(KeyCode.S, 1);
+        verifyThat("Current level:21", NodeMatchers.isNotNull());
+    }
 }
 
