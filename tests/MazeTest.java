@@ -47,7 +47,8 @@ public class MazeTest  extends ApplicationTest {
     @Test
     public void testDoorLocation() {
         type(KeyCode.W, 7);
-        verifyThat("Current level:11", NodeMatchers.isNotNull());
+        type(KeyCode.W, 14);
+        verifyThat("Current level:10", NodeMatchers.isNotNull());
     }
 
     @Test
