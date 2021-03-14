@@ -4,7 +4,6 @@ import model.Player;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
 
 public class Motion {
 

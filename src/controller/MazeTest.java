@@ -25,12 +25,12 @@ public class MazeTest {
         //player = new Player(playerName.getText(), difficulty.getValue());
         player.setMoney(player.getDiff());
         Scene scene = screen.start(player, maze, stage, controller);
-//        Scene scene = screen.start(player, maze);
+        //        Scene scene = screen.start(player, maze);
         if (maze.getCurrentRoom().getRightDoor() != null) {
             maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
                 maze.updateRoom("RIGHT");
-//        maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
-//            maze.updateRoom("RIGHT");
+                //        maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
+                //            maze.updateRoom("RIGHT");
                 if (maze.getCurrentRoom() instanceof ExitRoom) {
                     controller.initEndScreen();
                 } else {
