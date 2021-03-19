@@ -4,6 +4,6 @@ import javafx.scene.layout.Pane;
 
 public interface IMonster {
     void AttackPlayer();
-    Pane drawMonster();
+    Pane drawMonster(Pane root);
 
 }

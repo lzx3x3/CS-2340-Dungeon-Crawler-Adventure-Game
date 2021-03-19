@@ -29,6 +29,7 @@ public class Monster1 implements IMonster {
 
     @Override
     public void AttackPlayer() {
+
     }
 
     @Override

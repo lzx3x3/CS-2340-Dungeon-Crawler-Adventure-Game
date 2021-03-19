@@ -35,7 +35,7 @@ public class InitialGame {
         player.setMaze(maze);
         player.setCurrRoom(room0);
         Draw draw = new Draw();
-        Pane roomPane = draw.draw(player);
+        Pane roomPane = draw.draw(player, controller);
 
 
 

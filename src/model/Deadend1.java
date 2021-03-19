@@ -105,9 +105,17 @@ public class Deadend1 extends Room {
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
+        Text health = new Text();
+        health.textProperty().bind(new SimpleStringProperty(("Current Health: ")).concat(
+                new SimpleIntegerProperty(player.getHealth()).asString()));
+        health.setX(600);
+        health.setY(80);
+        health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        health.setFill(Color.BLACK);
+
         bottomDoor.setLayoutY(200);
         bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, bottomDoor);
+        root.getChildren().addAll(money, diff, level, health, bottomDoor);
 
         return root;
     }

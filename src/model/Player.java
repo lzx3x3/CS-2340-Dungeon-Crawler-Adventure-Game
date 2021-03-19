@@ -29,17 +29,6 @@ public class Player {
         currRoom = null;
     }
 
-    public Player(String name, String difficulty) {
-        health = 100;
-        money = 0;
-        level = 1;
-        this.name = name;
-        this.difficulty = difficulty;
-        x = 7;
-        y = 7;
-        currRoom = null;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -137,7 +126,16 @@ public class Player {
         root.getChildren().add(iV);
 
         return root;
+    }
 
+    public Pane drawDeadPlayer(Pane root) {
+//        ImageView iV = new ImageView();
+//        iV.setImage(new Image("file:resources/player.png"));
+//        iV.setX(x * 32 + 50);
+//        iV.setY(y * 32 + 50);
+//        root.getChildren().add(iV);
+
+        return root;
     }
 
     private void checkCollision(int x, int y) {
@@ -182,5 +180,17 @@ public class Player {
 
             }
         }
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void decreHealth(int loss) {
+        this.health = health - loss;
+    }
+
+    public void increHealth(int gain) {
+        this.health = health + gain;
     }
 }

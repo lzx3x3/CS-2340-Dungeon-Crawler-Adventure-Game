@@ -50,7 +50,7 @@ public class Controller extends Application {
     /**
      * Initializes InitialConfigScreen
      */
-    private void initInitialConfigScreen() {
+    public void initInitialConfigScreen() {
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
         TextField nameInput = screen.getNameInput();
