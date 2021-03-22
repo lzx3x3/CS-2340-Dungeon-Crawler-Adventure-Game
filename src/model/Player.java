@@ -129,11 +129,12 @@ public class Player {
     }
 
     public Pane drawDeadPlayer(Pane root) {
-//        ImageView iV = new ImageView();
-//        iV.setImage(new Image("file:resources/player.png"));
-//        iV.setX(x * 32 + 50);
-//        iV.setY(y * 32 + 50);
-//        root.getChildren().add(iV);
+        ImageView iV = new ImageView();
+        iV.setImage(new Image("file:resources/player.png"));
+        iV.setRotate(90);
+        iV.setX(x * 32 + 50);
+        iV.setY(y * 32 + 50);
+        root.getChildren().add(iV);
 
         return root;
     }

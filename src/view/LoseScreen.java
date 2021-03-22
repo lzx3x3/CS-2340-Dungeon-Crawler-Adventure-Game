@@ -34,30 +34,28 @@ public class LoseScreen {
         ImageView image = new ImageView();
         image.setImage(new Image("file:resources/player.png"));
         restart = new Button("Try Again!", image);
-        restart = new Button("Try Again");
-
     }
 
     public Scene getScene()  {
         StackPane root = new StackPane();
-        Image background = new Image("file:resources/youWin.png");
+        Image background = new Image("file:resources/youLose.png");
         ImageView img = new ImageView(background);
         img.setFitWidth(800);
         img.setFitHeight(600);
         root.getChildren().add(img);
 
-        BorderPane winScreen = new BorderPane();
+        BorderPane loseScreen = new BorderPane();
 
         // Add restart and exit buttons
-        restart.setLayoutX(250);
-        restart.setLayoutY(250);
-        VBox buttons = new VBox(exit);
+        ImageView image = new ImageView();
+
+        VBox buttons = new VBox(restart, exit);
         buttons.setSpacing(10);
         restart.getStyleClass().add("buttons");
         exit.getStyleClass().add("buttons");
-        root.getChildren().add(winScreen);
-        buttons.setAlignment(Pos.BOTTOM_RIGHT);
-        winScreen.setCenter(buttons);
+        root.getChildren().add(loseScreen);
+        buttons.setAlignment(Pos.CENTER);
+        loseScreen.setCenter(buttons);
         Scene scene = new Scene(root, width, height);
         scene.getStylesheets().add("file:resources/css/EndScreen.css");
 

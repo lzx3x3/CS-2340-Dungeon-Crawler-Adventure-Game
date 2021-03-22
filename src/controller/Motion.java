@@ -24,6 +24,7 @@ public class Motion {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();
+                //player.decreHealth(50);
                 scene.setRoot(draw.draw(player, controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.A) {
@@ -41,6 +42,9 @@ public class Motion {
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
                 controller.initEndScreen();
+            }
+            if(player.getHealth() < 0) {
+                controller.initLoseScreen();
             }
         });
     }

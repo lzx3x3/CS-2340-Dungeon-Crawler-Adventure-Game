@@ -29,19 +29,20 @@ public class Draw {
         else {
             root = player.drawDeadPlayer(root);
 
-            ImageView image = new ImageView();
-            image.setImage(new Image("file:resources/player.png"));
-            Button restart = new Button("Try Again!", image);
-            restart.setOnAction(e -> {
-                controller.initInitialConfigScreen();
-            });
-            restart.setLayoutX(250);
-            restart.setLayoutY(250);
-
-            Alert deadAlert = new Alert(Alert.AlertType.WARNING);
-            deadAlert.setContentText("You died! Please click button 'Try Again'");
-            deadAlert.show();
-            root.getChildren().add(restart);
+            controller.initLoseScreen();
+//            ImageView image = new ImageView();
+//            image.setImage(new Image("file:resources/player.png"));
+//            Button restart = new Button("Try Again!", image);
+//            restart.setOnAction(e -> {
+//                controller.initInitialConfigScreen();
+//            });
+//            restart.setLayoutX(250);
+//            restart.setLayoutY(250);
+//
+//            Alert deadAlert = new Alert(Alert.AlertType.WARNING);
+//            deadAlert.setContentText("You died! Please click button 'Try Again'");
+//            deadAlert.show();
+//            root.getChildren().add(restart);
         }
 
         return root;
