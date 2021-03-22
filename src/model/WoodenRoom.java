@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import view.Door;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WoodenRoom extends Room {
     private ArrayList<Door> doors;
@@ -116,6 +117,11 @@ public class WoodenRoom extends Room {
         root.getChildren().addAll(money, diff, level, topDoor, rightDoor, bottomDoor, leftDoor);
 
         return root;
+    }
+
+    @Override
+    public List<IMonster> getMonsterArray() {
+        return null;
     }
 
 

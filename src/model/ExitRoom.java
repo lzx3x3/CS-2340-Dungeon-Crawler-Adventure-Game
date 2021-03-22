@@ -11,6 +11,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.List;
+
 
 public class ExitRoom extends Room {
     public ExitRoom(int index, int height, int width) {
@@ -114,6 +116,11 @@ public class ExitRoom extends Room {
         root.getChildren().addAll(money, diff, level, health);
 
         return root;
+    }
+
+    @Override
+    public List getMonsterArray() {
+        return null;
     }
 
 

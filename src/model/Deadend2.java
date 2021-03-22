@@ -11,6 +11,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.List;
+
 public class Deadend2 extends Room {
 
     private Button leftDoor;
@@ -116,5 +118,10 @@ public class Deadend2 extends Room {
         root.getChildren().addAll(money, diff, level,health, leftDoor);
 
         return root;
+    }
+
+    @Override
+    public List getMonsterArray() {
+        return null;
     }
 }

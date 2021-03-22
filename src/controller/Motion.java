@@ -47,6 +47,8 @@ public class Motion {
                 player.increaseX();
                 scene.setRoot(draw.draw(player, controller));
                 stage.setScene(scene);
+            } else if (event.getCode() == KeyCode.F) {
+                player.attack();
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
                 controller.initEndScreen();

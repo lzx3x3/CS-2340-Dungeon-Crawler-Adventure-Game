@@ -11,6 +11,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.List;
+
 /**
  * Top deadend room of the maze
  */
@@ -118,5 +120,10 @@ public class Deadend1 extends Room {
         root.getChildren().addAll(money, diff, level, health, bottomDoor);
 
         return root;
+    }
+
+    @Override
+    public List getMonsterArray() {
+        return null;
     }
 }

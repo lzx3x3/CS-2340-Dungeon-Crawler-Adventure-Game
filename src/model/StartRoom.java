@@ -11,15 +11,21 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StartRoom extends Room {
     private Button leftDoor;
     private Button bottomDoor;
     private Button topDoor;
     private Button rightDoor;
+    private List<IMonster> monsterArray;
     public StartRoom(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
         bottomDoor = new Button("Bottom Door");
+        monsterArray = new ArrayList<IMonster>();
+        monsterArray.add(new Monster1());
     }
     @Override
     public void createTileArray() {
@@ -104,6 +110,10 @@ public class StartRoom extends Room {
         root.getChildren().addAll(money, diff, level, health, rightDoor, bottomDoor);
 
         return root;
+    }
+    @Override
+    public List<IMonster> getMonsterArray() {
+        return monsterArray;
     }
     @Override
     public Button getLeftDoor() {

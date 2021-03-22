@@ -5,6 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 
     private String name;
@@ -17,6 +20,8 @@ public class Player {
     private Room currRoom;
     private Maze currMaze;
     private Draw draw;
+    private int damage = 1;
+    private int range = 1;
 
     public Player() {
         health = 100;
@@ -193,5 +198,30 @@ public class Player {
 
     public void increHealth(int gain) {
         this.health = health + gain;
+    }
+
+    public void attack() {
+        List<IMonster> monsters = currRoom.getMonsterArray();
+        for (IMonster monster : monsters) {
+            if (monster instanceof Monster1) {
+                Monster1 m1 = (Monster1) monster;
+                if (!m1.getDead()) {
+                    if (Math.abs(m1.getX() - this.x) <= range) {
+                        m1.setHealth(m1.getHealth() - damage);
+                    } else if (Math.abs(m1.getY() - this.y) <= range) {
+                        m1.setHealth(m1.getHealth() - 1);
+                    }
+                }
+            } else if (monster instanceof Monster2) {
+                Monster2 m2 =(Monster2) monster;
+                if (m2.getDead()) {
+                    if (Math.abs(m2.getX() - this.x) <= range) {
+                        m2.setHealth(m2.getHealth() - damage);
+                    } else if (Math.abs(m2.getY() - this.y) <= range) {
+                        m2.setHealth(m2.getHealth() - 1);
+                    }
+                }
+            }
+        }
     }
 }
