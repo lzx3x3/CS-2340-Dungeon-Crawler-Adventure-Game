@@ -5,12 +5,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class EndMonster {
+public class EndMonster implements IMonster {
     private int health;
     private boolean dead;
     private String weapon;
     private int x;
     private int y;
+    private int radius;
     private int level;
     private Room currRoom;
     private Draw draw;
@@ -21,6 +22,7 @@ public class EndMonster {
         this.health = 200;
         this.level = 1;
         this.weapon = "magic";
+        this.radius = 3;
         this.x = 14;
         this.y = 14;
         this.currRoom = null;
@@ -72,6 +74,10 @@ public class EndMonster {
     public void setX(int x) { this.x = x; }
 
     public void setY(int y) { this.y = y; }
+
+    public int getRadius() { return radius; }
+
+    public void setRadius(int newRadius) { radius = newRadius; }
 
     public String getWeapon() { return weapon; }
 

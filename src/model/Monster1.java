@@ -11,6 +11,7 @@ public class Monster1 implements IMonster {
     private String weapon;
     private int x;
     private int y;
+    private int radius;
     private int level;
     private Room currRoom;
     private Draw draw;
@@ -21,6 +22,7 @@ public class Monster1 implements IMonster {
         this.health = 100;
         this.level = 1;
         this.weapon = "stick";
+        this.radius = 1;
         this.x = 14;
         this.y = 14;
         this.currRoom = null;
@@ -73,6 +75,10 @@ public class Monster1 implements IMonster {
     public void setX(int x) { this.x = x; }
 
     public void setY(int y) { this.y = y; }
+
+    public int getRadius() { return radius; }
+
+    public void setRadius(int newRadius) { radius = newRadius; }
 
     public String getWeapon() { return weapon; }
 

@@ -13,6 +13,7 @@ public class Monster2 implements IMonster {
     private int x;
     private int y;
     private int level;
+    private int radius;
     private Room currRoom;
     private Draw draw;
     private Maze maze;
@@ -22,6 +23,7 @@ public class Monster2 implements IMonster {
         this.health = 100;
         this.level = 1;
         this.weapon = "magic";
+        this.radius = 2;
         this.x = 14;
         this.y = 14;
         this.currRoom = null;
@@ -74,6 +76,10 @@ public class Monster2 implements IMonster {
     public void setX(int x) { this.x = x; }
 
     public void setY(int y) { this.y = y; }
+
+    public int getRadius() { return radius; }
+
+    public void setRadius(int newRadius) { radius = newRadius; }
 
     public String getWeapon() { return weapon; }
 

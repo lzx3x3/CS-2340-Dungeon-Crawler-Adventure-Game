@@ -32,6 +32,7 @@ public class Motion {
                 player.decreaseY();
                 //player.decreHealth(50);
                 //scene.setRoot(draw.drawMonster1(player, controller, monster1));
+                //scene.setRoot(draw.drawSprites(player, monster1, controller));
                 scene.setRoot(draw.draw(player, controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.A) {
@@ -41,6 +42,7 @@ public class Motion {
             } else if (event.getCode() == KeyCode.S) {
                 player.increaseY();
                 //scene.setRoot(draw.drawMonster2(player, controller, monster2));
+                //scene.setRoot(draw.drawSprites(player, monster1, controller));
                 scene.setRoot(draw.draw(player, controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.D) {
