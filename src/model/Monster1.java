@@ -14,6 +14,7 @@ public class Monster1 implements IMonster {
     private int level;
     private Room currRoom;
     private Draw draw;
+    private Maze maze;
 
 
     public Monster1 () {
@@ -75,5 +76,9 @@ public class Monster1 implements IMonster {
     public String getWeapon() { return weapon; }
 
     public Room getCurrRoom() { return currRoom; }
+
+    public Maze getMaze() { return maze; }
+
+    public void setMaze(Maze newMaze) { maze = newMaze; }
 
 }

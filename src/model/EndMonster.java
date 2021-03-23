@@ -5,8 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class Monster2 implements IMonster {
-
+public class EndMonster {
     private int health;
     private boolean dead;
     private String weapon;
@@ -18,8 +17,8 @@ public class Monster2 implements IMonster {
     private Maze maze;
 
 
-    public Monster2 () {
-        this.health = 100;
+    public EndMonster () {
+        this.health = 200;
         this.level = 1;
         this.weapon = "magic";
         this.x = 14;
