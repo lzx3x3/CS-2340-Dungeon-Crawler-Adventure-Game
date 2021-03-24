@@ -19,12 +19,12 @@ public class EndMonster implements IMonster {
 
 
     public EndMonster () {
-        this.health = 200;
+        this.health = 150;
         this.level = 1;
         this.weapon = "magic";
         this.radius = 3;
-        this.x = 14;
-        this.y = 14;
+        this.x = 9;
+        this.y = 7;
         this.currRoom = null;
         this.dead = false;
     }

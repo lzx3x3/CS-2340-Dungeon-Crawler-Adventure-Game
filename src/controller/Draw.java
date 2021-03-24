@@ -9,11 +9,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.EndMonster;
+import model.ExitRoom;
 import model.IMonster;
 import model.Monster1;
 import model.Monster2;
 import model.Player;
 import model.Room;
+import model.StartRoom;
 
 public class Draw {
 
@@ -115,24 +117,29 @@ public class Draw {
     }
 
     //DRAW both the player and the monster
-//    public Pane drawSprites(Player player, IMonster monster, Controller controller) {
-//        Pane root = new Pane();
-//        Room room = player.getCurrRoom();
-//        root = room.drawRoom(root, player); //draws either a start, wooden, or end room
-//        if (player.getHealth() > 0) {
-//            root = monster.drawMonster(root);
-//            root = player.drawPlayer(root);
-//            Text currentRoom = new Text("Current Room:" +
-//                    Integer.toString(player.getMaze().getX()) +
-//                    Integer.toString(player.getMaze().getY()));
-//            currentRoom.setX(650);
-//            currentRoom.setY(400);
-//            root.getChildren().add(currentRoom);
-//        } else {
-//            root = player.drawDeadPlayer(root);
-//        }
-//        return root;
-//
-//    }
+    public Pane drawSprites(Player player, IMonster monster, Controller controller) {
+        Pane root = new Pane();
+        Room room = player.getCurrRoom();
+        root = room.drawRoom(root, player); //draws either a start, wooden, or end room
+        if (player.getHealth() > 0) {
+            if (player.getCurrRoom() instanceof ExitRoom) {
+                monster = new EndMonster();
+            }
+            if (!(player.getCurrRoom() instanceof StartRoom)) {
+                root = monster.drawMonster(root);
+            }
+            root = player.drawPlayer(root);
+            Text currentRoom = new Text("Current Room:" +
+                    Integer.toString(player.getMaze().getX()) +
+                    Integer.toString(player.getMaze().getY()));
+            currentRoom.setX(650);
+            currentRoom.setY(400);
+            root.getChildren().add(currentRoom);
+        } else {
+            root = player.drawDeadPlayer(root);
+        }
+        return root;
+
+    }
 
 }

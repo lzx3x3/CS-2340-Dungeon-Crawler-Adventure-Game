@@ -24,8 +24,8 @@ public class Monster2 implements IMonster {
         this.level = 1;
         this.weapon = "magic";
         this.radius = 2;
-        this.x = 14;
-        this.y = 14;
+        this.x = 9;
+        this.y = 7;
         this.currRoom = null;
         this.dead = false;
     }

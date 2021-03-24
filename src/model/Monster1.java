@@ -23,8 +23,8 @@ public class Monster1 implements IMonster {
         this.level = 1;
         this.weapon = "stick";
         this.radius = 1;
-        this.x = 14;
-        this.y = 14;
+        this.x = 9;
+        this.y = 7;
         this.currRoom = null;
         this.dead = false;
     }
