@@ -51,49 +51,6 @@ public class Draw {
         return root;
     }
 
-    public Pane drawMonster1(Player player, Controller controller, Monster1 monster1) {
-        Pane root = new Pane();
-        Room room = player.getCurrRoom();
-        root = room.drawRoom(root, player);
-
-        monster1.drawMonster(root);
-
-        if (player.getHealth() > 0) {
-            root = player.drawPlayer(root);
-            Text currentRoom = new Text("Current Room:"
-                    + Integer.toString(player.getMaze().getX())
-                    + Integer.toString(player.getMaze().getY()));
-            currentRoom.setX(650);
-            currentRoom.setY(400);
-            root.getChildren().add(currentRoom);
-        }
-        else {
-            root = player.drawDeadPlayer(root);
-        }
-        return root;
-    }
-
-    public Pane drawMonster2(Player player, Controller controller, Monster2 monster2) {
-        Pane root = new Pane();
-        Room room = player.getCurrRoom();
-        root = room.drawRoom(root, player);
-
-        monster2.drawMonster(root);
-
-        if (player.getHealth() > 0) {
-            root = player.drawPlayer(root);
-            Text currentRoom = new Text("Current Room:"
-                    + Integer.toString(player.getMaze().getX())
-                    + Integer.toString(player.getMaze().getY()));
-            currentRoom.setX(650);
-            currentRoom.setY(400);
-            root.getChildren().add(currentRoom);
-        }
-        else {
-            root = player.drawDeadPlayer(root);
-        }
-        return root;
-    }
 
     public Pane drawEndMonster(Player player, Controller controller, EndMonster endMonster) {
         Pane root = new Pane();
