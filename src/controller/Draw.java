@@ -117,7 +117,7 @@ public class Draw {
     }
 
     //DRAW both the player and the monster
-    public Pane draw(Player player, IMonster monster, Controller controller) {
+    public Pane drawSprites(Player player, IMonster monster, Controller controller) {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
         root = room.drawRoom(root, player); //draws either a start, wooden, or end room
