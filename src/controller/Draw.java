@@ -17,6 +17,8 @@ import model.Player;
 import model.Room;
 import model.StartRoom;
 
+import java.util.List;
+
 public class Draw {
 
     public Pane draw(Player player, Controller controller) {
@@ -74,16 +76,20 @@ public class Draw {
     }
 
     //DRAW both the player and the monster
-    public Pane drawSprites(Player player, IMonster monster, Controller controller) {
+    public Pane drawSprites(Player player, List<IMonster> monsters, Controller controller) {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
         root = room.drawRoom(root, player); //draws either a start, wooden, or end room
         if (player.getHealth() > 0) {
             if (player.getCurrRoom() instanceof ExitRoom) {
-                monster = new EndMonster();
+                EndMonster monster  = new EndMonster();
             }
             if (!(player.getCurrRoom() instanceof StartRoom)) {
-                root = monster.drawMonster(root);
+                if (monsters != null) {
+                    for (IMonster monster : monsters) {
+                        root = monster.drawMonster(root);
+                    }
+                }
             }
             root = player.drawPlayer(root);
             Text currentRoom = new Text("Current Room:" +

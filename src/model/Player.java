@@ -24,7 +24,7 @@ public class Player {
     private Maze currMaze;
     private HashSet<Room> visitedRooms;
     private Draw draw;
-    private int damage = 1;
+    private int damage = 20;
     private int range = 1;
 
     public Player() {
@@ -252,6 +252,7 @@ public class Player {
                         m1.setHealth(m1.getHealth() - 1);
                     }
                 }
+                System.out.println("Monster Health: " + m1.getHealth());
             } else if (monster instanceof Monster2) {
                 Monster2 m2 =(Monster2) monster;
                 if (m2.getDead()) {
@@ -261,6 +262,7 @@ public class Player {
                         m2.setHealth(m2.getHealth() - 1);
                     }
                 }
+                System.out.println(m2.getHealth());
             }
         }
     }

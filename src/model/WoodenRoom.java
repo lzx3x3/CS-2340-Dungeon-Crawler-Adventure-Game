@@ -21,7 +21,7 @@ public class WoodenRoom extends Room {
     private Button leftDoor;
     private Button topDoor;
     private Button bottomDoor;
-
+    private ArrayList<IMonster> monsters;
 
     public WoodenRoom(int index, int height, int width) {
         super(index, height, width);
@@ -38,6 +38,8 @@ public class WoodenRoom extends Room {
         bottomDoor = new Button("Bottom Door");
         rightDoor = new Button("Right Door");
         topDoor = new Button("Top Door");
+        monsters = new ArrayList<>();
+        monsters.add(new Monster1());
     }
 
     @Override
@@ -121,7 +123,7 @@ public class WoodenRoom extends Room {
 
     @Override
     public List<IMonster> getMonsterArray() {
-        return null;
+        return monsters;
     }
 
 

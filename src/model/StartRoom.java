@@ -24,6 +24,8 @@ public class StartRoom extends Room {
         super(index, height, width);
         rightDoor = new Button("Right Door");
         bottomDoor = new Button("Bottom Door");
+        leftDoor = new Button("Left Door");
+        topDoor = new Button("Top Door");
         monsterArray = new ArrayList<IMonster>();
         monsterArray.add(new Monster1());
     }
@@ -36,6 +38,8 @@ public class StartRoom extends Room {
         }
         //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); top door
         //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); left door
+        tileArray[7][0] = new Tile(7, 0, "Door"); // top door
+        tileArray[0][7] = new Tile(0, 7, "Door"); // left door
         tileArray[14][7] = new Tile(8, 0, "Door"); // right door
         tileArray[7][14] = new Tile(8, 0, "Door"); // bottom door
     }
@@ -107,7 +111,11 @@ public class StartRoom extends Room {
         rightDoor.setLayoutY(150);
         bottomDoor.setLayoutY(200);
         bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, health, rightDoor, bottomDoor);
+        topDoor.setLayoutY(100);
+        topDoor.setLayoutX(650);
+        leftDoor.setLayoutX(600);
+        leftDoor.setLayoutY(150);
+        root.getChildren().addAll(money, diff, level, health, rightDoor, bottomDoor, leftDoor, topDoor);
 
         return root;
     }
@@ -117,7 +125,7 @@ public class StartRoom extends Room {
     }
     @Override
     public Button getLeftDoor() {
-        return null;
+        return leftDoor;
     }
     @Override
     public Button getBottomDoor() {
@@ -131,6 +139,6 @@ public class StartRoom extends Room {
 
     @Override
     public Button getTopDoor() {
-        return null;
+        return topDoor;
     }
 }
