@@ -1,11 +1,11 @@
 package model;
 
 import controller.Draw;
-import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
-public class Monster1 implements IMonster {
+public class EndMonster implements IMonster {
     private int health;
     private boolean dead;
     private String weapon;
@@ -18,17 +18,16 @@ public class Monster1 implements IMonster {
     private Maze maze;
 
 
-    public Monster1 () {
-        this.health = 100;
+    public EndMonster () {
+        this.health = 150;
         this.level = 1;
-        this.weapon = "stick";
-        this.radius = 1;
+        this.weapon = "magic";
+        this.radius = 3;
         this.x = 9;
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
     }
-
 
     @Override
     public void AttackPlayer() {
@@ -39,9 +38,9 @@ public class Monster1 implements IMonster {
     public Pane drawMonster(Pane root) {
         ImageView iv = new ImageView();
         if (!dead) {
-            iv.setImage(new Image("file:resources/MinotaurMonsterStanding.png"));
+            iv.setImage(new Image("file:resources/Monster2Standing.png"));
         } else {
-            iv.setImage(new Image("file:resources/MinotaurMonsterDead.png"));
+            iv.setImage(new Image("file:resources/Monster2Dead.png"));
         }
         iv.setX(x * 32 + 50);
         iv.setY(y * 32 + 50);
@@ -87,5 +86,4 @@ public class Monster1 implements IMonster {
     public Maze getMaze() { return maze; }
 
     public void setMaze(Maze newMaze) { maze = newMaze; }
-
 }

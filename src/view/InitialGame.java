@@ -34,6 +34,7 @@ public class InitialGame {
         Room room0 =  maze.getCurrentRoom();
         player.setMaze(maze);
         player.setCurrRoom(room0);
+        player.addToVisitedRooms(room0);
         Draw draw = new Draw();
         Pane roomPane = draw.draw(player, controller);
 

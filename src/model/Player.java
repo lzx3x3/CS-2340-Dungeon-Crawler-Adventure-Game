@@ -5,8 +5,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+
 
 public class Player {
 
@@ -19,6 +22,7 @@ public class Player {
     private int y;
     private Room currRoom;
     private Maze currMaze;
+    private HashSet<Room> visitedRooms;
     private Draw draw;
     private int damage = 1;
     private int range = 1;
@@ -32,6 +36,7 @@ public class Player {
         x = 7;
         y = 7;
         currRoom = null;
+        visitedRooms = new HashSet<Room>();
     }
 
     public void setName(String name) {
@@ -77,6 +82,14 @@ public class Player {
 
     public void setY(int newY) {
         y = newY;
+    }
+
+    public void addToVisitedRooms(Room room) {
+        visitedRooms.add(room);
+    }
+
+    public HashSet<Room> getVisitedRooms() {
+        return visitedRooms;
     }
 
     public void increaseX() {
@@ -148,44 +161,71 @@ public class Player {
         Tile[][] array = currRoom.getTileArray();
 
         if (array[x][y].getType() == "Door") {
-            if (x == 14 && y == 7) {
-                //right
-                if (currRoom.getRightDoor() != null) {
-                    currMaze.updateRoom("RIGHT");
+            boolean clearRoom = true;
+            /*for (Monster monster : monsterlist) {
+                if (!monster.isDead()) {
+                    clearRoom = false;
+                }
+            } */
+            handleRoomChange(clearRoom);
+        }
+    }
+
+    private boolean checkIfVisited(Room room) {
+        return visitedRooms.contains(room);
+    }
+
+    private void handleRoomChange(Boolean clear) {
+        if (x == 14 && y == 7) {
+            //right
+            if (currRoom.getRightDoor() != null) {
+                currMaze.updateRoom("RIGHT");
+                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
                     currRoom = currMaze.getCurrentRoom();
                     setX(0);
                     setY(7);
+                } else {
+                    currMaze.updateRoom("LEFT");
                 }
-
-            } else if (x == 7 && y == 0) {
-                //top
-                if (currRoom.getTopDoor() != null) {
-                    currMaze.updateRoom("UP");
+            }
+        } else if (x == 7 && y == 0) {
+            //top
+            if (currRoom.getTopDoor() != null) {
+                currMaze.updateRoom("UP");
+                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
                     currRoom = currMaze.getCurrentRoom();
                     setX(7);
                     setY(14);
+                } else {
+                    currMaze.updateRoom("DOWN");
                 }
-
-            } else if (x == 0 && y == 7) {
-                //left
-                if (currRoom.getLeftDoor() != null) {
-                    currMaze.updateRoom("LEFT");
+            }
+        } else if (x == 0 && y == 7) {
+            //left
+            if (currRoom.getLeftDoor() != null) {
+                currMaze.updateRoom("LEFT");
+                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
                     currRoom = currMaze.getCurrentRoom();
                     setX(14);
                     setY(7);
+                } else {
+                    currMaze.updateRoom("RIGHT");
                 }
-
-            } else if (x == 7 && y == 14) {
-                //bottom
-                if (currRoom.getBottomDoor() != null) {
-                    currMaze.updateRoom("DOWN");
+            }
+        } else if (x == 7 && y == 14) {
+            //bottom
+            if (currRoom.getBottomDoor() != null) {
+                currMaze.updateRoom("DOWN");
+                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
                     currRoom = currMaze.getCurrentRoom();
                     setX(7);
                     setY(0);
+                } else {
+                    currMaze.updateRoom("UP");
                 }
-
             }
         }
+        addToVisitedRooms(currRoom);
     }
 
     public int getHealth() {

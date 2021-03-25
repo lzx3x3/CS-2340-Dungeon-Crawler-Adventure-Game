@@ -19,7 +19,6 @@ public class Controller extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         gameModel = new GameModel();
-        player = new Player();
         mainWindow = primaryStage;
         initFirstScreen();
         // initInitialConfigScreen();
@@ -48,6 +47,7 @@ public class Controller extends Application {
      * Initializes InitialConfigScreen
      */
     public void initInitialConfigScreen() {
+        player = new Player();
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
         TextField nameInput = screen.getNameInput();
