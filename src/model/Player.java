@@ -266,4 +266,21 @@ public class Player {
             }
         }
     }
+
+    private void checkAttacked() {
+        List<IMonster> monsters = currRoom.getMonsterArray();
+        for (IMonster monster : monsters) {
+            if (monster instanceof Monster1) {
+                Monster1 m1 = (Monster1) monster;
+                if (Math.hypot((this.x - m1.getX()), (this.y - m1.getY())) < m1.getRadius())
+                    health -= m1.getDamage();
+                System.out.println("Player Health: " + health);
+            } else if (monster instanceof Monster2) {
+                Monster2 m2 = (Monster2) monster;
+                if (Math.hypot((this.x - m2.getX()), (this.y - m2.getY())) < m2.getRadius())
+                    health -= m2.getDamage();
+                System.out.println("Player Health: " + health);
+            }
+        }
+    }
 }

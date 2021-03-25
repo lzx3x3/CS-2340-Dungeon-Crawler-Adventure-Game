@@ -12,7 +12,7 @@ public class Monster1 implements IMonster {
     private int x;
     private int y;
     private int radius;
-    private int level;
+    private int damage;
     private Room currRoom;
     private Draw draw;
     private Maze maze;
@@ -20,19 +20,13 @@ public class Monster1 implements IMonster {
 
     public Monster1 () {
         this.health = 100;
-        this.level = 1;
+        this.damage = 30;
         this.weapon = "stick";
-        this.radius = 1;
+        this.radius = 2;
         this.x = 9;
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
-    }
-
-
-    @Override
-    public void AttackPlayer() {
-
     }
 
     @Override
@@ -64,9 +58,9 @@ public class Monster1 implements IMonster {
 
     public void setDead(boolean isDead) { dead = isDead; }
 
-    public int getLevel() { return level; }
+    public int getDamage() { return damage; }
 
-    public void setLevel(int level) { this.level = level; }
+    public void setDamage(int damage) { this.damage = damage; }
 
     public int getX() { return x; }
 
