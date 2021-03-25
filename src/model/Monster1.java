@@ -1,9 +1,16 @@
 package model;
 
 import controller.Draw;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class Monster1 implements IMonster {
     private int health;
@@ -39,7 +46,16 @@ public class Monster1 implements IMonster {
         }
         iv.setX(x * 32 + 50);
         iv.setY(y * 32 + 50);
-        root.getChildren().add(iv);
+
+        Text monHealth = new Text();
+        monHealth.textProperty().bind(new SimpleStringProperty(("health: ")).concat(
+                new SimpleIntegerProperty(health)));
+        monHealth.setX((x + 1) * 32);
+        monHealth.setY((y + 1) * 32);
+        monHealth.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        monHealth.setFill(Color.BLACK);
+
+        root.getChildren().addAll(iv, monHealth);
         return root;
     }
 

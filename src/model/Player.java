@@ -26,6 +26,7 @@ public class Player {
     private Draw draw;
     private int damage = 20;
     private int range = 1;
+    private boolean attacked = false;
 
     public Player() {
         health = 100;
@@ -141,8 +142,18 @@ public class Player {
         iV.setImage(new Image("file:resources/player.png"));
         iV.setX(x * 32 + 50);
         iV.setY(y * 32 + 50);
-        root.getChildren().add(iV);
 
+        ImageView iV2 = new ImageView();
+        if (attacked) {
+            iV2.setImage(new Image("file:resources/deduct.png"));
+            iV2.setX((x + 1.8) * 32);
+            iV2.setY((y + 1.2) * 32);
+            iV2.setFitHeight(15);
+            iV2.setFitWidth(15);
+            attacked = false;
+        }
+
+        root.getChildren().addAll(iV, iV2);
         return root;
     }
 
@@ -152,14 +163,16 @@ public class Player {
         iV.setRotate(90);
         iV.setX(x * 32 + 50);
         iV.setY(y * 32 + 50);
+
+
         root.getChildren().add(iV);
 
         return root;
     }
 
     private void checkCollision(int x, int y) {
+        checkAttacked();
         Tile[][] array = currRoom.getTileArray();
-
         if (array[x][y].getType() == "Door") {
             boolean clearRoom = true;
             /*for (Monster monster : monsterlist) {
@@ -232,12 +245,9 @@ public class Player {
         return health;
     }
 
-    public void decreHealth(int loss) {
-        this.health = health - loss;
-    }
-
-    public void increHealth(int gain) {
-        this.health = health + gain;
+    // diff can be positive or negative
+    public void setHealth(int diff) {
+        this.health = health + diff;
     }
 
     public void attack() {
@@ -272,14 +282,16 @@ public class Player {
         for (IMonster monster : monsters) {
             if (monster instanceof Monster1) {
                 Monster1 m1 = (Monster1) monster;
-                if (Math.hypot((this.x - m1.getX()), (this.y - m1.getY())) < m1.getRadius())
+                if (Math.hypot((this.x - m1.getX()), (this.y - m1.getY())) < m1.getRadius()) {
                     health -= m1.getDamage();
-                System.out.println("Player Health: " + health);
+                    attacked = true;
+                }
             } else if (monster instanceof Monster2) {
                 Monster2 m2 = (Monster2) monster;
-                if (Math.hypot((this.x - m2.getX()), (this.y - m2.getY())) < m2.getRadius())
+                if (Math.hypot((this.x - m2.getX()), (this.y - m2.getY())) < m2.getRadius()) {
                     health -= m2.getDamage();
-                System.out.println("Player Health: " + health);
+                    attacked = true;
+                }
             }
         }
     }

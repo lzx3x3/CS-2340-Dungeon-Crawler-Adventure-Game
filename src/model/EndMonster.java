@@ -1,9 +1,16 @@
 package model;
 
 import controller.Draw;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class EndMonster implements IMonster {
     private int health;
@@ -12,7 +19,7 @@ public class EndMonster implements IMonster {
     private int x;
     private int y;
     private int radius;
-    private int level;
+    private int damage;
     private Room currRoom;
     private Draw draw;
     private Maze maze;
@@ -20,18 +27,13 @@ public class EndMonster implements IMonster {
 
     public EndMonster () {
         this.health = 150;
-        this.level = 1;
         this.weapon = "magic";
         this.radius = 3;
+        this.damage = 30;
         this.x = 9;
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
-    }
-
-    @Override
-    public void AttackPlayer() {
-
     }
 
     @Override
@@ -44,7 +46,16 @@ public class EndMonster implements IMonster {
         }
         iv.setX(x * 32 + 50);
         iv.setY(y * 32 + 50);
-        root.getChildren().add(iv);
+
+        Text monHealth = new Text();
+        monHealth.textProperty().bind(new SimpleStringProperty(("health: ")).concat(
+                new SimpleIntegerProperty(health)));
+        monHealth.setX((x + 1) * 32);
+        monHealth.setY((y + 1) * 32);
+        monHealth.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        monHealth.setFill(Color.BLACK);
+
+        root.getChildren().addAll(iv, monHealth);
         return root;
     }
 
@@ -63,9 +74,9 @@ public class EndMonster implements IMonster {
 
     public void setDead(boolean isDead) { dead = isDead; }
 
-    public int getLevel() { return level; }
+    public int getDamage() { return damage; }
 
-    public void setLevel(int level) { this.level = level; }
+    public void setDamage(int damage) { this.damage = damage; }
 
     public int getX() { return x; }
 
