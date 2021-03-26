@@ -4,6 +4,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
+
 public class Motion {
 
     private Player player;
@@ -46,7 +48,14 @@ public class Motion {
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
-                controller.initEndScreen();
+                List<IMonster> currMonsters = player.getCurrRoom().getMonsterArray();
+                boolean allDead = true;
+                for (IMonster monster : currMonsters) {
+                    if(!monster.isDead())
+                        allDead = false;
+                }
+                if(allDead)
+                    controller.initEndScreen();
             }
             if(player.getHealth() <= 0) {
                 controller.initLoseScreen();

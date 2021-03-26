@@ -265,7 +265,7 @@ public class Player {
                 System.out.println("Monster Health: " + m1.getHealth());
             } else if (monster instanceof Monster2) {
                 Monster2 m2 =(Monster2) monster;
-                if (m2.getDead()) {
+                if (!m2.getDead()) {
                     if (Math.abs(m2.getX() - this.x) <= range) {
                         m2.setHealth(m2.getHealth() - damage);
                     } else if (Math.abs(m2.getY() - this.y) <= range) {
@@ -273,6 +273,16 @@ public class Player {
                     }
                 }
                 System.out.println(m2.getHealth());
+            } else if (monster instanceof EndMonster) {
+                EndMonster m3 =(EndMonster) monster;
+                if (!m3.getDead()) {
+                    if (Math.abs(m3.getX() - this.x) <= range) {
+                        m3.setHealth(m3.getHealth() - damage);
+                    } else if (Math.abs(m3.getY() - this.y) <= range) {
+                        m3.setHealth(m3.getHealth() - 1);
+                    }
+                }
+                System.out.println(m3.getHealth());
             }
         }
     }
@@ -293,6 +303,12 @@ public class Player {
                     Monster2 m2 = (Monster2) monster;
                     if (Math.hypot((this.x - m2.getX()), (this.y - m2.getY())) < m2.getRadius()) {
                         health -= m2.getDamage();
+                        attacked = true;
+                    }
+                } else if (monster instanceof EndMonster) {
+                    EndMonster m3 = (EndMonster) monster;
+                    if (Math.hypot((this.x - m3.getX()), (this.y - m3.getY())) < m3.getRadius()) {
+                        health -= m3.getDamage();
                         attacked = true;
                     }
                 }

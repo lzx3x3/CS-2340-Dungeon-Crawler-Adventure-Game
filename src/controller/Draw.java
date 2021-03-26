@@ -81,9 +81,10 @@ public class Draw {
         Room room = player.getCurrRoom();
         root = room.drawRoom(root, player); //draws either a start, wooden, or end room
         if (player.getHealth() > 0) {
-            if (player.getCurrRoom() instanceof ExitRoom) {
-                EndMonster monster  = new EndMonster();
-            }
+//            if (player.getCurrRoom() instanceof ExitRoom) {
+//                EndMonster monster  = new EndMonster();
+//            }
+
 //            if (!(player.getCurrRoom() instanceof StartRoom)) {
 //                if (monsters != null) {
 //                    for (IMonster monster : monsters) {
@@ -92,11 +93,11 @@ public class Draw {
 //                }
 //            }
 
-                if (monsters != null) {
-                    for (IMonster monster : monsters) {
-                        root = monster.drawMonster(root);
-                    }
+            if (monsters != null) {
+                for (IMonster monster : monsters) {
+                    root = monster.drawMonster(root);
                 }
+            }
 
             root = player.drawPlayer(root);
             Text currentRoom = new Text("Current Room:" +
