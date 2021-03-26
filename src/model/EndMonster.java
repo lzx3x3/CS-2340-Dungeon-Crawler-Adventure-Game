@@ -59,6 +59,11 @@ public class EndMonster implements IMonster {
         return root;
     }
 
+    @Override
+    public boolean isDead() {
+        return this.dead;
+    }
+
     public int getHealth() {
         return health;
     }

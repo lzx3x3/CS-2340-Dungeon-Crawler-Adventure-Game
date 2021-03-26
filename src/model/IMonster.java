@@ -4,4 +4,5 @@ import javafx.scene.layout.Pane;
 
 public interface IMonster {
     Pane drawMonster(Pane root);
+    boolean isDead();
 }

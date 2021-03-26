@@ -175,11 +175,11 @@ public class Player {
         Tile[][] array = currRoom.getTileArray();
         if (array[x][y].getType() == "Door") {
             boolean clearRoom = true;
-            /*for (Monster monster : monsterlist) {
+            for (IMonster monster : currRoom.getMonsterArray()) {
                 if (!monster.isDead()) {
                     clearRoom = false;
                 }
-            } */
+            }
             handleRoomChange(clearRoom);
         }
     }
