@@ -1,8 +1,5 @@
 package controller;
-import model.ExitRoom;
-import model.Monster1;
-import model.Monster2;
-import model.Player;
+import model.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
@@ -53,6 +50,7 @@ public class Motion {
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.F) {
                 player.attack();
+                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
                 controller.initEndScreen();

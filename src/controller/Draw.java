@@ -84,13 +84,20 @@ public class Draw {
             if (player.getCurrRoom() instanceof ExitRoom) {
                 EndMonster monster  = new EndMonster();
             }
-            if (!(player.getCurrRoom() instanceof StartRoom)) {
+//            if (!(player.getCurrRoom() instanceof StartRoom)) {
+//                if (monsters != null) {
+//                    for (IMonster monster : monsters) {
+//                        root = monster.drawMonster(root);
+//                    }
+//                }
+//            }
+
                 if (monsters != null) {
                     for (IMonster monster : monsters) {
                         root = monster.drawMonster(root);
                     }
                 }
-            }
+
             root = player.drawPlayer(root);
             Text currentRoom = new Text("Current Room:" +
                     Integer.toString(player.getMaze().getX()) +
