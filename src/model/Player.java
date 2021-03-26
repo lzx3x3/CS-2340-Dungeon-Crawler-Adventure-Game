@@ -94,29 +94,125 @@ public class Player {
 
     public void increaseX() {
         if (x < 14) {
-            x++;
-            checkCollision(x, y);
+            boolean monsterNear = false;
+            for (IMonster monster : currRoom.getMonsterArray()) {
+                if (monster instanceof Monster1) {
+                    Monster1 monster1 = (Monster1) monster;
+                    if (monster1.getX() == x + 1 && monster1.getY() == y) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof Monster2) {
+                    Monster2 monster2 = (Monster2) monster;
+                    if (monster2.getX() == x + 1 && monster2.getY() == y) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof EndMonster) {
+                    EndMonster endMonster = (EndMonster) monster;
+                    if (endMonster.getX() == x + 1 && endMonster.getY() == y) {
+                        monsterNear = true;
+                        break;
+                    }
+                }
+            }
+            if (!monsterNear) {
+                x++;
+                checkCollision(x, y);
+            }
         }
     }
 
     public void increaseY() {
         if (y < 14) {
-            y++;
-            checkCollision(x, y);
+            boolean monsterNear = false;
+            for (IMonster monster : currRoom.getMonsterArray()) {
+                if (monster instanceof Monster1) {
+                    Monster1 m1 = (Monster1) monster;
+                    if (m1.getY() == y + 1 && m1.getX() == x) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof Monster2) {
+                    Monster2 m2 = (Monster2) monster;
+                    if (m2.getY() == y + 1 && m2.getX() == x) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof  EndMonster) {
+                    EndMonster endMonster = (EndMonster) monster;
+                    if (endMonster.getY() == y + 1 && endMonster.getX() == x) {
+                        monsterNear = true;
+                        break;
+                    }
+                }
+            }
+            if (!monsterNear) {
+                y++;
+                checkCollision(x, y);
+            }
         }
     }
 
     public void decreaseX() {
         if (x > 0) {
-            x--;
-            checkCollision(x, y);
+            boolean monsterNear = false;
+            for (IMonster monster : currRoom.getMonsterArray()) {
+                if (monster instanceof Monster1) {
+                    Monster1 monster1 = (Monster1) monster;
+                    if (monster1.getX() == x - 1 && monster1.getY() == y) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof Monster2) {
+                    Monster2 monster2 = (Monster2) monster;
+                    if (monster2.getX() == x - 1 && monster2.getY() == y) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof EndMonster) {
+                    EndMonster endMonster = (EndMonster) monster;
+                    if (endMonster.getX() == x - 1 && endMonster.getY() == y) {
+                        monsterNear = true;
+                        break;
+                    }
+                }
+            }
+            if (!monsterNear) {
+                x--;
+                checkCollision(x, y);
+            }
         }
     }
 
     public void decreaseY() {
         if (y > 0) {
-            y--;
-            checkCollision(x, y);
+            boolean monsterNear = false;
+            for (IMonster monster : currRoom.getMonsterArray()) {
+                if (monster instanceof Monster1) {
+                    Monster1 m1 = (Monster1) monster;
+                    if (m1.getY() == y - 1 && m1.getX() == x) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof Monster2) {
+                    Monster2 m2 = (Monster2) monster;
+                    if (m2.getY() == y - 1 && m2.getX() == x) {
+                        monsterNear = true;
+                        break;
+                    }
+                } else if (monster instanceof  EndMonster) {
+                    EndMonster endMonster = (EndMonster) monster;
+                    if (endMonster.getY() == y - 1 && endMonster.getX() == x) {
+                        monsterNear = true;
+                        break;
+                    }
+                }
+            }
+            if (!monsterNear) {
+                y--;
+                checkCollision(x, y);
+            }
         }
     }
 
