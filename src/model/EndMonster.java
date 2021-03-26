@@ -12,6 +12,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EndMonster implements IMonster {
     private int health;
     private boolean dead;
@@ -23,7 +26,7 @@ public class EndMonster implements IMonster {
     private Room currRoom;
     private Draw draw;
     private Maze maze;
-
+    private List<IMonster> monsterArray;
 
     public EndMonster () {
         this.health = 150;
@@ -34,6 +37,7 @@ public class EndMonster implements IMonster {
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
+        monsterArray = new ArrayList<IMonster>();
     }
 
     @Override

@@ -27,7 +27,6 @@ public class StartRoom extends Room {
         leftDoor = new Button("Left Door");
         topDoor = new Button("Top Door");
         monsterArray = new ArrayList<IMonster>();
-        //monsterArray.add(new Monster1());
     }
     @Override
     public void createTileArray() {
