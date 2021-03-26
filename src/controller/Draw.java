@@ -95,7 +95,8 @@ public class Draw {
 
             if (monsters != null) {
                 for (IMonster monster : monsters) {
-                    root = monster.drawMonster(root);
+                    if(!player.checkIfVisited(room))
+                        root = monster.drawMonster(root);
                 }
             }
 

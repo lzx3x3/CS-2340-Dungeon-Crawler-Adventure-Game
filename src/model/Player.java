@@ -184,12 +184,13 @@ public class Player {
         }
     }
 
-    private boolean checkIfVisited(Room room) {
+    public boolean checkIfVisited(Room room) {
         return visitedRooms.contains(room);
     }
 
     private void handleRoomChange(Boolean clear) {
         if (x == 14 && y == 7) {
+            addToVisitedRooms(currRoom);
             //right
             if (currRoom.getRightDoor() != null) {
                 currMaze.updateRoom("RIGHT");
@@ -202,6 +203,7 @@ public class Player {
                 }
             }
         } else if (x == 7 && y == 0) {
+            addToVisitedRooms(currRoom);
             //top
             if (currRoom.getTopDoor() != null) {
                 currMaze.updateRoom("UP");
@@ -214,6 +216,7 @@ public class Player {
                 }
             }
         } else if (x == 0 && y == 7) {
+            addToVisitedRooms(currRoom);
             //left
             if (currRoom.getLeftDoor() != null) {
                 currMaze.updateRoom("LEFT");
@@ -226,6 +229,7 @@ public class Player {
                 }
             }
         } else if (x == 7 && y == 14) {
+            addToVisitedRooms(currRoom);
             //bottom
             if (currRoom.getBottomDoor() != null) {
                 currMaze.updateRoom("DOWN");
@@ -238,7 +242,7 @@ public class Player {
                 }
             }
         }
-        addToVisitedRooms(currRoom);
+//        addToVisitedRooms(currRoom);
     }
 
     public int getHealth() {
