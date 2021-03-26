@@ -95,8 +95,12 @@ public class Draw {
 
             if (monsters != null) {
                 for (IMonster monster : monsters) {
-                    if(!player.checkIfVisited(room))
+                    if(player.checkIfVisited(room) && monster.isDead()) {
+                        root = draw(player, controller);
+                    }
+                    else {
                         root = monster.drawMonster(root);
+                    }
                 }
             }
 
