@@ -188,7 +188,7 @@ public class Player {
         return visitedRooms.contains(room);
     }
 
-    private boolean checkMonstersDead() {
+    public boolean checkMonstersDead() {
         for(IMonster m:currRoom.getMonsterArray()) {
             if(!m.isDead())
                 return false;

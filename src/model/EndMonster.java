@@ -26,7 +26,6 @@ public class EndMonster implements IMonster {
     private Room currRoom;
     private Draw draw;
     private Maze maze;
-    private List<IMonster> monsterArray;
 
     public EndMonster () {
         this.health = 150;
@@ -37,7 +36,6 @@ public class EndMonster implements IMonster {
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
-        monsterArray = new ArrayList<IMonster>();
     }
 
     @Override
