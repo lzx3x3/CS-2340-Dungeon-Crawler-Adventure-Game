@@ -44,17 +44,14 @@ public class Motion {
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.F) {
-                player.attack();
+                if(!player.checkMonstersDead()) {
+                    player.attack();
+                    if(player.checkMonstersDead())
+                        player.setHealth(10);   // player's health increases 10 after defeating a monster
+                }
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
-//                List<IMonster> currMonsters = player.getCurrRoom().getMonsterArray();
-//                boolean allDead = true;
-//                for (IMonster monster : currMonsters) {
-//                    if(!monster.isDead())
-//                        allDead = false;
-//                }
-//                if(allDead)
                 if(player.checkMonstersDead())
                     controller.initEndScreen();
             }
