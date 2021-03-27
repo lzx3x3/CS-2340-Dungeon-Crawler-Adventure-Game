@@ -119,6 +119,7 @@ public class WoodenRoom extends Room {
         level.setFill(Color.BLUE);
 
         Text health = new Text();
+        health.setId("healthValue");
         health.textProperty().bind(new SimpleStringProperty(("Current health: ")).concat(
                 new SimpleIntegerProperty(player.getHealth()).asString()));
         health.setX(600);

@@ -48,6 +48,7 @@ public class Monster1 implements IMonster {
         iv.setY(y * 32 + 50);
 
         Text monHealth = new Text();
+        monHealth.setId("monHealth");
         monHealth.textProperty().bind(new SimpleStringProperty(("health: ")).concat(
                 new SimpleIntegerProperty(health)));
         monHealth.setX((x + 1) * 32);
