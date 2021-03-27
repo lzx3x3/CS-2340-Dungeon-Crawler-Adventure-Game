@@ -44,9 +44,9 @@ public class EndMonster implements IMonster {
     public Pane drawMonster(Pane root) {
         ImageView iv = new ImageView();
         if (!dead) {
-            iv.setImage(new Image("file:resources/Monster2Standing.png"));
+            iv.setImage(new Image("file:resources/EndMonster.png"));
         } else {
-            iv.setImage(new Image("file:resources/Monster2Dead.png"));
+            iv.setImage(new Image("file:resources/EndMonsterDead.png"));
         }
         iv.setX(x * 32 + 50);
         iv.setY(y * 32 + 50);
