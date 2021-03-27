@@ -48,13 +48,14 @@ public class Motion {
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
-                List<IMonster> currMonsters = player.getCurrRoom().getMonsterArray();
-                boolean allDead = true;
-                for (IMonster monster : currMonsters) {
-                    if(!monster.isDead())
-                        allDead = false;
-                }
-                if(allDead)
+//                List<IMonster> currMonsters = player.getCurrRoom().getMonsterArray();
+//                boolean allDead = true;
+//                for (IMonster monster : currMonsters) {
+//                    if(!monster.isDead())
+//                        allDead = false;
+//                }
+//                if(allDead)
+                if(player.checkMonstersDead())
                     controller.initEndScreen();
             }
             if(player.getHealth() <= 0) {
