@@ -188,9 +188,18 @@ public class Player {
         return visitedRooms.contains(room);
     }
 
+    private boolean checkMonstersDead() {
+        for(IMonster m:currRoom.getMonsterArray()) {
+            if(!m.isDead())
+                return false;
+        }
+        return true;
+    }
+
     private void handleRoomChange(Boolean clear) {
         if (x == 14 && y == 7) {
-            addToVisitedRooms(currRoom);
+            if(checkMonstersDead())
+                addToVisitedRooms(currRoom);
             //right
             if (currRoom.getRightDoor() != null) {
                 currMaze.updateRoom("RIGHT");
@@ -203,7 +212,8 @@ public class Player {
                 }
             }
         } else if (x == 7 && y == 0) {
-            addToVisitedRooms(currRoom);
+            if(checkMonstersDead())
+                addToVisitedRooms(currRoom);
             //top
             if (currRoom.getTopDoor() != null) {
                 currMaze.updateRoom("UP");
@@ -216,7 +226,8 @@ public class Player {
                 }
             }
         } else if (x == 0 && y == 7) {
-            addToVisitedRooms(currRoom);
+            if(checkMonstersDead())
+                addToVisitedRooms(currRoom);
             //left
             if (currRoom.getLeftDoor() != null) {
                 currMaze.updateRoom("LEFT");
@@ -229,7 +240,8 @@ public class Player {
                 }
             }
         } else if (x == 7 && y == 14) {
-            addToVisitedRooms(currRoom);
+            if(checkMonstersDead())
+                addToVisitedRooms(currRoom);
             //bottom
             if (currRoom.getBottomDoor() != null) {
                 currMaze.updateRoom("DOWN");
