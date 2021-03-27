@@ -174,13 +174,7 @@ public class Player {
         checkAttacked();
         Tile[][] array = currRoom.getTileArray();
         if (array[x][y].getType() == "Door") {
-            boolean clearRoom = true;
-            for (IMonster monster : currRoom.getMonsterArray()) {
-                if (!monster.isDead()) {
-                    clearRoom = false;
-                }
-            }
-            handleRoomChange(clearRoom);
+            handleRoomChange(checkMonstersDead());
         }
     }
 

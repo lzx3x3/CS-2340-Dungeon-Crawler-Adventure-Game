@@ -26,7 +26,7 @@ public class MotionTest extends ApplicationTest {
         clickOn(".wpn1Button");
         clickOn("Start");
         type(KeyCode.D, 8);
-        verifyThat("Current level:21", NodeMatchers.isNotNull());
+        verifyThat("Current Room:21", NodeMatchers.isNotNull());
     }
     @Test
     public void testBottomRoom() {
@@ -37,7 +37,7 @@ public class MotionTest extends ApplicationTest {
         clickOn(".wpn1Button");
         clickOn("Start");
         type(KeyCode.S, 8);
-        verifyThat("Current level:12", NodeMatchers.isNotNull());
+        verifyThat("Current Room:12", NodeMatchers.isNotNull());
     }
 
     //edited by Kayla
@@ -75,5 +75,31 @@ public class MotionTest extends ApplicationTest {
         verifyThat("STARTOVER", NodeMatchers.isNotNull());
     }
 
+    @Test
+    public void testRetreatToUnvisited() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.D, 7);
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 7);
+        verifyThat("Current Room:21", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testRetreatToVisited() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.D, 8);
+        type(KeyCode.A, 3);
+        verifyThat("Current Room:11", NodeMatchers.isNotNull());
+    }
 }
 
