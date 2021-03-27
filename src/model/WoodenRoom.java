@@ -41,14 +41,14 @@ public class WoodenRoom extends Room {
         bottomDoor = new Button("Bottom Door");
         rightDoor = new Button("Right Door");
         topDoor = new Button("Top Door");
-//        allMonsters = new ArrayList<>();
-//        allMonsters.add(new Monster1());
-//        allMonsters.add(new Monster2());
-//        rand = new Random();
-//        int randint = rand.nextInt(2);
+        allMonsters = new ArrayList<>();
+        allMonsters.add(new Monster1());
+        allMonsters.add(new Monster2());
+        rand = new Random();
+        int randint = rand.nextInt(2);
         monsters = new ArrayList<>();
-//        monsters.add(allMonsters.get(randint));
-        monsters.add(new Monster1());
+        monsters.add(allMonsters.get(randint));
+        //monsters.add(new Monster1());
     }
 
     @Override
