@@ -4,7 +4,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
 
-import java.util.List;
 
 public class Motion {
 
@@ -29,33 +28,40 @@ public class Motion {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();
-                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),controller));
+                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
+                         controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.A) {
                 player.decreaseX();
-                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
+                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
+                        controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.S) {
                 player.increaseY();
-                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
+                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
+                        controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.D) {
                 player.increaseX();
-                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
+                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
+                        controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.F) {
-                if(!player.checkMonstersDead()) {
+                if (!player.checkMonstersDead()) {
                     player.attack();
-                    if(player.checkMonstersDead())
-                        player.setHealth(10);   // player's health increases 10 after defeating a monster
+                    if (player.checkMonstersDead()) {
+                        player.setHealth(10); //player's health increases 10 after defeating monster
+                    }
                 }
-                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(), controller));
+                scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
+                        controller));
             }
             if (player.getCurrRoom() instanceof ExitRoom) {
-                if(player.checkMonstersDead())
+                if (player.checkMonstersDead()) {
                     controller.initEndScreen();
+                }
             }
-            if(player.getHealth() <= 0) {
+            if (player.getHealth() <= 0) {
                 controller.initLoseScreen();
             }
         });

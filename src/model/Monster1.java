@@ -25,7 +25,7 @@ public class Monster1 implements IMonster {
     private Maze maze;
 
 
-    public Monster1 () {
+    public Monster1() {
         this.health = 100;
         this.damage = 10;
         this.weapon = "stick";
@@ -76,32 +76,60 @@ public class Monster1 implements IMonster {
         health = newHealth;
     }
 
-    public boolean getDead() { return dead; }
+    public boolean getDead() {
+        return dead;
+    }
 
-    public void setDead(boolean isDead) { dead = isDead; }
+    public void setDead(boolean isDead) {
+        dead = isDead;
+    }
 
-    public int getDamage() { return damage; }
+    public int getDamage() {
+        return damage;
+    }
 
-    public void setDamage(int damage) { this.damage = damage; }
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
-    public int getX() { return x; }
+    public int getX() {
+        return x;
+    }
 
-    public int getY() { return y; }
+    public int getY() {
+        return y;
+    }
 
-    public void setX(int x) { this.x = x; }
+    public void setX(int x) {
+        this.x = x;
+    }
 
-    public void setY(int y) { this.y = y; }
+    public void setY(int y) {
+        this.y = y;
+    }
 
-    public int getRadius() { return radius; }
+    public int getRadius() {
+        return radius;
+    }
 
-    public void setRadius(int newRadius) { radius = newRadius; }
+    public void setRadius(int newRadius) {
+        radius = newRadius;
+    }
 
-    public String getWeapon() { return weapon; }
+    public String getWeapon() {
+        return weapon;
+    }
 
-    public Room getCurrRoom() { return currRoom; }
+    public Room getCurrRoom() {
+        return currRoom;
+    }
 
-    public Maze getMaze() { return maze; }
+    public Maze getMaze() {
+        return maze;
+    }
 
-    public void setMaze(Maze newMaze) { maze = newMaze; }
+    public void setMaze(Maze newMaze) {
+        maze = newMaze;
+    }
 
 }

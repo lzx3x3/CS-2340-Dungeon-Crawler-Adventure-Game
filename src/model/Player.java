@@ -4,9 +4,6 @@ import controller.Draw;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
 
@@ -183,17 +180,19 @@ public class Player {
     }
 
     public boolean checkMonstersDead() {
-        for(IMonster m:currRoom.getMonsterArray()) {
-            if(!m.isDead())
+        for (IMonster m:currRoom.getMonsterArray()) {
+            if (!m.isDead()) {
                 return false;
+            }
         }
         return true;
     }
 
     private void handleRoomChange(Boolean clear) {
         if (x == 14 && y == 7) {
-            if(checkMonstersDead())
+            if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
+            }
             //right
             if (currRoom.getRightDoor() != null) {
                 currMaze.updateRoom("RIGHT");
@@ -206,8 +205,9 @@ public class Player {
                 }
             }
         } else if (x == 7 && y == 0) {
-            if(checkMonstersDead())
+            if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
+            }
             //top
             if (currRoom.getTopDoor() != null) {
                 currMaze.updateRoom("UP");
@@ -220,8 +220,9 @@ public class Player {
                 }
             }
         } else if (x == 0 && y == 7) {
-            if(checkMonstersDead())
+            if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
+            }
             //left
             if (currRoom.getLeftDoor() != null) {
                 currMaze.updateRoom("LEFT");
@@ -234,8 +235,9 @@ public class Player {
                 }
             }
         } else if (x == 7 && y == 14) {
-            if(checkMonstersDead())
+            if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
+            }
             //bottom
             if (currRoom.getBottomDoor() != null) {
                 currMaze.updateRoom("DOWN");
@@ -248,7 +250,7 @@ public class Player {
                 }
             }
         }
-//        addToVisitedRooms(currRoom);
+        //addToVisitedRooms(currRoom);
     }
 
     public int getHealth() {
@@ -274,7 +276,7 @@ public class Player {
                 }
                 System.out.println("Monster Health: " + m1.getHealth());
             } else if (monster instanceof Monster2) {
-                Monster2 m2 =(Monster2) monster;
+                Monster2 m2 = (Monster2) monster;
                 if (!m2.getDead()) {
                     if (Math.abs(m2.getX() - this.x) <= range) {
                         m2.setHealth(m2.getHealth() - damage);
@@ -284,7 +286,7 @@ public class Player {
                 }
                 System.out.println(m2.getHealth());
             } else if (monster instanceof EndMonster) {
-                EndMonster m3 =(EndMonster) monster;
+                EndMonster m3 = (EndMonster) monster;
                 if (!m3.getDead()) {
                     if (Math.abs(m3.getX() - this.x) <= range) {
                         m3.setHealth(m3.getHealth() - damage);
@@ -300,9 +302,9 @@ public class Player {
     private void checkAttacked() {
         List<IMonster> monsters = currRoom.getMonsterArray();
         for (IMonster monster : monsters) {
-            if(monster.isDead())
+            if (monster.isDead()) {
                 attacked = false;
-            else {
+            } else {
                 if (monster instanceof Monster1) {
                     Monster1 m1 = (Monster1) monster;
                     if (Math.hypot((this.x - m1.getX()), (this.y - m1.getY())) < m1.getRadius()) {

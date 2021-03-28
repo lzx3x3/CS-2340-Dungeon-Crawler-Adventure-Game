@@ -135,7 +135,8 @@ public class WoodenRoom extends Room {
         leftDoor.setLayoutY(150);
         bottomDoor.setLayoutY(200);
         bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, health, topDoor, rightDoor, bottomDoor, leftDoor);
+        root.getChildren().addAll(money, diff, level, health,
+                topDoor, rightDoor, bottomDoor, leftDoor);
 
         return root;
     }

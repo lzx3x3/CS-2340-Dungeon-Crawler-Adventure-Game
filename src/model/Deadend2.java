@@ -119,7 +119,7 @@ public class Deadend2 extends Room {
 
         leftDoor.setLayoutY(150);
         leftDoor.setLayoutX(600);
-        root.getChildren().addAll(money, diff, level,health, leftDoor);
+        root.getChildren().addAll(money, diff, level, health, leftDoor);
 
         return root;
     }

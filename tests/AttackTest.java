@@ -5,13 +5,7 @@ import model.Player;
 import org.junit.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.matcher.base.NodeMatchers;
-import org.testfx.matcher.control.LabeledMatchers;
 import org.testfx.matcher.control.TextMatchers;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import static org.testfx.api.FxAssert.verifyThat;
 
 public class AttackTest extends ApplicationTest {
     @Override
@@ -66,4 +60,5 @@ public class AttackTest extends ApplicationTest {
         type(KeyCode.F, 1);
         FxAssert.verifyThat("#monHealth", TextMatchers.hasText("health: 80"));
     }
+
 }

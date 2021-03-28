@@ -114,7 +114,8 @@ public class StartRoom extends Room {
         topDoor.setLayoutX(650);
         leftDoor.setLayoutX(600);
         leftDoor.setLayoutY(150);
-        root.getChildren().addAll(money, diff, level, health, rightDoor, bottomDoor, leftDoor, topDoor);
+        root.getChildren().addAll(money, diff, level, health,
+                rightDoor, bottomDoor, leftDoor, topDoor);
 
         return root;
     }

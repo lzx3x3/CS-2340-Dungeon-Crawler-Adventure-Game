@@ -101,5 +101,6 @@ public class MotionTest extends ApplicationTest {
         type(KeyCode.A, 3);
         verifyThat("Current Room:11", NodeMatchers.isNotNull());
     }
+
 }
 
