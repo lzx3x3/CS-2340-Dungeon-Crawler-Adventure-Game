@@ -365,40 +365,40 @@ public class Player {
             if (monster instanceof Monster1) {
                 Monster1 m1 = (Monster1) monster;
                 if (!m1.getDead()) {
-                    if (Math.abs(m1.getX() - this.x) <= range) {
+                    if (Math.abs(m1.getX() - this.x) <= range && m1.getY() == y) {
                         m1.setHealth(m1.getHealth() - damage);
-                    } else if (Math.abs(m1.getY() - this.y) <= range) {
-                        m1.setHealth(m1.getHealth() - 1);
+                    } else if (Math.abs(m1.getY() - this.y) <= range && m1.getX() == x) {
+                        m1.setHealth(m1.getHealth() - damage);
                     }
                 }
                 System.out.println("Monster Health: " + m1.getHealth());
             } else if (monster instanceof Monster2) {
                 Monster2 m2 = (Monster2) monster;
                 if (!m2.getDead()) {
-                    if (Math.abs(m2.getX() - this.x) <= range) {
+                    if (Math.abs(m2.getX() - this.x) <= range && m2.getY() == y) {
                         m2.setHealth(m2.getHealth() - damage);
                         Random r = new Random();
                         int attackBack = r.nextInt(2);
                         if (attackBack == 1) {
                             checkAttacked();
                         }
-                    } else if (Math.abs(m2.getY() - this.y) <= range) {
-                        m2.setHealth(m2.getHealth() - 1);
+                    } else if (Math.abs(m2.getY() - this.y) <= range && m2.getX() == x) {
+                        m2.setHealth(m2.getHealth() - damage);
                     }
                 }
                 System.out.println(m2.getHealth());
             } else if (monster instanceof EndMonster) {
                 EndMonster m3 = (EndMonster) monster;
                 if (!m3.getDead()) {
-                    if (Math.abs(m3.getX() - this.x) <= range) {
+                    if (Math.abs(m3.getX() - this.x) <= range && m3.getY() == y) {
                         m3.setHealth(m3.getHealth() - damage);
                         Random r = new Random();
                         int attackBack = r.nextInt(2);
                         if (attackBack == 1) {
                             checkAttacked();
                         }
-                    } else if (Math.abs(m3.getY() - this.y) <= range) {
-                        m3.setHealth(m3.getHealth() - 1);
+                    } else if (Math.abs(m3.getY() - this.y) <= range && m3.getX() == x) {
+                        m3.setHealth(m3.getHealth() - damage);
                     }
                 }
                 System.out.println(m3.getHealth());
