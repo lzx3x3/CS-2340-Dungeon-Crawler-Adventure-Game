@@ -11,12 +11,17 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ExitRoom extends Room {
+    private ArrayList<IMonster> monsters;
+
     public ExitRoom(int index, int height, int width) {
         super(index, height, width);
+        monsters = new ArrayList<>();
+        monsters.add(new EndMonster());
     }
 
     @Override
@@ -120,7 +125,7 @@ public class ExitRoom extends Room {
 
     @Override
     public List getMonsterArray() {
-        return null;
+        return monsters;
     }
 
 

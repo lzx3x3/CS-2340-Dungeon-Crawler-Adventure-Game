@@ -14,6 +14,7 @@ import view.Door;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class WoodenRoom extends Room {
     private ArrayList<Door> doors;
@@ -22,6 +23,8 @@ public class WoodenRoom extends Room {
     private Button topDoor;
     private Button bottomDoor;
     private ArrayList<IMonster> monsters;
+    private ArrayList<IMonster> allMonsters;
+    private Random rand;
 
     public WoodenRoom(int index, int height, int width) {
         super(index, height, width);
@@ -38,8 +41,14 @@ public class WoodenRoom extends Room {
         bottomDoor = new Button("Bottom Door");
         rightDoor = new Button("Right Door");
         topDoor = new Button("Top Door");
+        allMonsters = new ArrayList<>();
+        allMonsters.add(new Monster1());
+        allMonsters.add(new Monster2());
+        rand = new Random();
+        int randint = rand.nextInt(2);
         monsters = new ArrayList<>();
-        monsters.add(new Monster1());
+        monsters.add(allMonsters.get(randint));
+        //monsters.add(new Monster1());
     }
 
     @Override
@@ -108,6 +117,16 @@ public class WoodenRoom extends Room {
         level.setY(60);
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
+
+        Text health = new Text();
+        health.setId("healthValue");
+        health.textProperty().bind(new SimpleStringProperty(("Current health: ")).concat(
+                new SimpleIntegerProperty(player.getHealth()).asString()));
+        health.setX(600);
+        health.setY(80);
+        health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        health.setFill(Color.BLACK);
+
         rightDoor.setLayoutX(700);
         rightDoor.setLayoutY(150);
         topDoor.setLayoutY(100);
@@ -116,7 +135,8 @@ public class WoodenRoom extends Room {
         leftDoor.setLayoutY(150);
         bottomDoor.setLayoutY(200);
         bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, topDoor, rightDoor, bottomDoor, leftDoor);
+        root.getChildren().addAll(money, diff, level, health,
+                topDoor, rightDoor, bottomDoor, leftDoor);
 
         return root;
     }

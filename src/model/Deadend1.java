@@ -11,6 +11,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,9 +19,12 @@ import java.util.List;
  */
 public class Deadend1 extends Room {
     private Button bottomDoor;
+    private List<IMonster> monsterArray;
+
     public Deadend1(int index, int height, int width) {
         super(index, height, width);
         bottomDoor = new Button("Bottom Door");
+        monsterArray = new ArrayList<IMonster>();
     }
 
     @Override
@@ -124,6 +128,6 @@ public class Deadend1 extends Room {
 
     @Override
     public List getMonsterArray() {
-        return null;
+        return monsterArray;
     }
 }
