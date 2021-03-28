@@ -5,6 +5,7 @@ import model.Player;
 import org.junit.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit.ApplicationTest;
+import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.TextMatchers;
 
 public class AttackTest extends ApplicationTest {
@@ -61,4 +62,13 @@ public class AttackTest extends ApplicationTest {
         FxAssert.verifyThat("#monHealth", TextMatchers.hasText("health: 80"));
     }
 
+    // Edited by Jason
+    @Test
+    public void testMonsterKill() {
+        type(KeyCode.S, 7);
+        type(KeyCode.S, 6);
+        type(KeyCode.D, 2);
+        type(KeyCode.F, 6);
+        FxAssert.verifyThat("#monHealth", TextMatchers.hasText("health: 0"));
+    }
 }

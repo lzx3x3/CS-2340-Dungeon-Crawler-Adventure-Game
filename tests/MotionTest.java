@@ -102,5 +102,21 @@ public class MotionTest extends ApplicationTest {
         verifyThat("Current Room:11", NodeMatchers.isNotNull());
     }
 
+    // Edited by Jason
+    @Test
+    public void testAdvanceAfterMonsterKill() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.S, 14);
+        type(KeyCode.D, 2);
+        type(KeyCode.F, 5);
+        type(KeyCode.S, 7);
+        type(KeyCode.A, 1);
+        verifyThat("Current Room:13", NodeMatchers.isNotNull());
+    }
 }
 
