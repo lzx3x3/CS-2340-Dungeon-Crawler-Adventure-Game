@@ -69,9 +69,11 @@ public class EndMonster implements IMonster {
 
     public void setHealth(int newHealth) {
         if (newHealth <= 0) {
+            health = 0;
             dead = true;
+        } else {
+            health = newHealth;
         }
-        health = newHealth;
     }
 
     public boolean getDead() {

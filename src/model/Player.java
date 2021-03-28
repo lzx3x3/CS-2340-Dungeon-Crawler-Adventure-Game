@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import java.util.List;
 import java.util.HashSet;
+import java.util.Random;
 
 
 public class Player {
@@ -376,6 +377,11 @@ public class Player {
                 if (!m2.getDead()) {
                     if (Math.abs(m2.getX() - this.x) <= range) {
                         m2.setHealth(m2.getHealth() - damage);
+                        Random r = new Random();
+                        int attackBack = r.nextInt(2);
+                        if (attackBack == 1) {
+                            checkAttacked();
+                        }
                     } else if (Math.abs(m2.getY() - this.y) <= range) {
                         m2.setHealth(m2.getHealth() - 1);
                     }
@@ -386,6 +392,11 @@ public class Player {
                 if (!m3.getDead()) {
                     if (Math.abs(m3.getX() - this.x) <= range) {
                         m3.setHealth(m3.getHealth() - damage);
+                        Random r = new Random();
+                        int attackBack = r.nextInt(2);
+                        if (attackBack == 1) {
+                            checkAttacked();
+                        }
                     } else if (Math.abs(m3.getY() - this.y) <= range) {
                         m3.setHealth(m3.getHealth() - 1);
                     }
