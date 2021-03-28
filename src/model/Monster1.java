@@ -27,7 +27,7 @@ public class Monster1 implements IMonster {
 
     public Monster1() {
         this.health = 100;
-        this.damage = 10;
+        this.damage = 5;
         this.weapon = "stick";
         this.radius = 2;
         this.x = 9;
