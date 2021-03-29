@@ -7,10 +7,7 @@ import javafx.stage.Stage;
 import model.GameModel;
 import model.Maze;
 import model.Player;
-import view.InitialConfigScreen;
-import view.InitialGame;
-import view.WelcomeScreen;
-import view.WinScreen;
+import view.*;
 
 public class Controller extends Application {
     private GameModel gameModel;
@@ -22,7 +19,6 @@ public class Controller extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         gameModel = new GameModel();
-        player = new Player();
         mainWindow = primaryStage;
         initFirstScreen();
         // initInitialConfigScreen();
@@ -51,7 +47,8 @@ public class Controller extends Application {
     /**
      * Initializes InitialConfigScreen
      */
-    private void initInitialConfigScreen() {
+    public void initInitialConfigScreen() {
+        player = new Player();
         InitialConfigScreen screen = new InitialConfigScreen(width, height);
         Button startButton = screen.getStartButton();
         TextField nameInput = screen.getNameInput();
@@ -131,7 +128,7 @@ public class Controller extends Application {
     }
 
     /**
-     * Initializes end(win) screen
+     * Initializes end(win/lose) screen
      */
     public void initEndScreen() {
         WinScreen screen = new WinScreen(width, height);
@@ -144,7 +141,23 @@ public class Controller extends Application {
             mainWindow.close();
         });
         Scene scene = screen.getScene();
-        mainWindow.setTitle("End Screen");
+        mainWindow.setTitle("Win Screen");
+        mainWindow.setScene(scene);
+        mainWindow.show();
+    }
+
+    public void initLoseScreen() {
+        LoseScreen screen = new LoseScreen(width, height);
+        Button startOver = screen.getStartOver();
+        startOver.setOnAction(e -> {
+            initInitialConfigScreen();
+        });
+        Button exit = screen.getExit();
+        exit.setOnAction(e -> {
+            mainWindow.close();
+        });
+        Scene scene = screen.getScene();
+        mainWindow.setTitle("Lose Screen");
         mainWindow.setScene(scene);
         mainWindow.show();
     }

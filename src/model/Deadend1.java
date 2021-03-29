@@ -11,14 +11,20 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Top deadend room of the maze
  */
 public class Deadend1 extends Room {
     private Button bottomDoor;
+    private List<IMonster> monsterArray;
+
     public Deadend1(int index, int height, int width) {
         super(index, height, width);
         bottomDoor = new Button("Bottom Door");
+        monsterArray = new ArrayList<IMonster>();
     }
 
     @Override
@@ -105,10 +111,23 @@ public class Deadend1 extends Room {
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
+        Text health = new Text();
+        health.textProperty().bind(new SimpleStringProperty(("Current Health: ")).concat(
+                new SimpleIntegerProperty(player.getHealth()).asString()));
+        health.setX(600);
+        health.setY(80);
+        health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        health.setFill(Color.BLACK);
+
         bottomDoor.setLayoutY(200);
         bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, bottomDoor);
+        root.getChildren().addAll(money, diff, level, health, bottomDoor);
 
         return root;
+    }
+
+    @Override
+    public List getMonsterArray() {
+        return monsterArray;
     }
 }

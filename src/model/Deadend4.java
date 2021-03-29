@@ -11,12 +11,18 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Deadend4 extends Room {
 
     private Button rightDoor;
+    private List<IMonster> monsterArray;
+
     public Deadend4(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
+        monsterArray = new ArrayList<IMonster>();
     }
 
     @Override
@@ -103,10 +109,23 @@ public class Deadend4 extends Room {
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
+        Text health = new Text();
+        health.textProperty().bind(new SimpleStringProperty(("Current Health: ")).concat(
+                new SimpleIntegerProperty(player.getHealth()).asString()));
+        health.setX(600);
+        health.setY(80);
+        health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        health.setFill(Color.BLACK);
+
         rightDoor.setLayoutY(150);
         rightDoor.setLayoutX(700);
-        root.getChildren().addAll(money, diff, level, rightDoor);
+        root.getChildren().addAll(money, diff, level, health, rightDoor);
 
         return root;
+    }
+
+    @Override
+    public List getMonsterArray() {
+        return monsterArray;
     }
 }

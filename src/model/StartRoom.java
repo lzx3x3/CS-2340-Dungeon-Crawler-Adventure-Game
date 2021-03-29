@@ -11,15 +11,22 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StartRoom extends Room {
     private Button leftDoor;
     private Button bottomDoor;
     private Button topDoor;
     private Button rightDoor;
+    private List<IMonster> monsterArray;
     public StartRoom(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
         bottomDoor = new Button("Bottom Door");
+        leftDoor = new Button("Left Door");
+        topDoor = new Button("Top Door");
+        monsterArray = new ArrayList<IMonster>();
     }
     @Override
     public void createTileArray() {
@@ -88,18 +95,35 @@ public class StartRoom extends Room {
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
+        Text health = new Text();
+        health.textProperty().bind(new SimpleStringProperty(("Current Health: ")).concat(
+                new SimpleIntegerProperty(player.getHealth()).asString()));
+        health.setX(600);
+        health.setY(80);
+        health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        health.setFill(Color.BLACK);
+
 
         rightDoor.setLayoutX(700);
         rightDoor.setLayoutY(150);
         bottomDoor.setLayoutY(200);
         bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, rightDoor, bottomDoor);
+        topDoor.setLayoutY(100);
+        topDoor.setLayoutX(650);
+        leftDoor.setLayoutX(600);
+        leftDoor.setLayoutY(150);
+        root.getChildren().addAll(money, diff, level, health,
+                rightDoor, bottomDoor, leftDoor, topDoor);
 
         return root;
     }
     @Override
+    public List<IMonster> getMonsterArray() {
+        return monsterArray;
+    }
+    @Override
     public Button getLeftDoor() {
-        return null;
+        return leftDoor;
     }
     @Override
     public Button getBottomDoor() {
@@ -113,6 +137,6 @@ public class StartRoom extends Room {
 
     @Override
     public Button getTopDoor() {
-        return null;
+        return topDoor;
     }
 }

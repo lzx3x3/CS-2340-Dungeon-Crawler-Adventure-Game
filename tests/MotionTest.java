@@ -26,7 +26,7 @@ public class MotionTest extends ApplicationTest {
         clickOn(".wpn1Button");
         clickOn("Start");
         type(KeyCode.D, 8);
-        verifyThat("Current level:21", NodeMatchers.isNotNull());
+        verifyThat("Current Room:21", NodeMatchers.isNotNull());
     }
     @Test
     public void testBottomRoom() {
@@ -37,10 +37,10 @@ public class MotionTest extends ApplicationTest {
         clickOn(".wpn1Button");
         clickOn("Start");
         type(KeyCode.S, 8);
-        verifyThat("Current level:12", NodeMatchers.isNotNull());
+        verifyThat("Current Room:12", NodeMatchers.isNotNull());
     }
 
-    // edited by Kayla
+    //edited by Kayla
     @Test
     public void testExitRoom() {
         clickOn("Start");
@@ -75,33 +75,48 @@ public class MotionTest extends ApplicationTest {
         verifyThat("STARTOVER", NodeMatchers.isNotNull());
     }
 
-    // edited by Jason
     @Test
-    public void testBottom() {
+    public void testRetreatToUnvisited() {
         clickOn("Start");
         write("test");
         clickOn("Select your difficulty");
         clickOn("Medium");
         clickOn(".wpn1Button");
         clickOn("Start");
-        for (int i = 0; i < 5; i++) {
-            clickOn("Bottom Door");
-        }
-        verifyThat("Current level:16", NodeMatchers.isNotNull());
+        type(KeyCode.D, 7);
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 7);
+        verifyThat("Current Room:21", NodeMatchers.isNotNull());
     }
 
     @Test
-    public void testWallCollision() {
+    public void testRetreatToVisited() {
         clickOn("Start");
         write("test");
         clickOn("Select your difficulty");
         clickOn("Medium");
         clickOn(".wpn1Button");
         clickOn("Start");
-        type(KeyCode.W, 1);
         type(KeyCode.D, 8);
-        type(KeyCode.S, 1);
-        verifyThat("Current level:21", NodeMatchers.isNotNull());
+        type(KeyCode.A, 3);
+        verifyThat("Current Room:11", NodeMatchers.isNotNull());
+    }
+
+    // Edited by Jason
+    @Test
+    public void testAdvanceAfterMonsterKill() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.S, 14);
+        type(KeyCode.D, 2);
+        type(KeyCode.F, 5);
+        type(KeyCode.S, 7);
+        type(KeyCode.A, 1);
+        verifyThat("Current Room:13", NodeMatchers.isNotNull());
     }
 }
 

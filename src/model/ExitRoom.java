@@ -11,10 +11,17 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ExitRoom extends Room {
+    private ArrayList<IMonster> monsters;
+
     public ExitRoom(int index, int height, int width) {
         super(index, height, width);
+        monsters = new ArrayList<>();
+        monsters.add(new EndMonster());
     }
 
     @Override
@@ -103,9 +110,22 @@ public class ExitRoom extends Room {
         level.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         level.setFill(Color.BLUE);
 
-        root.getChildren().addAll(money, diff, level);
+        Text health = new Text();
+        health.textProperty().bind(new SimpleStringProperty(("Current Health: ")).concat(
+                new SimpleIntegerProperty(player.getHealth()).asString()));
+        health.setX(600);
+        health.setY(80);
+        health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        health.setFill(Color.BLACK);
+
+        root.getChildren().addAll(money, diff, level, health);
 
         return root;
+    }
+
+    @Override
+    public List getMonsterArray() {
+        return monsters;
     }
 
 

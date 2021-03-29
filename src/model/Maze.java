@@ -30,7 +30,7 @@ public class Maze {
 
     public void createMaze() {
         // Initialize start room
-        maze[1][1] = new WoodenRoom(1, 15, 15);
+        maze[1][1] = new StartRoom(1, 15, 15);
         // Initialize random exit
         Random r = new Random();
         int position = r.nextInt(4 - 2 + 1) + 2;
