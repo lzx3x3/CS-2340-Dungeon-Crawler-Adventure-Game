@@ -97,7 +97,7 @@ public class Player {
             for (IMonster monster : currRoom.getMonsterArray()) {
                 if (monster instanceof Monster1) {
                     Monster1 monster1 = (Monster1) monster;
-                    if (!monster1.isDead() &&monster1.getX() == x + 1 && monster1.getY() == y) {
+                    if (!monster1.isDead() && monster1.getX() == x + 1 && monster1.getY() == y) {
                         monsterNear = true;
                         break;
                     }
@@ -109,7 +109,8 @@ public class Player {
                     }
                 } else if (monster instanceof EndMonster) {
                     EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getX() == x + 1 && endMonster.getY() == y) {
+                    if (!endMonster.isDead() && endMonster.getX() == x + 1
+                            && endMonster.getY() == y) {
                         monsterNear = true;
                         break;
                     }
@@ -140,7 +141,8 @@ public class Player {
                     }
                 } else if (monster instanceof  EndMonster) {
                     EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getY() == y + 1 && endMonster.getX() == x) {
+                    if (!endMonster.isDead() && endMonster.getY() == y + 1
+                            && endMonster.getX() == x) {
                         monsterNear = true;
                         break;
                     }
@@ -171,7 +173,8 @@ public class Player {
                     }
                 } else if (monster instanceof EndMonster) {
                     EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getX() == x - 1 && endMonster.getY() == y) {
+                    if (!endMonster.isDead() && endMonster.getX() == x - 1
+                            && endMonster.getY() == y) {
                         monsterNear = true;
                         break;
                     }
@@ -202,7 +205,8 @@ public class Player {
                     }
                 } else if (monster instanceof  EndMonster) {
                     EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getY() == y - 1 && endMonster.getX() == x) {
+                    if (!endMonster.isDead() && endMonster.getY() == y - 1
+                            && endMonster.getX() == x) {
                         monsterNear = true;
                         break;
                     }

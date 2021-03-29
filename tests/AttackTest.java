@@ -5,7 +5,6 @@ import model.Player;
 import org.junit.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.TextMatchers;
 
 public class AttackTest extends ApplicationTest {
