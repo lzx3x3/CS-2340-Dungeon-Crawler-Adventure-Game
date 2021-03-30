@@ -83,6 +83,14 @@ public class Player {
         y = newY;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int newDamage) {
+        damage = newDamage;
+    }
+
     public void addToVisitedRooms(Room room) {
         visitedRooms.add(room);
     }
