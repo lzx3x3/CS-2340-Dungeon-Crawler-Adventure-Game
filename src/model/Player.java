@@ -22,9 +22,10 @@ public class Player {
     private Maze currMaze;
     private HashSet<Room> visitedRooms;
     private Draw draw;
-    private int damage = 20;
-    private int range = 1;
-    private boolean attacked = false;
+    private int damage;
+    private boolean attacked;
+    private boolean attacking;
+    private Weapon weapon;
 
     public Player() {
         health = 250;
@@ -36,6 +37,9 @@ public class Player {
         y = 7;
         currRoom = null;
         visitedRooms = new HashSet<Room>();
+        damage = 20;
+        attacked = false;
+        attacking = false;
     }
 
     public void setName(String name) {
@@ -52,6 +56,16 @@ public class Player {
         }
         if (difficulty.equals("Hard")) {
             money = 10000;
+        }
+    }
+
+    public void setWeapon(String wpn) {
+        if (wpn == "Stick") {
+            this.weapon = new Stick();
+        } else if (wpn == "Sword") {
+
+        } else if (wpn == "Bow") {
+
         }
     }
 
@@ -81,6 +95,14 @@ public class Player {
 
     public void setY(int newY) {
         y = newY;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int newDamage) {
+        damage = newDamage;
     }
 
     public void addToVisitedRooms(Room room) {
@@ -251,7 +273,19 @@ public class Player {
             attacked = false;
         }
 
-        root.getChildren().addAll(iV, iV2);
+        ImageView iV3 = new ImageView();;
+        if (weapon != null) {
+            if (attacking) {
+                iV3 = weapon.drawAttack(x, y);
+//                System.out.println(attacking);
+                attacking = false;
+            } else {
+                iV3 = weapon.draw(x, y);
+            }
+        }
+
+        System.out.println(iV3);
+        root.getChildren().addAll(iV, iV2, iV3);
         return root;
     }
 
@@ -365,47 +399,63 @@ public class Player {
 
     public void attack() {
         List<IMonster> monsters = currRoom.getMonsterArray();
+        attacking = true;
+        Random r = new Random();
         for (IMonster monster : monsters) {
             if (monster instanceof Monster1) {
                 Monster1 m1 = (Monster1) monster;
                 if (!m1.getDead()) {
-                    if (Math.abs(m1.getX() - this.x) <= range && m1.getY() == y) {
-                        m1.setHealth(m1.getHealth() - damage);
-                    } else if (Math.abs(m1.getY() - this.y) <= range && m1.getX() == x) {
-                        m1.setHealth(m1.getHealth() - damage);
+                    if (Math.abs(m1.getX() - this.x) <= weapon.getRange() && m1.getY() == y) {
+                        m1.setHealth(m1.getHealth() - weapon.getDamage());
+                        int attackBack = r.nextInt(2);
+                        if (attackBack == 1) {
+                            checkAttacked();
+                        }
+                    } else if (Math.abs(m1.getY() - this.y) <= weapon.getRange()
+                            && m1.getX() == x) {
+                        m1.setHealth(m1.getHealth() - weapon.getDamage());
+                        int attackBack = r.nextInt(2);
+                        if (attackBack == 1) {
+                            checkAttacked();
+                        }
                     }
                 }
-                System.out.println("Monster Health: " + m1.getHealth());
             } else if (monster instanceof Monster2) {
                 Monster2 m2 = (Monster2) monster;
                 if (!m2.getDead()) {
-                    if (Math.abs(m2.getX() - this.x) <= range && m2.getY() == y) {
-                        m2.setHealth(m2.getHealth() - damage);
-                        Random r = new Random();
+                    if (Math.abs(m2.getX() - this.x) <= weapon.getRange() && m2.getY() == y) {
+                        m2.setHealth(m2.getHealth() - weapon.getDamage());
                         int attackBack = r.nextInt(2);
                         if (attackBack == 1) {
                             checkAttacked();
                         }
-                    } else if (Math.abs(m2.getY() - this.y) <= range && m2.getX() == x) {
-                        m2.setHealth(m2.getHealth() - damage);
+                    } else if (Math.abs(m2.getY() - this.y) <= weapon.getRange()
+                            && m2.getX() == x) {
+                        m2.setHealth(m2.getHealth() - weapon.getDamage());
+                        int attackBack = r.nextInt(2);
+                        if (attackBack == 1) {
+                            checkAttacked();
+                        }
                     }
                 }
-                System.out.println(m2.getHealth());
             } else if (monster instanceof EndMonster) {
                 EndMonster m3 = (EndMonster) monster;
                 if (!m3.getDead()) {
-                    if (Math.abs(m3.getX() - this.x) <= range && m3.getY() == y) {
-                        m3.setHealth(m3.getHealth() - damage);
-                        Random r = new Random();
+                    if (Math.abs(m3.getX() - this.x) <= weapon.getRange() && m3.getY() == y) {
+                        m3.setHealth(m3.getHealth() - weapon.getDamage());
                         int attackBack = r.nextInt(2);
                         if (attackBack == 1) {
                             checkAttacked();
                         }
-                    } else if (Math.abs(m3.getY() - this.y) <= range && m3.getX() == x) {
-                        m3.setHealth(m3.getHealth() - damage);
+                    } else if (Math.abs(m3.getY() - this.y) <= weapon.getRange()
+                            && m3.getX() == x) {
+                        m3.setHealth(m3.getHealth() - weapon.getDamage());
+                        int attackBack = r.nextInt(2);
+                        if (attackBack == 1) {
+                            checkAttacked();
+                        }
                     }
                 }
-                System.out.println(m3.getHealth());
             }
         }
     }
