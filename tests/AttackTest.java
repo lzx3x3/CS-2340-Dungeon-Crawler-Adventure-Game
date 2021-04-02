@@ -21,7 +21,7 @@ public class AttackTest extends ApplicationTest {
     public void testInitPlayerHealth() {
         type(KeyCode.S, 7);
         type(KeyCode.S, 6);
-        FxAssert.verifyThat("#healthValue", TextMatchers.hasText("Current health: 100"));
+        FxAssert.verifyThat("#healthValue", TextMatchers.hasText("Current health: 250"));
     }
 
     // Edited by Pei Yi

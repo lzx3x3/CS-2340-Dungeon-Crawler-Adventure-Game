@@ -27,7 +27,7 @@ public class Player {
     private boolean attacked = false;
 
     public Player() {
-        health = 100;
+        health = 250;
         money = 0;
         level = 1;
         name = "";
