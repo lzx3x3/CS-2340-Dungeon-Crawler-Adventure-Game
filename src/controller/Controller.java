@@ -77,6 +77,7 @@ public class Controller extends Application {
                     //initInitialGameScreen(nameInput, screen.getDiffSelect());
                     player.setName(nameInput.getText());
                     player.setDiff(screen.getDiffSelect().getValue());
+                    player.setWeapon(wpnSelect.getText());
                     initInitialGameScreen(player);
                 }
             } catch (Exception f) {
