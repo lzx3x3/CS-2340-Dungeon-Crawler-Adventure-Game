@@ -16,33 +16,11 @@ import java.util.List;
 
 public class Deadend2 extends Room {
 
-    private Button leftDoor;
     private List<IMonster> monsterArray;
 
     public Deadend2(int index, int height, int width) {
         super(index, height, width);
-        leftDoor = new Button("Left Door");
         monsterArray = new ArrayList<IMonster>();
-    }
-
-    @Override
-    public Button getRightDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getLeftDoor() {
-        return leftDoor;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getBottomDoor() {
-        return null;
     }
 
     @Override
@@ -117,9 +95,7 @@ public class Deadend2 extends Room {
         health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         health.setFill(Color.BLACK);
 
-        leftDoor.setLayoutY(150);
-        leftDoor.setLayoutX(600);
-        root.getChildren().addAll(money, diff, level, health, leftDoor);
+        root.getChildren().addAll(money, diff, level, health);
 
         return root;
     }

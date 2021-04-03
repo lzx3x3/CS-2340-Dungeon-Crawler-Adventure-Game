@@ -15,17 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StartRoom extends Room {
-    private Button leftDoor;
-    private Button bottomDoor;
-    private Button topDoor;
-    private Button rightDoor;
     private List<IMonster> monsterArray;
     public StartRoom(int index, int height, int width) {
         super(index, height, width);
-        rightDoor = new Button("Right Door");
-        bottomDoor = new Button("Bottom Door");
-        leftDoor = new Button("Left Door");
-        topDoor = new Button("Top Door");
         monsterArray = new ArrayList<IMonster>();
     }
     @Override
@@ -46,6 +38,11 @@ public class StartRoom extends Room {
     @Override
     public Tile[][] getTileArray() {
         return tileArray;
+    }
+
+    @Override
+    public List<IMonster> getMonsterArray() {
+        return monsterArray;
     }
 
     @Override
@@ -106,39 +103,8 @@ public class StartRoom extends Room {
         health.setFill(Color.BLACK);
 
 
-        rightDoor.setLayoutX(700);
-        rightDoor.setLayoutY(150);
-        bottomDoor.setLayoutY(200);
-        bottomDoor.setLayoutX(650);
-        topDoor.setLayoutY(100);
-        topDoor.setLayoutX(650);
-        leftDoor.setLayoutX(600);
-        leftDoor.setLayoutY(150);
-        root.getChildren().addAll(money, diff, level, health,
-                rightDoor, bottomDoor, leftDoor, topDoor);
+        root.getChildren().addAll(money, diff, level, health);
 
         return root;
-    }
-    @Override
-    public List<IMonster> getMonsterArray() {
-        return monsterArray;
-    }
-    @Override
-    public Button getLeftDoor() {
-        return leftDoor;
-    }
-    @Override
-    public Button getBottomDoor() {
-        return bottomDoor;
-    }
-
-    @Override
-    public Button getRightDoor() {
-        return rightDoor;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return topDoor;
     }
 }

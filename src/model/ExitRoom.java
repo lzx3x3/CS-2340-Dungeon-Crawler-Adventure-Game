@@ -25,26 +25,6 @@ public class ExitRoom extends Room {
     }
 
     @Override
-    public Button getRightDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getLeftDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getBottomDoor() {
-        return null;
-    }
-
-    @Override
     public void createTileArray() {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {

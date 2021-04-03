@@ -291,60 +291,53 @@ public class Player {
                 addToVisitedRooms(currRoom);
             }
             //right
-            if (currRoom.getRightDoor() != null) {
-                currMaze.updateRoom("RIGHT");
-                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
-                    currRoom = currMaze.getCurrentRoom();
-                    setX(0);
-                    setY(7);
-                } else {
-                    currMaze.updateRoom("LEFT");
-                }
+
+            currMaze.updateRoom("RIGHT");
+            if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
+                currRoom = currMaze.getCurrentRoom();
+                setX(0);
+                setY(7);
+            } else {
+                currMaze.updateRoom("LEFT");
             }
         } else if (x == 7 && y == 0) {
             if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
             }
             //top
-            if (currRoom.getTopDoor() != null) {
-                currMaze.updateRoom("UP");
-                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
-                    currRoom = currMaze.getCurrentRoom();
-                    setX(7);
-                    setY(14);
-                } else {
-                    currMaze.updateRoom("DOWN");
-                }
+            currMaze.updateRoom("UP");
+            if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
+                currRoom = currMaze.getCurrentRoom();
+                setX(7);
+                setY(14);
+            } else {
+                currMaze.updateRoom("DOWN");
             }
         } else if (x == 0 && y == 7) {
             if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
             }
             //left
-            if (currRoom.getLeftDoor() != null) {
-                currMaze.updateRoom("LEFT");
-                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
-                    currRoom = currMaze.getCurrentRoom();
-                    setX(14);
-                    setY(7);
-                } else {
-                    currMaze.updateRoom("RIGHT");
-                }
+            currMaze.updateRoom("LEFT");
+            if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
+                currRoom = currMaze.getCurrentRoom();
+                setX(14);
+                setY(7);
+            } else {
+                currMaze.updateRoom("RIGHT");
             }
         } else if (x == 7 && y == 14) {
             if (checkMonstersDead()) {
                 addToVisitedRooms(currRoom);
             }
             //bottom
-            if (currRoom.getBottomDoor() != null) {
-                currMaze.updateRoom("DOWN");
-                if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
-                    currRoom = currMaze.getCurrentRoom();
-                    setX(7);
-                    setY(0);
-                } else {
-                    currMaze.updateRoom("UP");
-                }
+            currMaze.updateRoom("DOWN");
+            if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
+                currRoom = currMaze.getCurrentRoom();
+                setX(7);
+                setY(0);
+            } else {
+                currMaze.updateRoom("UP");
             }
         }
         //addToVisitedRooms(currRoom);

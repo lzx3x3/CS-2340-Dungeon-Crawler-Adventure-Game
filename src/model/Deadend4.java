@@ -16,34 +16,13 @@ import java.util.List;
 
 public class Deadend4 extends Room {
 
-    private Button rightDoor;
     private List<IMonster> monsterArray;
 
     public Deadend4(int index, int height, int width) {
         super(index, height, width);
-        rightDoor = new Button("Right Door");
         monsterArray = new ArrayList<IMonster>();
     }
 
-    @Override
-    public Button getRightDoor() {
-        return rightDoor;
-    }
-
-    @Override
-    public Button getLeftDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getBottomDoor() {
-        return null;
-    }
 
     @Override
     public void createTileArray() {
@@ -117,9 +96,7 @@ public class Deadend4 extends Room {
         health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         health.setFill(Color.BLACK);
 
-        rightDoor.setLayoutY(150);
-        rightDoor.setLayoutX(700);
-        root.getChildren().addAll(money, diff, level, health, rightDoor);
+        root.getChildren().addAll(money, diff, level, health);
 
         return root;
     }
