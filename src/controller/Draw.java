@@ -105,23 +105,20 @@ public class Draw {
 
         // draw chest
         if(player.getCurrRoom() instanceof Deadend2) {
-            if( (player.getX() == 8 && player.getY() == 7) ||  (player.getX() == 7 && player.getY() == 6)
-            || (player.getX() == 6 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 8)) {
-                Deadend2 deadend2 = (Deadend2)player.getCurrRoom();
+            Deadend2 deadend2 = (Deadend2)player.getCurrRoom();
+            if( (player.getX() == 8 && player.getY() == 7) ) {
                 deadend2.getChest().setChestState(1);
             }
         }
         if(player.getCurrRoom() instanceof Deadend3) {
-            if( (player.getX() == 8 && player.getY() == 7) ||  (player.getX() == 7 && player.getY() == 6)
-                    || (player.getX() == 6 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 8)) {
-                Deadend3 deadend3 = (Deadend3)player.getCurrRoom();
+            Deadend3 deadend3 = (Deadend3)player.getCurrRoom();
+            if( (player.getX() == 8 && player.getY() == 7)) {
                 deadend3.getChest().setChestState(1);
             }
         }
         if(player.getCurrRoom() instanceof Deadend4) {
-            if( (player.getX() == 8 && player.getY() == 7) ||  (player.getX() == 7 && player.getY() == 6)
-                    || (player.getX() == 6 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 8)) {
-                Deadend4 deadend4 = (Deadend4)player.getCurrRoom();
+            Deadend4 deadend4 = (Deadend4)player.getCurrRoom();
+            if( (player.getX() == 8 && player.getY() == 7)) {
                 deadend4.getChest().setChestState(1);
             }
         }

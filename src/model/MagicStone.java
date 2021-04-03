@@ -48,8 +48,8 @@ public class MagicStone implements IItems {
     public ImageView draw(int x, int y) {
         ImageView V = new ImageView();
         V.setImage(image);
-        V.setX((x + 2) * 32);
-        V.setY((y + 1.2) * 32);
+        V.setX((x + 1.8) * 32);
+        V.setY((y + 1.4) * 32);
         V.setFitHeight(30);
         V.setFitWidth(40);
         return V;
