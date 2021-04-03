@@ -64,6 +64,7 @@ public class Deadend1 extends Room {
 
     @Override
     public Pane drawRoom(Pane root, Player player) {
+
         createTileArray();
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {

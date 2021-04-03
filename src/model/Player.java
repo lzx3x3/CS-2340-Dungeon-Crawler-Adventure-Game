@@ -46,6 +46,14 @@ public class Player {
         this.name = name;
     }
 
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
     // Edit by Siying: money varies based on difficulty
     public void setMoney(String difficulty) {
         if (difficulty.equals("Easy")) {

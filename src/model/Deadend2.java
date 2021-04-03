@@ -18,11 +18,17 @@ public class Deadend2 extends Room {
 
     private Button leftDoor;
     private List<IMonster> monsterArray;
+    private Chest chest;
 
     public Deadend2(int index, int height, int width) {
         super(index, height, width);
         leftDoor = new Button("Left Door");
         monsterArray = new ArrayList<IMonster>();
+        chest = new Chest();
+    }
+
+    public Chest getChest() {
+        return this.chest;
     }
 
     @Override
@@ -76,6 +82,9 @@ public class Deadend2 extends Room {
                 root.getChildren().add(iV);
             }
         }
+
+        // add chest
+        root = chest.drawChest(root);
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();

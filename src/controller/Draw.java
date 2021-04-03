@@ -2,10 +2,7 @@ package controller;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import model.EndMonster;
-import model.IMonster;
-import model.Player;
-import model.Room;
+import model.*;
 
 import java.util.List;
 
@@ -64,7 +61,7 @@ public class Draw {
         return root;
     }
 
-    //DRAW both the player and the monster
+    //DRAW both the player and the monster and the chest
     public Pane drawSprites(Player player, List<IMonster> monsters, Controller controller) {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
@@ -105,6 +102,30 @@ public class Draw {
         } else {
             root = player.drawDeadPlayer(root);
         }
+
+        // draw chest
+        if(player.getCurrRoom() instanceof Deadend2) {
+            if( (player.getX() == 8 && player.getY() == 7) ||  (player.getX() == 7 && player.getY() == 6)
+            || (player.getX() == 6 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 8)) {
+                Deadend2 deadend2 = (Deadend2)player.getCurrRoom();
+                deadend2.getChest().setChestState(1);
+            }
+        }
+        if(player.getCurrRoom() instanceof Deadend3) {
+            if( (player.getX() == 8 && player.getY() == 7) ||  (player.getX() == 7 && player.getY() == 6)
+                    || (player.getX() == 6 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 8)) {
+                Deadend3 deadend3 = (Deadend3)player.getCurrRoom();
+                deadend3.getChest().setChestState(1);
+            }
+        }
+        if(player.getCurrRoom() instanceof Deadend4) {
+            if( (player.getX() == 8 && player.getY() == 7) ||  (player.getX() == 7 && player.getY() == 6)
+                    || (player.getX() == 6 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 8)) {
+                Deadend4 deadend4 = (Deadend4)player.getCurrRoom();
+                deadend4.getChest().setChestState(1);
+            }
+        }
+
         return root;
 
     }
