@@ -19,12 +19,14 @@ public class Deadend4 extends Room {
     private Button rightDoor;
     private List<IMonster> monsterArray;
     private Chest chest;
+    private Shop shop;
 
     public Deadend4(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
         monsterArray = new ArrayList<IMonster>();
         chest = new Chest();
+        shop = new Shop();
     }
 
     public Chest getChest() {
@@ -84,7 +86,8 @@ public class Deadend4 extends Room {
         }
 
         // add chest
-        root = chest.drawChest(root);
+        //root = chest.drawChest(root);
+        root = shop.drawShop(root);
 
 
         //        for (Door one : doors) {

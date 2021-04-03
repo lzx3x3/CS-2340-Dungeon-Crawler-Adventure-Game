@@ -405,6 +405,10 @@ public class Player {
         this.health = health + diff;
     }
 
+    public void setAttacked(boolean attacked) {
+        this.attacked = attacked;
+    }
+
     public void attack() {
         List<IMonster> monsters = currRoom.getMonsterArray();
         attacking = true;

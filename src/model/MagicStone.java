@@ -41,6 +41,7 @@ public class MagicStone implements IItems {
         }
         else {  //while use stone, there is 30% chance that decrease the player's health by 30%
             player.setHealth(-player.getHealth()*3/10);
+            player.setAttacked(true);
         }
     }
 
@@ -50,8 +51,8 @@ public class MagicStone implements IItems {
         V.setImage(image);
         V.setX((x + 1.8) * 32);
         V.setY((y + 1.4) * 32);
-        V.setFitHeight(30);
-        V.setFitWidth(40);
+        V.setFitHeight(25);
+        V.setFitWidth(30);
         return V;
     }
 

@@ -9,7 +9,7 @@ public class HealthPotion implements IItems {
 
     public HealthPotion() {
         this.healthAdded = 20;
-        this.image = new Image("file:resources/AttackPotion.png");
+        this.image = new Image("file:resources/HealthPotion.png");
     }
 
 //    @Override
