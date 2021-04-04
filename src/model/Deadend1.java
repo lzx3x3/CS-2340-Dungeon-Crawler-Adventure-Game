@@ -1,7 +1,10 @@
 package model;
 
+import controller.Draw;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -20,11 +23,17 @@ import java.util.List;
 public class Deadend1 extends Room {
     private Button bottomDoor;
     private List<IMonster> monsterArray;
+    private Chest chest;
 
     public Deadend1(int index, int height, int width) {
         super(index, height, width);
         bottomDoor = new Button("Bottom Door");
         monsterArray = new ArrayList<IMonster>();
+        chest = new Chest();
+    }
+
+    public Chest getChest() {
+        return this.chest;
     }
 
     @Override
@@ -79,6 +88,9 @@ public class Deadend1 extends Room {
                 root.getChildren().add(iV);
             }
         }
+
+        // add chest
+        //chest.drawChest(root);
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();

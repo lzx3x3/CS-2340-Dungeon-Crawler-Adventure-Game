@@ -1,5 +1,8 @@
 package controller;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import model.*;
@@ -22,44 +25,32 @@ public class Draw {
             root.getChildren().add(currentRoom);
         } else {
             root = player.drawDeadPlayer(root);
-            //ImageView image = new ImageView();
-            //image.setImage(new Image("file:resources/player.png"));
-            //Button restart = new Button("Try Again!", image);
-            //restart.setOnAction(e -> {
-            //    controller.initInitialConfigScreen();
-            //});
-            //restart.setLayoutX(250);
-            //restart.setLayoutY(250);
-
-            //Alert deadAlert = new Alert(Alert.AlertType.WARNING);
-            //deadAlert.setContentText("You died! Please click button 'Try Again'");
-            //deadAlert.show();
-            //root.getChildren().add(restart);
         }
         return root;
     }
 
 
-    public Pane drawEndMonster(Player player, Controller controller, EndMonster endMonster) {
-        Pane root = new Pane();
-        Room room = player.getCurrRoom();
-        root = room.drawRoom(root, player);
+//    public Pane drawEndMonster(Player player, Controller controller, EndMonster endMonster) {
+//        Pane root = new Pane();
+//        Room room = player.getCurrRoom();
+//        root = room.drawRoom(root, player);
+//
+//        endMonster.drawMonster(root);
+//
+//        if (player.getHealth() > 0) {
+//            root = player.drawPlayer(root);
+//            Text currentRoom = new Text("Current Room:"
+//                    + Integer.toString(player.getMaze().getX())
+//                    + Integer.toString(player.getMaze().getY()));
+//            currentRoom.setX(650);
+//            currentRoom.setY(400);
+//            root.getChildren().add(currentRoom);
+//        } else {
+//            root = player.drawDeadPlayer(root);
+//        }
+//        return root;
+//    }
 
-        endMonster.drawMonster(root);
-
-        if (player.getHealth() > 0) {
-            root = player.drawPlayer(root);
-            Text currentRoom = new Text("Current Room:"
-                    + Integer.toString(player.getMaze().getX())
-                    + Integer.toString(player.getMaze().getY()));
-            currentRoom.setX(650);
-            currentRoom.setY(400);
-            root.getChildren().add(currentRoom);
-        } else {
-            root = player.drawDeadPlayer(root);
-        }
-        return root;
-    }
 
     //DRAW both the player and the monster and the chest
     public Pane drawSprites(Player player, List<IMonster> monsters, Controller controller) {
@@ -103,7 +94,14 @@ public class Draw {
             root = player.drawDeadPlayer(root);
         }
 
-        // open chest when player get closed
+        // open chest when player inside deadends
+//        if(player.getCurrRoom() instanceof Deadend1) {
+//            Deadend1 deadend1 = (Deadend1)player.getCurrRoom();
+//            MagicStone stone = new MagicStone();
+//            if((player.getX() == 8 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 7) ) {
+//                deadend1.getChest().setChestState(1);
+//            }
+//        }
         if(player.getCurrRoom() instanceof Deadend2) {
             Deadend2 deadend2 = (Deadend2)player.getCurrRoom();
             if( (player.getX() == 8 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 7) ) {
@@ -116,12 +114,6 @@ public class Draw {
                 deadend3.getChest().setChestState(1);
             }
         }
-//        if(player.getCurrRoom() instanceof Deadend4) {
-//            Deadend4 deadend4 = (Deadend4)player.getCurrRoom();
-//            if( (player.getX() == 8 && player.getY() == 7)) {
-//                deadend4.getChest().setChestState(1);
-//            }
-//        }
 
         return root;
 

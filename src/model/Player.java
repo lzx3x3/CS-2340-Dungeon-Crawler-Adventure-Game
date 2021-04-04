@@ -67,6 +67,14 @@ public class Player {
         }
     }
 
+    public int getMoney() {
+        return this.money;
+    }
+
+    public void changeMoney(int cost) {
+        this.money = money - cost;
+    }
+
     public void setWeapon(String wpn) {
         if (wpn == "Stick") {
             this.weapon = new Stick();
@@ -77,16 +85,8 @@ public class Player {
         }
     }
 
-    public int getMoney() {
-        return this.money;
-    }
-
     public int getLevel() {
         return this.level;
-    }
-
-    public String getName() {
-        return this.name;
     }
 
     public void setDiff(String diff) {

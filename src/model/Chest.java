@@ -15,14 +15,15 @@ public class Chest {
         stone = new MagicStone();
     }
 
+    public MagicStone getMagicStone() {
+        return this.stone;
+    }
+
     public Pane drawChest(Pane root) {
         // change the state of chest
-
         if(this.state == 1) {
             if(stone.isClick()) {
-                //System.out.println("Change chest state to empty!");
                 this.state = 2;
-                //drawChest(root);
             }
             this.image = new Image("file:resources/chest_opened.png");
             stone.drawMagicStone(root);
@@ -44,5 +45,9 @@ public class Chest {
 
     public void setChestState(int s) {
         this.state = s;
+    }
+
+    public int getChestState() {
+        return this.state;
     }
 }

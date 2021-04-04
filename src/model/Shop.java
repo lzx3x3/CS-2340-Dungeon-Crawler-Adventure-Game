@@ -1,11 +1,18 @@
 package model;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +29,23 @@ public class Shop {
         itemsList.add(new Stick());
     }
 
-    public Pane drawShop(Pane root) {
+    public boolean checkMoney(Player player, int cost) {
+        if(player.getMoney() - cost >= 0) {
+            player.changeMoney(cost);
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("You couldn't afford this item! Please cancel this transaction.");
+            a.show();
+            return false;
+        }
+        return true;
+    }
+
+    public Pane drawShop(Pane root, Player player) {
+
         for (IItems item:itemsList) {
             if (item instanceof MagicStone) {
+
                 ImageView image = item.draw(6,8);
                 root.getChildren().add(image);
 
@@ -41,8 +62,10 @@ public class Shop {
                         ButtonType button = result.orElse(ButtonType.CANCEL);
 
                         if (button == ButtonType.OK) {
-                            System.out.println("You get a Magic Stone!");
-
+                            if (checkMoney(player, 10000)) {
+                                //player.getCurrRoom().drawRoom(root, player);
+                                System.out.println("You get a Magic Stone!");
+                            }
                         } else {
                             System.out.println("Transaction canceled");
                         }
@@ -66,8 +89,10 @@ public class Shop {
                         ButtonType button = result.orElse(ButtonType.CANCEL);
 
                         if (button == ButtonType.OK) {
-                            System.out.println("You get a HealthPotion!");
-
+                            if (checkMoney(player, 2000)) {
+                                System.out.println("You get a HealthPotion!");
+                                //player.getCurrRoom().drawRoom(root, player);
+                            }
                         } else {
                             System.out.println("Transaction canceled");
                         }
@@ -91,7 +116,10 @@ public class Shop {
                         ButtonType button = result.orElse(ButtonType.CANCEL);
 
                         if (button == ButtonType.OK) {
-                            System.out.println("You get an AttackPotion!");
+                            if (checkMoney(player, 2000)) {
+                                System.out.println("You get an AttackPotion!");
+                                //player.getCurrRoom().drawRoom(root, player);
+                            }
 
                         } else {
                             System.out.println("Transaction canceled");
@@ -116,7 +144,10 @@ public class Shop {
                         ButtonType button = result.orElse(ButtonType.CANCEL);
 
                         if (button == ButtonType.OK) {
-                            System.out.println("You get a Stick!");
+                            if (checkMoney(player, 5000)) {
+                                System.out.println("You get a Stick!");
+                                //player.getCurrRoom().drawRoom(root, player);
+                            }
 
                         } else {
                             System.out.println("Transaction canceled");
@@ -127,4 +158,5 @@ public class Shop {
         }
         return root;
     }
+
 }

@@ -14,6 +14,7 @@ import java.util.Random;
 public class MagicStone implements IItems {
     private Image image;
     private boolean click;
+    private ImageView imageView;
 
     public MagicStone() {
         this.image = new Image("file:resources/MagicStone.png");
@@ -47,13 +48,17 @@ public class MagicStone implements IItems {
 
     @Override
     public ImageView draw(int x, int y) {
-        ImageView V = new ImageView();
-        V.setImage(image);
-        V.setX((x + 1.8) * 32);
-        V.setY((y + 1.4) * 32);
-        V.setFitHeight(25);
-        V.setFitWidth(30);
-        return V;
+        imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setX((x + 1.8) * 32);
+        imageView.setY((y + 1.4) * 32);
+        imageView.setFitHeight(25);
+        imageView.setFitWidth(30);
+        return imageView;
+    }
+
+    public ImageView getImageView() {
+        return this.imageView;
     }
 
     public Pane drawMagicStone(Pane root) {
@@ -63,8 +68,11 @@ public class MagicStone implements IItems {
         V.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
-                System.out.println("Congrat! You collect the Magic Stone!");
-                click = true;
+                if(!click) {
+                    System.out.println("Congrat! You collect the Magic Stone!");
+                    click = true;
+                    root.getChildren().remove(V);   // remove magicStone when click!
+                }
             }
         });
 
@@ -75,5 +83,9 @@ public class MagicStone implements IItems {
 
     public boolean isClick() {
         return this.click;
+    }
+
+    public void setClick(boolean click) {
+        this.click = click;
     }
 }

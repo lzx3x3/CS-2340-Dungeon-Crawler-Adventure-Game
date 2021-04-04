@@ -87,8 +87,7 @@ public class Deadend4 extends Room {
 
         // add chest
         //root = chest.drawChest(root);
-        root = shop.drawShop(root);
-
+        //shop.drawShop(root, player);
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
