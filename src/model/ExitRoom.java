@@ -17,10 +17,12 @@ import java.util.List;
 
 public class ExitRoom extends Room {
     private ArrayList<IMonster> monsters;
+    private List<IItems> itemArray;
 
     public ExitRoom(int index, int height, int width) {
         super(index, height, width);
         monsters = new ArrayList<>();
+        itemArray = new ArrayList<IItems>();
         monsters.add(new EndMonster());
     }
 
@@ -126,6 +128,15 @@ public class ExitRoom extends Room {
     @Override
     public List getMonsterArray() {
         return monsters;
+    }
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 
 

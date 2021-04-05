@@ -18,12 +18,14 @@ public class Deadend3 extends Room {
 
     private Button topDoor;
     private List<IMonster> monsterArray;
+    private List<IItems> itemArray;
     private Chest chest;
 
     public Deadend3(int index, int height, int width) {
         super(index, height, width);
         topDoor = new Button("Top Door");
         monsterArray = new ArrayList<IMonster>();
+        itemArray = new ArrayList<IItems>();
         chest = new Chest();
     }
 
@@ -136,5 +138,15 @@ public class Deadend3 extends Room {
     @Override
     public List getMonsterArray() {
         return monsterArray;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }

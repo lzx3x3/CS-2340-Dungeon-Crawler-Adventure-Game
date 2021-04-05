@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Draw {
@@ -79,6 +80,14 @@ public class Draw {
                         root = draw(player, controller);
                     } else  {
                         root = monster.drawMonster(root);
+                    }
+                }
+            }
+            List<IItems> items = player.getCurrRoom().getItemArray();
+            if (items != null) {
+                for (IItems item : items) {
+                    if (player.checkMonstersDead()) {
+                        root.getChildren().add(item.draw(9, 7));
                     }
                 }
             }

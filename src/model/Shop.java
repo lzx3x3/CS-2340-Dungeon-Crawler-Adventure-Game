@@ -43,7 +43,7 @@ public class Shop {
 
     public Pane drawShop(Pane root, Player player) {
 
-        for (IItems item:itemsList) {
+        /*for (IItems item:itemsList) {
             if (item instanceof MagicStone) {
 
                 ImageView image = item.draw(6,8);
@@ -155,8 +155,10 @@ public class Shop {
                     }
                 });
             }
-        }
+        }*/
         return root;
+
+
     }
 
 }

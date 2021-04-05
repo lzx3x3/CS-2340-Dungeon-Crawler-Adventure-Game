@@ -41,9 +41,9 @@ public class Monster1 implements IMonster {
         ImageView iv = new ImageView();
         if (!dead) {
             iv.setImage(new Image("file:resources/MinotaurMonsterStanding.png"));
-        } else {
-            iv.setImage(new Image("file:resources/MinotaurMonsterDead.png"));
-        }
+        } //else {
+           // iv.setImage(new Image("file:resources/MinotaurMonsterDead.png"));
+        //}
         iv.setX(x * 32 + 50);
         iv.setY(y * 32 + 50);
 

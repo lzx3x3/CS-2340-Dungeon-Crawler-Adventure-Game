@@ -25,7 +25,7 @@ public class HealthPotion implements IItems {
         ImageView iV = new ImageView();
         iV.setImage(image);
         iV.setX((x + 2) * 32);
-        iV.setY((y + 1.2) * 32);
+        iV.setY((y + 2) * 32);
         iV.setFitHeight(15);
         iV.setFitWidth(15);
         return iV;

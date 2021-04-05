@@ -316,6 +316,11 @@ public class Player {
         if (array[x][y].getType() == "Door") {
             handleRoomChange(checkMonstersDead());
         }
+        if (x == 9 && y == 7) {
+            if (checkMonstersDead()) {
+                currRoom.removeItem();
+            }
+        }
     }
 
     public boolean checkIfVisited(Room room) {

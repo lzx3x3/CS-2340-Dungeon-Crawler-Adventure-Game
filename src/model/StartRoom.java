@@ -20,6 +20,8 @@ public class StartRoom extends Room {
     private Button topDoor;
     private Button rightDoor;
     private List<IMonster> monsterArray;
+    private List<IItems> itemArray;
+
     public StartRoom(int index, int height, int width) {
         super(index, height, width);
         rightDoor = new Button("Right Door");
@@ -27,6 +29,7 @@ public class StartRoom extends Room {
         leftDoor = new Button("Left Door");
         topDoor = new Button("Top Door");
         monsterArray = new ArrayList<IMonster>();
+        itemArray = new ArrayList<IItems>();
     }
     @Override
     public void createTileArray() {
@@ -138,5 +141,15 @@ public class StartRoom extends Room {
     @Override
     public Button getTopDoor() {
         return topDoor;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }

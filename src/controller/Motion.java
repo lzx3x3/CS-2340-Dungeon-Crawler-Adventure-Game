@@ -21,8 +21,8 @@ public class Motion {
         this.scene = scene;
         this.stage = stage;
         this.draw = draw;
-        this.monster1 = new Monster1();
-        this.monster2 = new Monster2();
+        //this.monster1 = new Monster1();
+        //this.monster2 = new Monster2();
         keyHandler(controller);
     }
 

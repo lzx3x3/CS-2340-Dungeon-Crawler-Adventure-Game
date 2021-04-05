@@ -25,6 +25,7 @@ public class WoodenRoom extends Room {
     private ArrayList<IMonster> monsters;
     private ArrayList<IMonster> allMonsters;
     private Random rand;
+    private List<IItems> itemArray;
 
     public WoodenRoom(int index, int height, int width) {
         super(index, height, width);
@@ -42,6 +43,7 @@ public class WoodenRoom extends Room {
         rightDoor = new Button("Right Door");
         topDoor = new Button("Top Door");
         allMonsters = new ArrayList<>();
+        itemArray = new ArrayList<IItems>();
         allMonsters.add(new Monster1());
         allMonsters.add(new Monster2());
         rand = new Random();
@@ -49,6 +51,15 @@ public class WoodenRoom extends Room {
         monsters = new ArrayList<>();
         monsters.add(allMonsters.get(randint));
         //monsters.add(new Monster1());
+
+        int randItem = rand.nextInt(2);
+        if (randItem == 0) {
+            itemArray.add(new AttackPotion());
+        } else if (randItem == 1) {
+            itemArray.add(new HealthPotion());
+        } else {
+            itemArray.add(new MagicStone());
+        }
     }
 
     @Override
@@ -165,5 +176,14 @@ public class WoodenRoom extends Room {
     @Override
     public Button getBottomDoor() {
         return bottomDoor;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }
