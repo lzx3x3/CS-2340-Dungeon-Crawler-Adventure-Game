@@ -103,7 +103,7 @@ public class StartRoom extends Room {
         health.setFill(Color.BLACK);
 
 
-        root.getChildren().addAll(money, diff, level, health);
+        root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
         return root;
     }

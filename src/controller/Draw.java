@@ -23,7 +23,6 @@ public class Draw {
                     + Integer.toString(player.getMaze().getY()));
             currentRoom.setX(650);
             currentRoom.setY(400);
-            TilePane inventory = new TilePane();
             root.getChildren().add(currentRoom);
         } else {
             root = player.drawDeadPlayer(root);

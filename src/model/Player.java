@@ -1,6 +1,8 @@
 package model;
 
 import controller.Draw;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -25,6 +27,7 @@ public class Player {
     private int damage = 20;
     private int range = 1;
     private boolean attacked = false;
+    private Inventory inventory;
 
     public Player() {
         health = 100;
@@ -36,6 +39,7 @@ public class Player {
         y = 7;
         currRoom = null;
         visitedRooms = new HashSet<Room>();
+        inventory = new Inventory(this);
     }
 
     public void setName(String name) {
@@ -427,5 +431,9 @@ public class Player {
             }
 
         }
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 }

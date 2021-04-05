@@ -52,7 +52,9 @@ public class Motion {
                     if (player.checkMonstersDead()) {
                         player.setHealth(10); //player's health increases 10 after defeating monster
                     }
+
                 }
+                player.getInventory().add();
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                         controller));
             }
