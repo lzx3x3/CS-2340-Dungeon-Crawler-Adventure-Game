@@ -317,7 +317,7 @@ public class Player {
             handleRoomChange(checkMonstersDead());
         }
         if (x == 9 && y == 7) {
-            if (checkMonstersDead()) {
+            if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
                 currRoom.removeItem();
             }
         }
