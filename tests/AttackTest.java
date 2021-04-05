@@ -5,7 +5,6 @@ import model.Player;
 import org.junit.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.TextMatchers;
 
 public class AttackTest extends ApplicationTest {
@@ -22,7 +21,7 @@ public class AttackTest extends ApplicationTest {
     public void testInitPlayerHealth() {
         type(KeyCode.S, 7);
         type(KeyCode.S, 6);
-        FxAssert.verifyThat("#healthValue", TextMatchers.hasText("Current health: 100"));
+        FxAssert.verifyThat("#healthValue", TextMatchers.hasText("Current health: 250"));
     }
 
     // Edited by Pei Yi

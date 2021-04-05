@@ -17,10 +17,18 @@ import java.util.List;
 public class Deadend2 extends Room {
 
     private List<IMonster> monsterArray;
+    private List<IItems> itemArray;
+    private Chest chest;
 
     public Deadend2(int index, int height, int width) {
         super(index, height, width);
         monsterArray = new ArrayList<IMonster>();
+        itemArray = new ArrayList<IItems>();
+        chest = new Chest();
+    }
+
+    public Chest getChest() {
+        return this.chest;
     }
 
     @Override
@@ -54,6 +62,9 @@ public class Deadend2 extends Room {
                 root.getChildren().add(iV);
             }
         }
+
+        // add chest
+        root = chest.drawChest(root);
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
@@ -103,5 +114,15 @@ public class Deadend2 extends Room {
     @Override
     public List getMonsterArray() {
         return monsterArray;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }

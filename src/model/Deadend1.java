@@ -1,7 +1,10 @@
 package model;
 
+import controller.Draw;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -19,10 +22,18 @@ import java.util.List;
  */
 public class Deadend1 extends Room {
     private List<IMonster> monsterArray;
+    private List<IItems> itemArray;
+    private Chest chest;
 
     public Deadend1(int index, int height, int width) {
         super(index, height, width);
         monsterArray = new ArrayList<IMonster>();
+        itemArray = new ArrayList<IItems>();
+        chest = new Chest();
+    }
+
+    public Chest getChest() {
+        return this.chest;
     }
 
 
@@ -43,6 +54,7 @@ public class Deadend1 extends Room {
 
     @Override
     public Pane drawRoom(Pane root, Player player) {
+
         createTileArray();
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
@@ -57,6 +69,9 @@ public class Deadend1 extends Room {
                 root.getChildren().add(iV);
             }
         }
+
+        // add chest
+        //chest.drawChest(root);
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
@@ -106,5 +121,15 @@ public class Deadend1 extends Room {
     @Override
     public List getMonsterArray() {
         return monsterArray;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }

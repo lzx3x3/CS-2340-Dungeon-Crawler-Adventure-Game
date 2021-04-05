@@ -42,9 +42,9 @@ public class Monster2 implements IMonster {
         ImageView iv = new ImageView();
         if (!dead) {
             iv.setImage(new Image("file:resources/Monster2Standing.png"));
-        } else {
-            iv.setImage(new Image("file:resources/Monster2Dead.png"));
-        }
+        } //else {
+            //iv.setImage(new Image("file:resources/Monster2Dead.png"));
+        //}
         iv.setX(x * 32 + 50);
         iv.setY(y * 32 + 50);
 

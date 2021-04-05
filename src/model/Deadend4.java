@@ -17,10 +17,20 @@ import java.util.List;
 public class Deadend4 extends Room {
 
     private List<IMonster> monsterArray;
+    private List<IItems> itemArray;
+    private Chest chest;
+    private Shop shop;
 
     public Deadend4(int index, int height, int width) {
         super(index, height, width);
         monsterArray = new ArrayList<IMonster>();
+        itemArray = new ArrayList<IItems>();
+        chest = new Chest();
+        shop = new Shop();
+    }
+
+    public Chest getChest() {
+        return this.chest;
     }
 
 
@@ -55,6 +65,10 @@ public class Deadend4 extends Room {
                 root.getChildren().add(iV);
             }
         }
+
+        // add chest
+        //root = chest.drawChest(root);
+        //shop.drawShop(root, player);
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
@@ -104,5 +118,15 @@ public class Deadend4 extends Room {
     @Override
     public List getMonsterArray() {
         return monsterArray;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }

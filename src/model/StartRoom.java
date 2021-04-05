@@ -16,9 +16,12 @@ import java.util.List;
 
 public class StartRoom extends Room {
     private List<IMonster> monsterArray;
+    private List<IItems> itemArray;
+
     public StartRoom(int index, int height, int width) {
         super(index, height, width);
         monsterArray = new ArrayList<IMonster>();
+        itemArray = new ArrayList<IItems>();
     }
     @Override
     public void createTileArray() {
@@ -27,8 +30,6 @@ public class StartRoom extends Room {
                 super.tileArray[j][i] = new Tile(j, i, "Wooden Floor");
             }
         }
-        //tileArray[7][0] = new Tile(7, 0, "Door", new Image("file:resources/doors.png")); top door
-        //tileArray[0][7] = new Tile(0, 7, "Door", new Image("file:resources/doors.png")); left door
         tileArray[7][0] = new Tile(7, 0, "Door"); // top door
         tileArray[0][7] = new Tile(0, 7, "Door"); // left door
         tileArray[14][7] = new Tile(8, 0, "Door"); // right door
@@ -106,5 +107,15 @@ public class StartRoom extends Room {
         root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
         return root;
+    }
+
+    @Override
+    public List getItemArray() {
+        return itemArray;
+    }
+
+    @Override
+    public void removeItem() {
+        itemArray.remove(0);
     }
 }
