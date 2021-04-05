@@ -2,7 +2,6 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -115,7 +114,7 @@ public class StartRoom extends Room {
     }
 
     @Override
-    public void removeItem() {
-        itemArray.remove(0);
+    public IItems removeItem() {
+        return itemArray.remove(0);
     }
 }

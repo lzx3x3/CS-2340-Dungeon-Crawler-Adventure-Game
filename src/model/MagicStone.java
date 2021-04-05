@@ -47,6 +47,11 @@ public class MagicStone implements IItems {
     }
 
     @Override
+    public Image getImage() {
+        return null;
+    }
+
+    @Override
     public ImageView draw(int x, int y) {
         imageView = new ImageView();
         imageView.setImage(image);

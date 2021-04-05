@@ -2,7 +2,6 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -110,7 +109,7 @@ public class Deadend4 extends Room {
         health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         health.setFill(Color.BLACK);
 
-        root.getChildren().addAll(money, diff, level, health);
+        root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
         return root;
     }
@@ -126,7 +125,7 @@ public class Deadend4 extends Room {
     }
 
     @Override
-    public void removeItem() {
-        itemArray.remove(0);
+    public IItems removeItem() {
+        return itemArray.remove(0);
     }
 }

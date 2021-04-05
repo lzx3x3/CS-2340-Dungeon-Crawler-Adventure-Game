@@ -87,6 +87,7 @@ public class Player {
         } else if (wpn == "Bow") {
 
         }
+        inventory.add(weapon);
     }
 
     public int getLevel() {
@@ -322,7 +323,10 @@ public class Player {
         }
         if (x == 9 && y == 7) {
             if (checkMonstersDead()) {
-                currRoom.removeItem();
+                IItems item = currRoom.removeItem();
+                if (item != null) {
+                    inventory.add(item);
+                }
             }
         }
     }

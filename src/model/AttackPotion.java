@@ -19,6 +19,11 @@ public class AttackPotion implements IItems {
         //and damage will be reverted back to original here once potion runs out
     }
 
+    @Override
+    public Image getImage() {
+        return image;
+    }
+
     public ImageView draw(int x, int y) {
         ImageView iV = new ImageView();
         iV.setImage(image);

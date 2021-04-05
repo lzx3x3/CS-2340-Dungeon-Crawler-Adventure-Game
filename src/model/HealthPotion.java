@@ -17,6 +17,11 @@ public class HealthPotion implements IItems {
         player.setHealth(healthAdded);
     }
 
+    @Override
+    public Image getImage() {
+        return image;
+    }
+
     public int getHealthAdded() {
         return healthAdded;
     }

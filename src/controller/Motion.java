@@ -62,7 +62,6 @@ public class Motion {
                     }
 
                 }
-                player.getInventory().add();
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                         controller));
             }
