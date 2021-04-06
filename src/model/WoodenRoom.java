@@ -43,7 +43,7 @@ public class WoodenRoom extends Room {
         monsters.add(allMonsters.get(randint));
         //monsters.add(new Monster1());
 
-        int randItem = rand.nextInt(2);
+        int randItem = rand.nextInt(3);
         if (randItem == 0) {
             itemArray.add(new AttackPotion());
         } else if (randItem == 1) {

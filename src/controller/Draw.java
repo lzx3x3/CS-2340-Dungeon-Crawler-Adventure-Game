@@ -60,21 +60,6 @@ public class Draw {
         Room room = player.getCurrRoom();
         root = room.drawRoom(root, player); //draws either a start, wooden, or end room
         if (player.getHealth() > 0) {
-            /*
-                if (player.getCurrRoom() instanceof ExitRoom) {
-                    EndMonster monster  = new EndMonster();
-                }
-
-                if (!(player.getCurrRoom() instanceof StartRoom)) {
-                    if (monsters != null) {
-                        for (IMonster monster : monsters) {
-                            root = monster.drawMonster(root);
-                        }
-                    }
-                }
-
-             */
-
             if (monsters != null) {
                 for (IMonster monster : monsters) {
                     if (player.checkIfVisited(room) && monster.isDead()) {
@@ -107,20 +92,19 @@ public class Draw {
         // open chest when player inside deadends
 //        if(player.getCurrRoom() instanceof Deadend1) {
 //            Deadend1 deadend1 = (Deadend1)player.getCurrRoom();
-//            MagicStone stone = new MagicStone();
-//            if((player.getX() == 8 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 7) ) {
+//            if((player.getX() == 8 && player.getY() == 7) || (player.getX() == 10 && player.getY() == 7) ) {
 //                deadend1.getChest().setChestState(1);
 //            }
 //        }
         if(player.getCurrRoom() instanceof Deadend2) {
             Deadend2 deadend2 = (Deadend2)player.getCurrRoom();
-            if( (player.getX() == 8 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 7) ) {
+            if( (player.getX() == 8 && player.getY() == 7) || (player.getX() == 10 && player.getY() == 7) ) {
                 deadend2.getChest().setChestState(1);
             }
         }
         if(player.getCurrRoom() instanceof Deadend3) {
             Deadend3 deadend3 = (Deadend3)player.getCurrRoom();
-            if( (player.getX() == 8 && player.getY() == 7) || (player.getX() == 7 && player.getY() == 7)) {
+            if( (player.getX() == 8 && player.getY() == 7) || (player.getX() == 10 && player.getY() == 7)) {
                 deadend3.getChest().setChestState(1);
             }
         }

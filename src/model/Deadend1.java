@@ -20,12 +20,14 @@ public class Deadend1 extends Room {
     private List<IMonster> monsterArray;
     private List<IItems> itemArray;
     private Chest chest;
+    private boolean getMagicStone;
 
     public Deadend1(int index, int height, int width) {
         super(index, height, width);
         monsterArray = new ArrayList<IMonster>();
         itemArray = new ArrayList<IItems>();
         chest = new Chest();
+        getMagicStone = false;
     }
 
     public Chest getChest() {
@@ -67,7 +69,11 @@ public class Deadend1 extends Room {
         }
 
         // add chest
-        //chest.drawChest(root);
+//        root = chest.drawChest(root);
+//        if(chest.getChestState() == 1 && !getMagicStone) {
+//            itemArray.add(new MagicStone());
+//            getMagicStone = true;
+//        }
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
