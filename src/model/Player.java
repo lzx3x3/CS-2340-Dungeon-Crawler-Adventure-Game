@@ -322,7 +322,7 @@ public class Player {
             handleRoomChange(checkMonstersDead());
         }
         if (x == 9 && y == 7) {
-            if (checkMonstersDead()) {
+            if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
                 IItems item = currRoom.removeItem();
                 if (item != null) {
                     inventory.add(item);
