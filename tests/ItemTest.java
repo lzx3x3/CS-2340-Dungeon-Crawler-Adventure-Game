@@ -11,14 +11,15 @@ import static org.junit.Assert.assertEquals;
 
 public class ItemTest extends ApplicationTest {
 
+    Controller controller = new Controller();
     Player player = new Player();
     @Override
     public void start(Stage stage) throws Exception {
-        Controller controller = new Controller();
         controller.setMainWindow(stage);
         controller.initInitialGameScreen(player);
     }
 
+    // Edited by Siying
     @Test
     public void testMagicStoneUse() {
         type(KeyCode.S, 7);
@@ -26,39 +27,6 @@ public class ItemTest extends ApplicationTest {
         MagicStone stone = new MagicStone();
         stone.use(player);
         assertEquals(true, player.checkMonstersDead());
-    }
-
-    @Test
-    public void testChestOpen() {
-        type(KeyCode.S, 7);
-
-        type(KeyCode.S, 7);
-        type(KeyCode.D, 2);
-        type(KeyCode.F, 6);
-        type(KeyCode.A, 2);
-
-        type(KeyCode.S, 7);
-        type(KeyCode.D, 2);
-        type(KeyCode.F, 6);
-        type(KeyCode.A, 2);
-
-        type(KeyCode.S, 7);
-        type(KeyCode.D, 2);
-        type(KeyCode.F, 6);
-        type(KeyCode.A, 2);
-
-        type(KeyCode.S, 7);
-        type(KeyCode.D, 2);
-        type(KeyCode.F, 6);
-        type(KeyCode.A, 2);
-
-        type(KeyCode.S, 7);
-        type(KeyCode.D, 2);
-        type(KeyCode.F, 6);
-        type(KeyCode.A, 2);
-
-        type(KeyCode.S, 7);
-        type(KeyCode.D, 4);
     }
 
 }
