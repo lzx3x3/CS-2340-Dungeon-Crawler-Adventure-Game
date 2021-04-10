@@ -1,6 +1,7 @@
 import controller.Controller;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import model.Deadend3;
 import model.HealthPotion;
 import model.Player;
 import org.junit.Test;
@@ -75,5 +76,49 @@ public class PlayerTest extends ApplicationTest {
         HealthPotion healthpotion = new HealthPotion();
         healthpotion.use(controller.getPlayer());
         assertEquals(270, controller.getPlayer().getHealth());
+    }
+
+
+    // Edited by Siying
+    @Test
+    public void testChestOpen() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.S, 7);
+
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 1);
+        type(KeyCode.F, 10);
+        type(KeyCode.A, 1);
+        type(KeyCode.S, 7);
+
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 1);
+        type(KeyCode.F, 10);
+        type(KeyCode.A, 1);
+        type(KeyCode.S, 7);
+
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 1);
+        type(KeyCode.F, 10);
+        type(KeyCode.A, 1);
+        type(KeyCode.S, 7);
+
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 1);
+        type(KeyCode.F, 10);
+        type(KeyCode.A, 1);
+        type(KeyCode.S, 7);
+
+        type(KeyCode.S, 7);
+        type(KeyCode.D, 3);
+
+        Deadend3 room = (Deadend3) controller.getPlayer().getCurrRoom();
+        assertEquals(1, room.getChest().getChestState());   // test if chest is open when player walks close to it
+        assertTrue(!room.getItemArray().isEmpty());     // test if Magic Stone is collected after chest is open
     }
 }
