@@ -6,14 +6,18 @@ import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
 
+import static org.junit.Assert.assertNotNull;
+
+
 import static org.testfx.api.FxAssert.verifyThat;
 
 public class MazeLayoutTest extends ApplicationTest {
     private Controller controller = new Controller();
+    private Player player = new Player();
     @Override
     public void start(Stage stage) throws Exception {
 
-        Player player = new Player();
+
         controller.setMainWindow(stage);
         controller.initInitialGameScreen(player);
     }
@@ -51,5 +55,12 @@ public class MazeLayoutTest extends ApplicationTest {
         type(KeyCode.D, 1);
         type(KeyCode.A, 1);
         verifyThat("Current level:11", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testItemGeneration() {
+        type(KeyCode.D, 10);
+        assertNotNull(player.getCurrRoom().getItemArray());
+
     }
 }

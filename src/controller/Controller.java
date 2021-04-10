@@ -163,4 +163,9 @@ public class Controller extends Application {
     public Stage getMainWindow() {
         return mainWindow;
     }
+
+    //Added for testing purposes --Jessica
+    public Player getPlayer() {
+        return player;
+    }
 }
