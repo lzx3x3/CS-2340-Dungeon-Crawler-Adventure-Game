@@ -13,12 +13,12 @@ import java.util.Random;
 
 public class MagicStone implements IItems {
     private Image image;
-    private boolean click;
     private ImageView imageView;
+    //private boolean click;
 
     public MagicStone() {
         this.image = new Image("file:resources/MagicStone.png");
-        this.click = false;
+        //this.click = false;
     }
 
     @Override
@@ -40,10 +40,15 @@ public class MagicStone implements IItems {
                 }
             }
         }
-        else {  //while use stone, there is 30% chance that decrease the player's health by 30%
-            player.setHealth(-player.getHealth()*3/10);
+        else {  //while use stone, there is 30% chance that decrease the player's health by 50%
+            player.setHealth(-player.getHealth()/2);
             player.setAttacked(true);
         }
+    }
+
+    @Override
+    public Image getImage() {
+        return this.image;
     }
 
     @Override
@@ -61,31 +66,31 @@ public class MagicStone implements IItems {
         return this.imageView;
     }
 
-    public Pane drawMagicStone(Pane root) {
-        ImageView V = draw(7, 6);
-        // set on Action
-        V.setPickOnBounds(true);
-        V.setOnMouseClicked(new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                if(!click) {
-                    System.out.println("Congrat! You collect the Magic Stone!");
-                    click = true;
-                    root.getChildren().remove(V);   // remove magicStone when click!
-                }
-            }
-        });
+//    public Pane drawMagicStone(Pane root) {
+//        ImageView V = draw(7, 6);
+//        // set on Action
+//        V.setPickOnBounds(true);
+//        V.setOnMouseClicked(new EventHandler() {
+//            @Override
+//            public void handle(Event event) {
+//                if(!click) {
+//                    System.out.println("Congrat! You collect the Magic Stone!");
+//                    click = true;
+//                    root.getChildren().remove(V);   // remove magicStone when click!
+//                }
+//            }
+//        });
+//
+//        if(!click)
+//            root.getChildren().add(V);
+//        return root;
+//    }
 
-        if(!click)
-            root.getChildren().add(V);
-        return root;
-    }
-
-    public boolean isClick() {
-        return this.click;
-    }
-
-    public void setClick(boolean click) {
-        this.click = click;
-    }
+//    public boolean isClick() {
+//        return this.click;
+//    }
+//
+//    public void setClick(boolean click) {
+//        this.click = click;
+//    }
 }

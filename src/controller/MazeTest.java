@@ -25,53 +25,6 @@ public class MazeTest {
         player.setMoney(player.getDiff());
         Scene scene = screen.start(player, maze, stage, controller);
         //        Scene scene = screen.start(player, maze);
-        if (maze.getCurrentRoom().getRightDoor() != null) {
-            maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
-                maze.updateRoom("RIGHT");
-                //        maze.getCurrentRoom().getRightDoor().setOnAction(e -> {
-                //            maze.updateRoom("RIGHT");
-                if (maze.getCurrentRoom() instanceof ExitRoom) {
-                    controller.initEndScreen();
-                } else {
-                    initNextRoom(stage, maze, player);
-                }
-
-            });
-        }
-        if (maze.getCurrentRoom().getBottomDoor() != null) {
-            maze.getCurrentRoom().getBottomDoor().setOnAction(e -> {
-                maze.updateRoom("DOWN");
-                if (maze.getCurrentRoom() instanceof ExitRoom) {
-                    controller.initEndScreen();
-                } else {
-                    initNextRoom(stage, maze, player);
-                }
-
-            });
-        }
-        if (maze.getCurrentRoom().getLeftDoor() != null) {
-            maze.getCurrentRoom().getLeftDoor().setOnAction(e -> {
-                maze.updateRoom("LEFT");
-
-                if (maze.getCurrentRoom() instanceof ExitRoom) {
-                    controller.initEndScreen();
-                } else {
-                    initNextRoom(stage, maze, player);
-                }
-
-            });
-        }
-
-        if (maze.getCurrentRoom().getTopDoor() != null) {
-            maze.getCurrentRoom().getTopDoor().setOnAction(e -> {
-                maze.updateRoom("UP");
-                if (maze.getCurrentRoom() instanceof ExitRoom) {
-                    controller.initEndScreen();
-                } else {
-                    initNextRoom(stage, maze, player);
-                }
-            });
-        }
         stage.setScene(scene);
     }
 

@@ -2,7 +2,6 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -16,42 +15,23 @@ import java.util.List;
 
 public class Deadend3 extends Room {
 
-    private Button topDoor;
     private List<IMonster> monsterArray;
     private List<IItems> itemArray;
     private Chest chest;
+    private boolean getMagicStone;
 
     public Deadend3(int index, int height, int width) {
         super(index, height, width);
-        topDoor = new Button("Top Door");
         monsterArray = new ArrayList<IMonster>();
         itemArray = new ArrayList<IItems>();
         chest = new Chest();
+        getMagicStone = false;
     }
 
     public Chest getChest() {
         return this.chest;
     }
 
-    @Override
-    public Button getRightDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getLeftDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return topDoor;
-    }
-
-    @Override
-    public Button getBottomDoor() {
-        return null;
-    }
 
     @Override
     public void createTileArray() {
@@ -87,6 +67,11 @@ public class Deadend3 extends Room {
 
         // add chest
         root = chest.drawChest(root);
+        if(chest.getChestState() == 1 && !getMagicStone) {
+            itemArray.add(new MagicStone());
+            getMagicStone = true;
+            //chest.setChestState(2);
+        }
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
@@ -128,9 +113,7 @@ public class Deadend3 extends Room {
         health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         health.setFill(Color.BLACK);
 
-        topDoor.setLayoutY(100);
-        topDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, health, topDoor);
+        root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
         return root;
     }
@@ -146,7 +129,7 @@ public class Deadend3 extends Room {
     }
 
     @Override
-    public void removeItem() {
-        itemArray.remove(0);
+    public IItems removeItem() {
+        return itemArray.remove(0);
     }
 }

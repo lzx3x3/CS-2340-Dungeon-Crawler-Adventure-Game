@@ -2,7 +2,6 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -16,41 +15,21 @@ import java.util.List;
 
 public class Deadend2 extends Room {
 
-    private Button leftDoor;
     private List<IMonster> monsterArray;
     private List<IItems> itemArray;
     private Chest chest;
+    private boolean getMagicStone;
 
     public Deadend2(int index, int height, int width) {
         super(index, height, width);
-        leftDoor = new Button("Left Door");
         monsterArray = new ArrayList<IMonster>();
         itemArray = new ArrayList<IItems>();
         chest = new Chest();
+        getMagicStone = false;
     }
 
     public Chest getChest() {
         return this.chest;
-    }
-
-    @Override
-    public Button getRightDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getLeftDoor() {
-        return leftDoor;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return null;
-    }
-
-    @Override
-    public Button getBottomDoor() {
-        return null;
     }
 
     @Override
@@ -87,6 +66,11 @@ public class Deadend2 extends Room {
 
         // add chest
         root = chest.drawChest(root);
+        if(chest.getChestState() == 1 && !getMagicStone) {
+            itemArray.add(new MagicStone());
+            getMagicStone = true;
+            //chest.setChestState(2);
+        }
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();
@@ -128,9 +112,7 @@ public class Deadend2 extends Room {
         health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         health.setFill(Color.BLACK);
 
-        leftDoor.setLayoutY(150);
-        leftDoor.setLayoutX(600);
-        root.getChildren().addAll(money, diff, level, health, leftDoor);
+        root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
         return root;
     }
@@ -146,7 +128,7 @@ public class Deadend2 extends Room {
     }
 
     @Override
-    public void removeItem() {
-        itemArray.remove(0);
+    public IItems removeItem() {
+        return itemArray.remove(0);
     }
 }

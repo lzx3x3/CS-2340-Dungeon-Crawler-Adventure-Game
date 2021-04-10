@@ -21,6 +21,11 @@ public class Stick extends Weapon {
     }
 
     @Override
+    public Image getImage() {
+        return img;
+    }
+
+    @Override
     public ImageView draw(int x, int y) {
         ImageView iV = new ImageView();
         iV.setImage(img);

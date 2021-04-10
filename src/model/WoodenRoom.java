@@ -2,7 +2,6 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -18,10 +17,6 @@ import java.util.Random;
 
 public class WoodenRoom extends Room {
     private ArrayList<Door> doors;
-    private Button rightDoor;
-    private Button leftDoor;
-    private Button topDoor;
-    private Button bottomDoor;
     private ArrayList<IMonster> monsters;
     private ArrayList<IMonster> allMonsters;
     private Random rand;
@@ -38,10 +33,6 @@ public class WoodenRoom extends Room {
         //        doors.add(new Door(7, 14, null));
         //        doors.add(new Door(14, 7, null));
         //=======
-        leftDoor = new Button("Left Door");
-        bottomDoor = new Button("Bottom Door");
-        rightDoor = new Button("Right Door");
-        topDoor = new Button("Top Door");
         allMonsters = new ArrayList<>();
         itemArray = new ArrayList<IItems>();
         allMonsters.add(new Monster1());
@@ -52,7 +43,7 @@ public class WoodenRoom extends Room {
         monsters.add(allMonsters.get(randint));
         //monsters.add(new Monster1());
 
-        int randItem = rand.nextInt(2);
+        int randItem = rand.nextInt(3);
         if (randItem == 0) {
             itemArray.add(new AttackPotion());
         } else if (randItem == 1) {
@@ -138,16 +129,7 @@ public class WoodenRoom extends Room {
         health.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         health.setFill(Color.BLACK);
 
-        rightDoor.setLayoutX(700);
-        rightDoor.setLayoutY(150);
-        topDoor.setLayoutY(100);
-        topDoor.setLayoutX(650);
-        leftDoor.setLayoutX(600);
-        leftDoor.setLayoutY(150);
-        bottomDoor.setLayoutY(200);
-        bottomDoor.setLayoutX(650);
-        root.getChildren().addAll(money, diff, level, health,
-                topDoor, rightDoor, bottomDoor, leftDoor);
+        root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
         return root;
     }
@@ -159,31 +141,11 @@ public class WoodenRoom extends Room {
 
 
     @Override
-    public Button getRightDoor() {
-        return rightDoor;
-    }
-
-    @Override
-    public Button getLeftDoor() {
-        return leftDoor;
-    }
-
-    @Override
-    public Button getTopDoor() {
-        return topDoor;
-    }
-
-    @Override
-    public Button getBottomDoor() {
-        return bottomDoor;
-    }
-
-    @Override
     public List getItemArray() {
         return itemArray;
     }
     @Override
-    public void removeItem() {
-        itemArray.remove(0);
+    public IItems removeItem() {
+        return itemArray.remove(0);
     }
 }

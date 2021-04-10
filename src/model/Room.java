@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 import java.util.List;
@@ -18,14 +17,10 @@ public abstract class Room {
         tileArray = new Tile[width][height];
         //createTileArray();
     }
-    public abstract Button getRightDoor();
-    public abstract Button getLeftDoor();
-    public abstract Button getTopDoor();
-    public abstract Button getBottomDoor();
     public abstract void createTileArray();
     public abstract Tile[][] getTileArray();
     public abstract Pane drawRoom(Pane root, Player player);
     public abstract List<IMonster> getMonsterArray();
     public abstract List<IItems> getItemArray();
-    public abstract void removeItem();
+    public abstract IItems removeItem();
 }
