@@ -26,6 +26,8 @@ public class Player {
     private boolean attacked;
     private Weapon weapon;
     private boolean wpnUpdated;
+    private int timesAttack;
+    private boolean useAttack;
 
     public Player() {
         health = 250;
@@ -41,6 +43,8 @@ public class Player {
         damage = 20;
         attacked = false;
         wpnUpdated = false;
+        timesAttack = 0;
+        useAttack = false;
     }
 
     public void setName(String name) {
@@ -118,6 +122,18 @@ public class Player {
 
     public void setDamage(int newDamage) {
         damage = newDamage;
+    }
+
+    public int getTimesAttack() {
+        return timesAttack;
+    }
+
+    public void setTimesAttack(int newAttack) {
+        if (timesAttack == 10) {
+            timesAttack = 0;
+        } else {
+            timesAttack = newAttack;
+        }
     }
 
     public void addToVisitedRooms(Room room) {
@@ -391,5 +407,26 @@ public class Player {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public void setUseAttack(boolean used) {
+        useAttack = used;
+    }
+
+    public void useAttackPotion() {
+        for (IMonster monster : getCurrRoom().getMonsterArray()) {
+            if (Math.abs(monster.getX() - x) <= monster.getRadius()
+                    && Math.abs(monster.getY() - y) <= monster.getRadius()) {
+                if (useAttack) {
+                    timesAttack++;
+                }
+                break;
+            }
+        }
+        if (timesAttack == 10 && useAttack) {
+            damage = damage - 10;
+            useAttack = false;
+            timesAttack = 0;
+        }
     }
 }

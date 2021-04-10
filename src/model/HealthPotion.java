@@ -12,7 +12,7 @@ public class HealthPotion implements IItems {
         this.image = new Image("file:resources/HealthPotion.png");
     }
 
-//    @Override
+    @Override
     public void use(Player player) {
         player.setHealth(healthAdded);
     }
@@ -35,8 +35,4 @@ public class HealthPotion implements IItems {
         iV.setFitWidth(15);
         return iV;
     }
-//    @Override
-//    public Image getImage() {
-//        return image;
-//    }
 }
