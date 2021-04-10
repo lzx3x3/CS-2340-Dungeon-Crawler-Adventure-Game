@@ -1,8 +1,6 @@
 package model;
 
 import controller.Draw;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -23,12 +21,11 @@ public class Player {
     private Room currRoom;
     private Maze currMaze;
     private HashSet<Room> visitedRooms;
-    private Draw draw;
     private Inventory inventory;
     private int damage;
     private boolean attacked;
-    private boolean attacking;
     private Weapon weapon;
+    private boolean wpnUpdated;
 
     public Player() {
         health = 250;
@@ -43,7 +40,7 @@ public class Player {
         inventory = new Inventory(this);
         damage = 20;
         attacked = false;
-        attacking = false;
+        wpnUpdated = false;
     }
 
     public void setName(String name) {
@@ -79,15 +76,20 @@ public class Player {
         this.money = money - cost;
     }
 
-    public void setWeapon(String wpn) {
+    public void setWeaponType(String wpn) {
         if (wpn == "Stick") {
             this.weapon = new Stick();
         } else if (wpn == "Sword") {
-
+            this.weapon = new Sword();
         } else if (wpn == "Bow") {
-
+            this.weapon = new Bow();
         }
-        inventory.add(weapon);
+        inventory.add(this.weapon);
+    }
+
+    public void useWeapon(Weapon wpn) {
+        this.weapon = wpn;
+        wpnUpdated = true;
     }
 
     public int getLevel() {
@@ -130,25 +132,9 @@ public class Player {
         if (x < 14) {
             boolean monsterNear = false;
             for (IMonster monster : currRoom.getMonsterArray()) {
-                if (monster instanceof Monster1) {
-                    Monster1 monster1 = (Monster1) monster;
-                    if (!monster1.isDead() && monster1.getX() == x + 1 && monster1.getY() == y) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof Monster2) {
-                    Monster2 monster2 = (Monster2) monster;
-                    if (!monster2.isDead() && monster2.getX() == x + 1 && monster2.getY() == y) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof EndMonster) {
-                    EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getX() == x + 1
-                            && endMonster.getY() == y) {
-                        monsterNear = true;
-                        break;
-                    }
+                if (!monster.isDead() && monster.getX() == x + 1 && monster.getY() == y) {
+                    monsterNear = true;
+                    break;
                 }
             }
             if (!monsterNear) {
@@ -162,25 +148,9 @@ public class Player {
         if (y < 14) {
             boolean monsterNear = false;
             for (IMonster monster : currRoom.getMonsterArray()) {
-                if (monster instanceof Monster1) {
-                    Monster1 m1 = (Monster1) monster;
-                    if (!m1.isDead() && m1.getY() == y + 1 && m1.getX() == x) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof Monster2) {
-                    Monster2 m2 = (Monster2) monster;
-                    if (!m2.isDead() && m2.getY() == y + 1 && m2.getX() == x) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof  EndMonster) {
-                    EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getY() == y + 1
-                            && endMonster.getX() == x) {
-                        monsterNear = true;
-                        break;
-                    }
+                if (!monster.isDead() && monster.getY() == y + 1 && monster.getX() == x) {
+                    monsterNear = true;
+                    break;
                 }
             }
             if (!monsterNear) {
@@ -194,25 +164,9 @@ public class Player {
         if (x > 0) {
             boolean monsterNear = false;
             for (IMonster monster : currRoom.getMonsterArray()) {
-                if (monster instanceof Monster1) {
-                    Monster1 monster1 = (Monster1) monster;
-                    if (!monster1.isDead() && monster1.getX() == x - 1 && monster1.getY() == y) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof Monster2) {
-                    Monster2 monster2 = (Monster2) monster;
-                    if (!monster2.isDead() && monster2.getX() == x - 1 && monster2.getY() == y) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof EndMonster) {
-                    EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getX() == x - 1
-                            && endMonster.getY() == y) {
-                        monsterNear = true;
-                        break;
-                    }
+                if (!monster.isDead() && monster.getX() == x - 1 && monster.getY() == y) {
+                    monsterNear = true;
+                    break;
                 }
             }
             if (!monsterNear) {
@@ -226,25 +180,9 @@ public class Player {
         if (y > 0) {
             boolean monsterNear = false;
             for (IMonster monster : currRoom.getMonsterArray()) {
-                if (monster instanceof Monster1) {
-                    Monster1 m1 = (Monster1) monster;
-                    if (!m1.isDead() && m1.getY() == y - 1 && m1.getX() == x) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof Monster2) {
-                    Monster2 m2 = (Monster2) monster;
-                    if (!m2.isDead() && m2.getY() == y - 1 && m2.getX() == x) {
-                        monsterNear = true;
-                        break;
-                    }
-                } else if (monster instanceof  EndMonster) {
-                    EndMonster endMonster = (EndMonster) monster;
-                    if (!endMonster.isDead() && endMonster.getY() == y - 1
-                            && endMonster.getX() == x) {
-                        monsterNear = true;
-                        break;
-                    }
+                if (!monster.isDead() && monster.getY() == y - 1 && monster.getX() == x) {
+                    monsterNear = true;
+                    break;
                 }
             }
             if (!monsterNear) {
@@ -310,7 +248,7 @@ public class Player {
     }
 
     private void checkCollision(int x, int y) {
-        checkAttacked();
+        checkMonsterAttack();
         Tile[][] array = currRoom.getTileArray();
         if (array[x][y].getType() == "Door") {
             handleRoomChange(checkMonstersDead());
@@ -412,94 +350,42 @@ public class Player {
 
     public void attack() {
         List<IMonster> monsters = currRoom.getMonsterArray();
-        attacking = true;
-        Random r = new Random();
         for (IMonster monster : monsters) {
-            if (monster instanceof Monster1) {
-                Monster1 m1 = (Monster1) monster;
-                if (!m1.getDead()) {
-                    if (Math.abs(m1.getX() - this.x) <= weapon.getRange() && m1.getY() == y) {
-                        m1.setHealth(m1.getHealth() - weapon.getDamage());
-                        int attackBack = r.nextInt(2);
-                        if (attackBack == 1) {
-                            checkAttacked();
-                        }
-                    } else if (Math.abs(m1.getY() - this.y) <= weapon.getRange()
-                            && m1.getX() == x) {
-                        m1.setHealth(m1.getHealth() - weapon.getDamage());
-                        int attackBack = r.nextInt(2);
-                        if (attackBack == 1) {
-                            checkAttacked();
-                        }
-                    }
-                }
-            } else if (monster instanceof Monster2) {
-                Monster2 m2 = (Monster2) monster;
-                if (!m2.getDead()) {
-                    if (Math.abs(m2.getX() - this.x) <= weapon.getRange() && m2.getY() == y) {
-                        m2.setHealth(m2.getHealth() - weapon.getDamage());
-                        int attackBack = r.nextInt(2);
-                        if (attackBack == 1) {
-                            checkAttacked();
-                        }
-                    } else if (Math.abs(m2.getY() - this.y) <= weapon.getRange()
-                            && m2.getX() == x) {
-                        m2.setHealth(m2.getHealth() - weapon.getDamage());
-                        int attackBack = r.nextInt(2);
-                        if (attackBack == 1) {
-                            checkAttacked();
-                        }
-                    }
-                }
-            } else if (monster instanceof EndMonster) {
-                EndMonster m3 = (EndMonster) monster;
-                if (!m3.getDead()) {
-                    if (Math.abs(m3.getX() - this.x) <= weapon.getRange() && m3.getY() == y) {
-                        m3.setHealth(m3.getHealth() - weapon.getDamage());
-                        int attackBack = r.nextInt(2);
-                        if (attackBack == 1) {
-                            checkAttacked();
-                        }
-                    } else if (Math.abs(m3.getY() - this.y) <= weapon.getRange()
-                            && m3.getX() == x) {
-                        m3.setHealth(m3.getHealth() - weapon.getDamage());
-                        int attackBack = r.nextInt(2);
-                        if (attackBack == 1) {
-                            checkAttacked();
-                        }
-                    }
+            if (!monster.isDead()) {
+                if (Math.abs(monster.getX() - this.x) <= weapon.getRange() && monster.getY() == y) {
+                    monster.setHealth(monster.getHealth() - weapon.getDamage());
+                    attacked();
+                } else if (Math.abs(monster.getY() - this.y) <= weapon.getRange()
+                        && monster.getX() == x) {
+                    monster.setHealth(monster.getHealth() - weapon.getDamage());
+                    attacked();
                 }
             }
         }
     }
 
-    private void checkAttacked() {
+    private void attacked() {
+        Random r = new Random();
+        if (this.weapon instanceof Bow) {
+            this.health -= 5;
+        }
+        int attackBack = r.nextInt(2);
+        if (attackBack == 1) {
+            checkMonsterAttack();
+        }
+    }
+
+    private void checkMonsterAttack() {
         List<IMonster> monsters = currRoom.getMonsterArray();
         for (IMonster monster : monsters) {
             if (monster.isDead()) {
                 attacked = false;
             } else {
-                if (monster instanceof Monster1) {
-                    Monster1 m1 = (Monster1) monster;
-                    if (Math.hypot((this.x - m1.getX()), (this.y - m1.getY())) < m1.getRadius()) {
-                        health -= m1.getDamage();
-                        attacked = true;
-                    }
-                } else if (monster instanceof Monster2) {
-                    Monster2 m2 = (Monster2) monster;
-                    if (Math.hypot((this.x - m2.getX()), (this.y - m2.getY())) < m2.getRadius()) {
-                        health -= m2.getDamage();
-                        attacked = true;
-                    }
-                } else if (monster instanceof EndMonster) {
-                    EndMonster m3 = (EndMonster) monster;
-                    if (Math.hypot((this.x - m3.getX()), (this.y - m3.getY())) < m3.getRadius()) {
-                        health -= m3.getDamage();
-                        attacked = true;
-                    }
+                if (Math.hypot((this.x - monster.getX()), (this.y - monster.getY())) < monster.getRadius()) {
+                    health -= monster.getDamage();
+                    attacked = true;
                 }
             }
-
         }
     }
 

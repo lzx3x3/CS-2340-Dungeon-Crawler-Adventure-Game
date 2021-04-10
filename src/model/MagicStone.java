@@ -32,11 +32,11 @@ public class MagicStone implements IItems {
             for (IMonster monster : monsters) {
                 if (monster instanceof Monster1) {
                     Monster1 m1 = (Monster1) monster;
-                    m1.setDead(true);
+                    m1.setHealth(0);
                 }
                 else if (monster instanceof Monster2) {
                     Monster2 m2 = (Monster2) monster;
-                    m2.setDead(true);
+                    m2.setHealth(0);
                 }
             }
         }

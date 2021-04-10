@@ -2,17 +2,16 @@ package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.transform.Rotate;
 
-public class Stick extends Weapon {
+public class Bow extends Weapon {
     private int damage;
     private int range;
     private Image img;
 
-    public Stick() {
-        this.damage = 10;
-        this.range = 1;
-        this.img = new Image("file:resources/images/stick_removebg.png");
+    public Bow() {
+        this.damage = 20;
+        this.range = 3;
+        this.img = new Image("file:resources/images/bow_removebg.png");
     }
 
     @Override

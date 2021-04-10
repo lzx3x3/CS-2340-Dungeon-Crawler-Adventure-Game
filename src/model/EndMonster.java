@@ -23,6 +23,7 @@ public class EndMonster implements IMonster {
     private Room currRoom;
     private Draw draw;
     private Maze maze;
+    private Text monHealth;
 
     public EndMonster() {
         this.health = 150;
@@ -33,6 +34,7 @@ public class EndMonster implements IMonster {
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
+        this.monHealth = new Text();
     }
 
     @Override
@@ -71,17 +73,10 @@ public class EndMonster implements IMonster {
         if (newHealth <= 0) {
             health = 0;
             dead = true;
+            monHealth.textProperty().bind(new SimpleStringProperty(""));
         } else {
             health = newHealth;
         }
-    }
-
-    public boolean getDead() {
-        return dead;
-    }
-
-    public void setDead(boolean isDead) {
-        dead = isDead;
     }
 
     public int getDamage() {

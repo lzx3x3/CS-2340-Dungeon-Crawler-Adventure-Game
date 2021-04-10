@@ -43,13 +43,23 @@ public class WoodenRoom extends Room {
         monsters.add(allMonsters.get(randint));
         //monsters.add(new Monster1());
 
-        int randItem = rand.nextInt(3);
+//        int randItem = rand.nextInt(5);
+//        if (randItem == 0) {
+//            itemArray.add(new AttackPotion());
+//        } else if (randItem == 1) {
+//            itemArray.add(new HealthPotion());
+//        } else if (randItem == 2) {
+//            itemArray.add(new MagicStone());
+//        } else if (randItem == 3) {
+//            itemArray.add(new Sword());
+//        } else if (randItem == 4) {
+//            itemArray.add(new Bow());
+//        }
+        int randItem = rand.nextInt(2);
         if (randItem == 0) {
-            itemArray.add(new AttackPotion());
+            itemArray.add(new Sword());
         } else if (randItem == 1) {
-            itemArray.add(new HealthPotion());
-        } else {
-            itemArray.add(new MagicStone());
+            itemArray.add(new Bow());
         }
     }
 

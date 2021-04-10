@@ -23,6 +23,7 @@ public class Monster1 implements IMonster {
     private Room currRoom;
     private Draw draw;
     private Maze maze;
+    private Text monHealth;
 
 
     public Monster1() {
@@ -34,6 +35,7 @@ public class Monster1 implements IMonster {
         this.y = 7;
         this.currRoom = null;
         this.dead = false;
+        this.monHealth = new Text();
     }
 
     @Override
@@ -41,20 +43,17 @@ public class Monster1 implements IMonster {
         ImageView iv = new ImageView();
         if (!dead) {
             iv.setImage(new Image("file:resources/MinotaurMonsterStanding.png"));
-        } //else {
-           // iv.setImage(new Image("file:resources/MinotaurMonsterDead.png"));
-        //}
-        iv.setX(x * 32 + 50);
-        iv.setY(y * 32 + 50);
+            iv.setX(x * 32 + 50);
+            iv.setY(y * 32 + 50);
 
-        Text monHealth = new Text();
-        monHealth.setId("monHealth");
-        monHealth.textProperty().bind(new SimpleStringProperty(("health: ")).concat(
-                new SimpleIntegerProperty(health)));
-        monHealth.setX((x + 1) * 32);
-        monHealth.setY((y + 1) * 32);
-        monHealth.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        monHealth.setFill(Color.BLACK);
+            monHealth.setId("monHealth");
+            monHealth.textProperty().bind(new SimpleStringProperty(("health: ")).concat(
+                    new SimpleIntegerProperty(health)));
+            monHealth.setX((x + 1) * 32);
+            monHealth.setY((y + 1) * 32);
+            monHealth.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+            monHealth.setFill(Color.BLACK);
+        }
 
         root.getChildren().addAll(iv, monHealth);
         return root;
@@ -73,17 +72,10 @@ public class Monster1 implements IMonster {
         if (newHealth <= 0) {
             health = 0;
             dead = true;
+            monHealth.textProperty().bind(new SimpleStringProperty(""));
         } else {
             health = newHealth;
         }
-    }
-
-    public boolean getDead() {
-        return dead;
-    }
-
-    public void setDead(boolean isDead) {
-        dead = isDead;
     }
 
     public int getDamage() {

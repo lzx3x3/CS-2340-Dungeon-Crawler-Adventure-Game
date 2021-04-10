@@ -68,9 +68,13 @@ public class Inventory extends Pane {
 
         public void remove() {
             item.use(player);
-            slots.getChildren().remove(this);
-            slots.getChildren().add(new InventorySlot(null));
-            numItems--;
+            if (item instanceof Weapon) {
+
+            } else {
+                slots.getChildren().remove(this);
+                slots.getChildren().add(new InventorySlot(null));
+                numItems--;
+            }
         }
     }
 }
