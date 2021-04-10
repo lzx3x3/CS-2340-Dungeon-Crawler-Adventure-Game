@@ -13,4 +13,12 @@ public class PlayerTest {
         player.setMoney("Easy");
         assertEquals(10000, player.getMoney());
     }
+
+    // Edited by Pei Yi
+    @Test
+    public void testGetDiff() {
+        Player player = new Player();
+        player.setDiff("Medium");
+        assertEquals("Medium", player.getDiff());
+    }
 }

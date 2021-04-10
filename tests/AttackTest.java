@@ -62,4 +62,11 @@ public class AttackTest extends ApplicationTest {
         FxAssert.verifyThat("#monHealth", TextMatchers.hasText("health: 0"));
     }
 
+    // Edited by Pei Yi
+    @Test
+    public void testPlayerOutside() {
+        type(KeyCode.S, 7);
+        type(KeyCode.S, 3);
+        FxAssert.verifyThat("#healthValue", TextMatchers.hasText("Current health: 250"));
+    }
 }
