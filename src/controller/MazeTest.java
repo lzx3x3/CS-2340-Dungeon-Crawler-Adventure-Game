@@ -3,7 +3,6 @@ package controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import model.ExitRoom;
 import model.Maze;
 import model.Player;
 import view.InitialGame;

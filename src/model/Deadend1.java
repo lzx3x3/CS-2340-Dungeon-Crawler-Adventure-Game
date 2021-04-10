@@ -69,11 +69,11 @@ public class Deadend1 extends Room {
         }
 
         // add chest
-//        root = chest.drawChest(root);
-//        if(chest.getChestState() == 1 && !getMagicStone) {
-//            itemArray.add(new MagicStone());
-//            getMagicStone = true;
-//        }
+        //        root = chest.drawChest(root);
+        //        if(chest.getChestState() == 1 && !getMagicStone) {
+        //            itemArray.add(new MagicStone());
+        //            getMagicStone = true;
+        //        }
 
         //        for (Door one : doors) {
         //            ImageView iV = new ImageView();

@@ -1,6 +1,5 @@
 package model;
 
-import controller.Draw;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -271,7 +270,7 @@ public class Player {
         }
         if (x == 9 && y == 7) {
             if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
-//                currRoom.removeItem();
+                //currRoom.removeItem();
                 IItems item = currRoom.removeItem();
                 if (item != null) {
                     inventory.add(item);
@@ -397,7 +396,8 @@ public class Player {
             if (monster.isDead()) {
                 attacked = false;
             } else {
-                if (Math.hypot((this.x - monster.getX()), (this.y - monster.getY())) < monster.getRadius()) {
+                if (Math.hypot((this.x - monster.getX()),
+                        (this.y - monster.getY())) < monster.getRadius()) {
                     health -= monster.getDamage();
                     attacked = true;
                 }

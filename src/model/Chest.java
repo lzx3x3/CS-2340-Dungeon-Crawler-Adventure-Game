@@ -21,24 +21,24 @@ public class Chest {
 
     public Pane drawChest(Pane root) {
         // change the state of chest
-        if(this.state == 1) {
-//            if(stone.isClick()) {
-//                this.state = 2;
-//            }
+        if (this.state == 1) {
+            //if(stone.isClick()) {
+            //    this.state = 2;
+            //}
             this.image = new Image("file:resources/chest_opened.png");
             //stone.drawMagicStone(root);
         }
-        if(this.state == 2) {
+        if (this.state == 2) {
             this.image = new Image("file:resources/chest_empty.png");
         }
 
-        ImageView Vi = new ImageView();
-        Vi.setImage(image);
-        Vi.setX((9 + 1.8) * 32);
-        Vi.setY((7 + 1.5) * 32);
-        Vi.setFitHeight(30);
-        Vi.setFitWidth(30);
-        root.getChildren().add(Vi);
+        ImageView vi = new ImageView();
+        vi.setImage(image);
+        vi.setX((9 + 1.8) * 32);
+        vi.setY((7 + 1.5) * 32);
+        vi.setFitHeight(30);
+        vi.setFitWidth(30);
+        root.getChildren().add(vi);
 
         return root;
     }

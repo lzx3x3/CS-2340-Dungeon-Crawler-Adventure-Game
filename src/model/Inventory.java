@@ -1,7 +1,5 @@
 package model;
 
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -43,9 +41,9 @@ public class Inventory extends Pane {
     }
 
     private class InventorySlot extends StackPane {
-        IItems item;
-        final int width = 50;
-        final int height = 50;
+        private IItems item;
+        private final int width = 50;
+        private final int height = 50;
         public InventorySlot(IItems item) {
             this.item = item;
             Rectangle slot = new Rectangle(width, height);
@@ -71,7 +69,7 @@ public class Inventory extends Pane {
         public void remove() {
             item.use(player);
             if (item instanceof Weapon) {
-
+                return;
             } else {
                 slots.getChildren().remove(this);
                 slots.getChildren().add(new InventorySlot(null));

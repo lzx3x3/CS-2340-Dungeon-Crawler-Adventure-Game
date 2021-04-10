@@ -59,7 +59,7 @@ public class PlayerTest extends ApplicationTest {
         clickOn("Start");
         controller.getPlayer().setUseAttack(true);
         controller.getPlayer().setDamage(30);
-        type(KeyCode.D,15);
+        type(KeyCode.D, 15);
         type(KeyCode.F, 10);
         assertEquals(20, controller.getPlayer().getDamage());
     }

@@ -1,22 +1,11 @@
 package model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
+
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Shop {
     private List<IItems> itemsList;
@@ -30,7 +19,7 @@ public class Shop {
     }
 
     public boolean checkMoney(Player player, int cost) {
-        if(player.getMoney() - cost >= 0) {
+        if (player.getMoney() - cost >= 0) {
             player.changeMoney(cost);
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR);
@@ -56,7 +45,8 @@ public class Shop {
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Transaction Confimation");
                         alert.setResizable(false);
-                        alert.setContentText("A Magic Stone costs you 10000 money. Are you sure to buy it?");
+                        alert.setContentText("A Magic Stone costs you 10000 money.
+                            Are you sure to buy it?");
 
                         Optional<ButtonType> result = alert.showAndWait();
                         ButtonType button = result.orElse(ButtonType.CANCEL);
@@ -83,7 +73,8 @@ public class Shop {
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Transaction Confimation");
                         alert.setResizable(false);
-                        alert.setContentText("A HealthPotion costs you 2000 money. Are you sure to buy it?");
+                        alert.setContentText("A HealthPotion costs you 2000 money.
+                            Are you sure to buy it?");
 
                         Optional<ButtonType> result = alert.showAndWait();
                         ButtonType button = result.orElse(ButtonType.CANCEL);
@@ -110,7 +101,8 @@ public class Shop {
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Transaction Confimation");
                         alert.setResizable(false);
-                        alert.setContentText("An AttackPotion costs you 2000 money. Are you sure to buy it?");
+                        alert.setContentText("An AttackPotion costs you 2000 money.
+                            Are you sure to buy it?");
 
                         Optional<ButtonType> result = alert.showAndWait();
                         ButtonType button = result.orElse(ButtonType.CANCEL);
@@ -138,7 +130,8 @@ public class Shop {
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Transaction Confimation");
                         alert.setResizable(false);
-                        alert.setContentText("A Stick costs you 5000 money. Are you sure to buy it?");
+                        alert.setContentText("A Stick costs you 5000 money.
+                            Are you sure to buy it?");
 
                         Optional<ButtonType> result = alert.showAndWait();
                         ButtonType button = result.orElse(ButtonType.CANCEL);
