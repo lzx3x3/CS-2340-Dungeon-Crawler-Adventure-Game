@@ -61,6 +61,7 @@ public class Motion {
                         player.setHealth(10); //player's health increases 10 after defeating monster
                     }
 
+                    player.useAttackPotion();
                 }
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                         controller));

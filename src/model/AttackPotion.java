@@ -6,18 +6,24 @@ import javafx.scene.image.ImageView;
 public class AttackPotion implements IItems {
     private int newDamage;
     private Image image;
+    private int oldDamage;
 
     AttackPotion() {
-        this.newDamage = 30;
+        newDamage = 10;
         image = new Image ("file:resources/AttackPotion.png");
+        oldDamage = 0;
     }
 
-//    @Override
+    @Override
     public void use(Player player) {
-        player.setDamage(newDamage);
-        //there will be some sort of measure of how temporary this should be,
-        //and damage will be reverted back to original here once potion runs out
+        oldDamage = player.getDamage();
+        player.setDamage(oldDamage + newDamage);
+        player.setUseAttack(true);
+
+        //click on it (call initial use) if you press the key, have method if key pressed
+        //and have potion. if both true, increment the damage. if uses are at 10 then you lose it
     }
+
 
     @Override
     public Image getImage() {
@@ -34,8 +40,4 @@ public class AttackPotion implements IItems {
         return iV;
     }
 
-//    @Override
-//    public Image getImage() {
-//        return image;
-//    }
 }
