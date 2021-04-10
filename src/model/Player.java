@@ -283,13 +283,7 @@ public class Player {
 
         ImageView iV3 = new ImageView();;
         if (weapon != null) {
-            if (attacking) {
-                iV3 = weapon.drawAttack(x, y);
-//                System.out.println(attacking);
-                attacking = false;
-            } else {
-                iV3 = weapon.draw(x, y);
-            }
+            iV3 = weapon.draw(x, y);
         }
 
         System.out.println(iV3);
