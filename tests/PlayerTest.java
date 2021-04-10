@@ -1,6 +1,7 @@
 import controller.Controller;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import model.HealthPotion;
 import model.Player;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -46,5 +47,33 @@ public class PlayerTest extends ApplicationTest {
         type(KeyCode.F, 10);
         type(KeyCode.D, 1);
         assertTrue(controller.getPlayer().getCurrRoom().getItemArray().isEmpty());
+    }
+
+    @Test
+    public void testAttackPotionTemporary() {
+        clickOn("Start");
+        write("Test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        controller.getPlayer().setUseAttack(true);
+        controller.getPlayer().setDamage(30);
+        type(KeyCode.D,15);
+        type(KeyCode.F, 10);
+        assertEquals(20, controller.getPlayer().getDamage());
+    }
+
+    @Test
+    public void testHealthPotion() {
+        clickOn("Start");
+        write("Test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        HealthPotion healthpotion = new HealthPotion();
+        healthpotion.use(controller.getPlayer());
+        assertEquals(270, controller.getPlayer().getHealth());
     }
 }

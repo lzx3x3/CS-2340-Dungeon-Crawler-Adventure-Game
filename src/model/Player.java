@@ -240,7 +240,7 @@ public class Player {
             attacked = false;
         }
 
-        ImageView iV3 = new ImageView();;
+        ImageView iV3 = new ImageView();
         if (weapon != null) {
             iV3 = weapon.draw(x, y);
         }
@@ -357,7 +357,7 @@ public class Player {
 
     // diff can be positive or negative
     public void setHealth(int diff) {
-        this.health = health + diff;
+        health = health + diff;
     }
 
     public void setAttacked(boolean attacked) {
@@ -423,7 +423,7 @@ public class Player {
                 break;
             }
         }
-        if (timesAttack == 10 && useAttack) {
+        if (timesAttack >= 10 && useAttack) {
             damage = damage - 10;
             useAttack = false;
             timesAttack = 0;
