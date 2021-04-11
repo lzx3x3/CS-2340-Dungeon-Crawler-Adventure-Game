@@ -40,6 +40,9 @@ public class Inventory extends Pane {
         }
     }
 
+    public int getNumItems() {
+        return numItems;
+    }
     private class InventorySlot extends StackPane {
         private IItems item;
         private final int width = 50;

@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import model.Deadend3;
 import model.HealthPotion;
 import model.Player;
+import model.Stick;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -122,5 +123,31 @@ public class PlayerTest extends ApplicationTest {
         assertEquals(1, room.getChest().getChestState());
         // test if Magic Stone is collected after chest is open
         assertTrue(!room.getItemArray().isEmpty());
+    }
+
+    //Edited by Jason
+    @Test
+    public void testEquippedWeapon() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        assertTrue(controller.getPlayer().getWeapon() instanceof Stick);
+    }
+
+    @Test
+    public void testInventory() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn1Button");
+        clickOn("Start");
+        type(KeyCode.D, 15);
+        type(KeyCode.F, 10);
+        type(KeyCode.D, 1);
+        assertEquals(controller.getPlayer().getInventory().getNumItems(), 2);
     }
 }

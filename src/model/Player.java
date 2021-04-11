@@ -426,4 +426,8 @@ public class Player {
             timesAttack = 0;
         }
     }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
 }
