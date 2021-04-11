@@ -10,7 +10,7 @@ public class AttackPotion implements IItems {
 
     AttackPotion() {
         newDamage = 10;
-        image = new Image ("file:resources/AttackPotion.png");
+        image = new Image("file:resources/AttackPotion.png");
         oldDamage = 0;
     }
 

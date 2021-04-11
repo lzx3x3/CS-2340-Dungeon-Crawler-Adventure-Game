@@ -1,7 +1,6 @@
 import controller.Controller;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import model.Deadend2;
 import model.MagicStone;
 import model.Player;
 import org.junit.Test;
@@ -11,8 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ItemTest extends ApplicationTest {
 
-    Controller controller = new Controller();
-    Player player = new Player();
+    private Controller controller = new Controller();
+    private Player player = new Player();
     @Override
     public void start(Stage stage) throws Exception {
         controller.setMainWindow(stage);

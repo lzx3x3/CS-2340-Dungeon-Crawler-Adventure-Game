@@ -1,6 +1,4 @@
 package controller;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import model.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -27,12 +25,12 @@ public class Motion {
     }
 
     private void keyHandler(Controller controller) {
-//        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                System.out.println("mouse click detected! "+event.getSource());
-//            }
-//        });
+        //        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+        //            @Override
+        //            public void handle(MouseEvent event) {
+        //                System.out.println("mouse click detected! "+event.getSource());
+        //            }
+        //        });
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();

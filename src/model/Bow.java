@@ -35,30 +35,30 @@ public class Bow extends Weapon {
         return iV;
     }
 
-//    public ImageView drawAttack(int x, int y) {
-//        ImageView iV = new ImageView();
-//
-//        Rotate rotateTransform = new Rotate();
-//        rotateTransform.setAngle(90);
-//        rotateTransform.setPivotX(x + 2.3);
-//        rotateTransform.setPivotY(y + 1.8);
-//
-//        iV.getTransforms().add(rotateTransform);
-//        iV.setImage(img);
-//        iV.setX((x + 2.3) * 32);
-//        iV.setY((y + 1.8) * 32);
-//        iV.setFitHeight(18);
-//        iV.setFitWidth(18);
-//        return iV;
-//    }
+    //    public ImageView drawAttack(int x, int y) {
+    //        ImageView iV = new ImageView();
+    //
+    //        Rotate rotateTransform = new Rotate();
+    //        rotateTransform.setAngle(90);
+    //        rotateTransform.setPivotX(x + 2.3);
+    //        rotateTransform.setPivotY(y + 1.8);
+    //
+    //        iV.getTransforms().add(rotateTransform);
+    //        iV.setImage(img);
+    //        iV.setX((x + 2.3) * 32);
+    //        iV.setY((y + 1.8) * 32);
+    //        iV.setFitHeight(18);
+    //        iV.setFitWidth(18);
+    //        return iV;
+    //    }
 
     @Override
-    public int getDamage() { return damage; }
+    public int getDamage() {
+        return damage;
+    }
 
     @Override
-    public int getRange() { return range; }
-
-//    public Image getImage() {
-//        return img;
-//    }
+    public int getRange() {
+        return range;
+    }
 }

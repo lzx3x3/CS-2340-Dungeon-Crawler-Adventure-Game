@@ -1,12 +1,7 @@
 package model;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 
 import java.util.List;
 import java.util.Random;
@@ -26,22 +21,21 @@ public class MagicStone implements IItems {
         Random r = new Random();
         double random = r.nextDouble();
 
-        if(random <= 0.7) {
-            //while use stone, there is 70% chance that kill a monster in the room (except for the final monster)
+        if (random <= 0.7) {
+            //while use stone, there is 70% chance that kill a monster in the room
+            // (except for the final monster)
             List<IMonster> monsters = player.getCurrRoom().getMonsterArray();
             for (IMonster monster : monsters) {
                 if (monster instanceof Monster1) {
                     Monster1 m1 = (Monster1) monster;
                     m1.setHealth(0);
-                }
-                else if (monster instanceof Monster2) {
+                } else if (monster instanceof Monster2) {
                     Monster2 m2 = (Monster2) monster;
                     m2.setHealth(0);
                 }
             }
-        }
-        else {  //while use stone, there is 30% chance that decrease the player's health by 50%
-            player.setHealth(-player.getHealth()/2);
+        } else {  //while use stone, there is 30% chance that decrease the player's health by 50%
+            player.setHealth(-player.getHealth() / 2);
             player.setAttacked(true);
         }
     }
@@ -66,31 +60,31 @@ public class MagicStone implements IItems {
         return this.imageView;
     }
 
-//    public Pane drawMagicStone(Pane root) {
-//        ImageView V = draw(7, 6);
-//        // set on Action
-//        V.setPickOnBounds(true);
-//        V.setOnMouseClicked(new EventHandler() {
-//            @Override
-//            public void handle(Event event) {
-//                if(!click) {
-//                    System.out.println("Congrat! You collect the Magic Stone!");
-//                    click = true;
-//                    root.getChildren().remove(V);   // remove magicStone when click!
-//                }
-//            }
-//        });
-//
-//        if(!click)
-//            root.getChildren().add(V);
-//        return root;
-//    }
+    //    public Pane drawMagicStone(Pane root) {
+    //        ImageView V = draw(7, 6);
+    //        // set on Action
+    //        V.setPickOnBounds(true);
+    //        V.setOnMouseClicked(new EventHandler() {
+    //            @Override
+    //            public void handle(Event event) {
+    //                if(!click) {
+    //                    System.out.println("Congrat! You collect the Magic Stone!");
+    //                    click = true;
+    //                    root.getChildren().remove(V);   // remove magicStone when click!
+    //                }
+    //            }
+    //        });
+    //
+    //        if(!click)
+    //            root.getChildren().add(V);
+    //        return root;
+    //    }
 
-//    public boolean isClick() {
-//        return this.click;
-//    }
-//
-//    public void setClick(boolean click) {
-//        this.click = click;
-//    }
+    //    public boolean isClick() {
+    //        return this.click;
+    //    }
+    //
+    //    public void setClick(boolean click) {
+    //        this.click = click;
+    //    }
 }

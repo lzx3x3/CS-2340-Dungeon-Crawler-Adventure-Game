@@ -60,7 +60,7 @@ public class PlayerTest extends ApplicationTest {
         clickOn("Start");
         controller.getPlayer().setUseAttack(true);
         controller.getPlayer().setDamage(30);
-        type(KeyCode.D,15);
+        type(KeyCode.D, 15);
         type(KeyCode.F, 10);
         assertEquals(20, controller.getPlayer().getDamage());
     }
@@ -118,7 +118,9 @@ public class PlayerTest extends ApplicationTest {
         type(KeyCode.D, 3);
 
         Deadend3 room = (Deadend3) controller.getPlayer().getCurrRoom();
-        assertEquals(1, room.getChest().getChestState());   // test if chest is open when player walks close to it
-        assertTrue(!room.getItemArray().isEmpty());     // test if Magic Stone is collected after chest is open
+        // test if chest is open when player walks close to it
+        assertEquals(1, room.getChest().getChestState());
+        // test if Magic Stone is collected after chest is open
+        assertTrue(!room.getItemArray().isEmpty());
     }
 }
