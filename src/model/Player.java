@@ -381,9 +381,6 @@ public class Player {
 
     private void attacked() {
         Random r = new Random();
-        if (this.weapon instanceof Bow) {
-            this.health -= 5;
-        }
         int attackBack = r.nextInt(2);
         if (attackBack == 1) {
             checkMonsterAttack();
