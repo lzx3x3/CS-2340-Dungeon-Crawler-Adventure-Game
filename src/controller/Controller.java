@@ -114,7 +114,7 @@ public class Controller extends Application {
      * Initializes end(win/lose) screen
      */
     public void initEndScreen() {
-        WinScreen screen = new WinScreen(width, height);
+        WinScreen screen = new WinScreen(width, height, player);
         Button startOver = screen.getStartOver();
         startOver.setOnAction(e -> {
             initInitialConfigScreen();
@@ -130,7 +130,7 @@ public class Controller extends Application {
     }
 
     public void initLoseScreen() {
-        LoseScreen screen = new LoseScreen(width, height);
+        LoseScreen screen = new LoseScreen(width, height, player);
         Button startOver = screen.getStartOver();
         startOver.setOnAction(e -> {
             initInitialConfigScreen();

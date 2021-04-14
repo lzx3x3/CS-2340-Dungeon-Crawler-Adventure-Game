@@ -8,12 +8,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import model.Player;
 
 public class LoseScreen {
     private int width;
     private int height;
     private Button restart;
     private Button exit;
+    private Text visRooms;
 
     private LoseScreen() { }
 
@@ -27,13 +31,14 @@ public class LoseScreen {
 
 
 
-    public LoseScreen(int width, int height) {
+    public LoseScreen(int width, int height, Player player) {
         this.width = width;
         this.height = height;
         exit = new Button("EXIT");
         ImageView image = new ImageView();
         image.setImage(new Image("file:resources/player.png"));
         restart = new Button("Try Again!", image);
+        visRooms = new Text("Total Rooms Visited: " + player.getVisitedRooms().size());
     }
 
     public Scene getScene()  {
@@ -43,13 +48,13 @@ public class LoseScreen {
         img.setFitWidth(800);
         img.setFitHeight(600);
         root.getChildren().add(img);
-
+        visRooms.setFill(Color.WHITE);
         BorderPane loseScreen = new BorderPane();
 
         // Add restart and exit buttons
         ImageView image = new ImageView();
 
-        VBox buttons = new VBox(restart, exit);
+        VBox buttons = new VBox(restart, exit, visRooms);
         buttons.setSpacing(10);
         restart.getStyleClass().add("buttons");
         exit.getStyleClass().add("buttons");
