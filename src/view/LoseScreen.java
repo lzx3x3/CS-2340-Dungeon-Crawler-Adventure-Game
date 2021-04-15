@@ -18,6 +18,7 @@ public class LoseScreen {
     private Button restart;
     private Button exit;
     private Text visRooms;
+    private Text damageDealt;
 
     private LoseScreen() { }
 
@@ -39,6 +40,7 @@ public class LoseScreen {
         image.setImage(new Image("file:resources/player.png"));
         restart = new Button("Try Again!", image);
         visRooms = new Text("Total Rooms Visited: " + player.getVisitedRooms().size());
+        damageDealt = new Text("Total Damage Dealt: " + player.getDamageDealt());
     }
 
     public Scene getScene()  {
@@ -49,12 +51,13 @@ public class LoseScreen {
         img.setFitHeight(600);
         root.getChildren().add(img);
         visRooms.setFill(Color.WHITE);
+        damageDealt.setFill(Color.WHITE);
         BorderPane loseScreen = new BorderPane();
 
         // Add restart and exit buttons
         ImageView image = new ImageView();
 
-        VBox buttons = new VBox(restart, exit, visRooms);
+        VBox buttons = new VBox(restart, exit, visRooms, damageDealt);
         buttons.setSpacing(10);
         restart.getStyleClass().add("buttons");
         exit.getStyleClass().add("buttons");

@@ -18,6 +18,7 @@ public class WinScreen {
     private Button startOver;
     private Button exit;
     private Text visRooms;
+    private Text damageDone;
 
     private WinScreen() { }
 
@@ -37,6 +38,7 @@ public class WinScreen {
         exit = new Button("EXIT");
         startOver = new Button("STARTOVER");
         visRooms = new Text("Total Rooms Visited: " + player.getVisitedRooms().size());
+        damageDone = new Text("Total Damage Dealt: " + player.getDamageDealt());
     }
 
     public Scene getScene()  {
@@ -47,11 +49,14 @@ public class WinScreen {
         img.setFitHeight(600);
         root.getChildren().add(img);
         visRooms.setFill(Color.WHITE);
+        damageDone.setFill(Color.WHITE);
         BorderPane winScreen = new BorderPane();
 
         // Title screen start button
         VBox buttons = new VBox(exit, startOver);
         VBox stats = new VBox(visRooms);
+        stats.getChildren().add(damageDone);
+        stats.setSpacing(10);
         buttons.setSpacing(10);
         startOver.getStyleClass().add("buttons");
         exit.getStyleClass().add("buttons");

@@ -29,7 +29,7 @@ public class EndMonster implements IMonster {
         this.health = 150;
         this.weapon = "fire";
         this.radius = 3;
-        this.damage = 20;
+        this.damage = 25;
         this.x = 9;
         this.y = 7;
         this.currRoom = null;

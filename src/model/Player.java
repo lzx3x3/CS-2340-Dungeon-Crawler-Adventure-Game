@@ -27,6 +27,7 @@ public class Player {
     private boolean wpnUpdated;
     private int timesAttack;
     private boolean useAttack;
+    private int damageDealt;
 
     public Player() {
         health = 250;
@@ -44,6 +45,7 @@ public class Player {
         wpnUpdated = false;
         timesAttack = 0;
         useAttack = false;
+        damageDealt = 0;
     }
 
     public void setName(String name) {
@@ -121,6 +123,10 @@ public class Player {
 
     public void setDamage(int newDamage) {
         damage = newDamage;
+    }
+
+    public int getDamageDealt () {
+        return damageDealt;
     }
 
     public int getTimesAttack() {
@@ -369,10 +375,12 @@ public class Player {
             if (!monster.isDead()) {
                 if (Math.abs(monster.getX() - this.x) <= weapon.getRange() && monster.getY() == y) {
                     monster.setHealth(monster.getHealth() - weapon.getDamage());
+                    damageDealt += damage;
                     attacked();
                 } else if (Math.abs(monster.getY() - this.y) <= weapon.getRange()
                         && monster.getX() == x) {
                     monster.setHealth(monster.getHealth() - weapon.getDamage());
+                    damageDealt += damage;
                     attacked();
                 }
             }
