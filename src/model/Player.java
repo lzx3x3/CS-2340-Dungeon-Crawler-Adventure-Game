@@ -29,6 +29,7 @@ public class Player {
     private boolean useAttack;
     private int damageDealt;
     private int monstersKilled;
+    private boolean passExit;
 
     public Player() {
         health = 250;
@@ -48,6 +49,7 @@ public class Player {
         useAttack = false;
         damageDealt = 0;
         monstersKilled = 0;
+        passExit = false;
     }
 
     public void setName(String name) {
@@ -447,5 +449,13 @@ public class Player {
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    public boolean getPassExit() {
+        return this.passExit;
+    }
+
+    public void setPassExit(boolean pass) {
+        this.passExit = pass;
     }
 }

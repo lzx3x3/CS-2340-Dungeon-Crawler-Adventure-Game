@@ -35,6 +35,7 @@ public class Maze {
         Random r = new Random();
         int position = r.nextInt(4 - 2 + 1) + 2;
         maze[position][5] = new ExitRoom(position, 15, 15);
+        //maze[1][1] = new ExitRoom(position, 15, 15);
         for (int i = 0; i < 7; i++) {
             // Dead-end room creation (WIP)
             maze[0][i] = new Deadend4(i, 15, 15);

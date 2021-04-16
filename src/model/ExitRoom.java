@@ -2,6 +2,7 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -101,6 +102,11 @@ public class ExitRoom extends Room {
 
         root.getChildren().addAll(money, diff, level, health, player.getInventory());
 
+        // after defeating endMonster, show exit of dungeon
+        if (player.checkMonstersDead()) {
+            root = drawExit(root, player);
+        }
+
         return root;
     }
 
@@ -116,6 +122,25 @@ public class ExitRoom extends Room {
     @Override
     public IItems removeItem() {
         return itemArray.remove(0);
+    }
+
+    public Pane drawExit(Pane root, Player player) {
+        Image image = new Image("file:resources/images/finalExit.jpg");
+
+        // change the state of exit
+        if (player.getX() == 7 && player.getY() == 4) {
+            //image = new Image("file:resources/chest_opened.png");
+            player.setPassExit(true);
+        }
+        ImageView vi = new ImageView();
+        vi.setImage(image);
+        vi.setX((6 + 1.5) * 32);
+        vi.setY((3 + 1.5) * 32);
+        vi.setFitHeight(100);
+        vi.setFitWidth(100);
+        root.getChildren().add(vi);
+
+        return root;
     }
 
 
