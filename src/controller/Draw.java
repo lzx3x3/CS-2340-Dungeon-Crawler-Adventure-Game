@@ -53,7 +53,7 @@ public class Draw {
     public Pane drawSprites(Player player, List<IMonster> monsters, Controller controller) {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
-        root = room.drawRoom(root, player); //draws either a start, wooden, or end room
+        root = room.drawRoom(root, player); //draws either a start, wooden, challenge, or end room
         if (player.getHealth() > 0) {
             if (monsters != null) {
                 for (IMonster monster : monsters) {

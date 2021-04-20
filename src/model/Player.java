@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -296,6 +298,11 @@ public class Player {
     }
 
     public boolean checkMonstersDead() {
+        if (currRoom instanceof ChallengeRoom) {
+            if (!((ChallengeRoom) currRoom).getWantsChallenge()) {
+                return true;
+            }
+        }
         for (IMonster m:currRoom.getMonsterArray()) {
             if (!m.isDead()) {
                 return false;
@@ -358,6 +365,20 @@ public class Player {
             } else {
                 currMaze.updateRoom("UP");
             }
+        }
+        if (currRoom instanceof ChallengeRoom) {
+            ((ChallengeRoom) currRoom).setWantsChallenge(false);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Challenge Room");
+            alert.setHeaderText("Challenge Room");
+            alert.setContentText("You have reached a Challenge Room! Would you like to take the challenge?");
+            alert.showAndWait().ifPresent((button) -> {
+                if (button == ButtonType.OK) {
+                    ((ChallengeRoom) currRoom).setWantsChallenge(true);
+                } else if (button == ButtonType.CANCEL) {
+                    ((ChallengeRoom) currRoom).setWantsChallenge(false);
+                }
+            });
         }
         //addToVisitedRooms(currRoom);
     }
