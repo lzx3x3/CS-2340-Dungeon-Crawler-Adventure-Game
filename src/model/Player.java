@@ -280,7 +280,11 @@ public class Player {
         checkMonsterAttack();
         Tile[][] array = currRoom.getTileArray();
         if (array[x][y].getType() == "Door") {
-            handleRoomChange(checkMonstersDead());
+            if (currRoom instanceof ChallengeRoom) {
+                challengeRoomChange(checkMonstersDead());
+            } else {
+                handleRoomChange(checkMonstersDead());
+            }
         }
         if (x == 9 && y == 7) {
             if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
@@ -317,7 +321,6 @@ public class Player {
                 addToVisitedRooms(currRoom);
             }
             //right
-
             currMaze.updateRoom("RIGHT");
             if (clear || visitedRooms.contains(currMaze.getCurrentRoom())) {
                 currRoom = currMaze.getCurrentRoom();
@@ -381,6 +384,54 @@ public class Player {
             });
         }
         //addToVisitedRooms(currRoom);
+    }
+
+    private void challengeRoomChange(Boolean clear) {
+        if (x == 14 && y == 7) {
+            if (checkMonstersDead()) {
+                addToVisitedRooms(currRoom);
+            }
+            //right
+            if (clear) {
+                currMaze.updateRoom("LEFT");
+                currRoom = currMaze.getCurrentRoom();
+                setX(0);
+                setY(7);
+            }
+        } else if (x == 7 && y == 0) {
+            if (checkMonstersDead()) {
+                addToVisitedRooms(currRoom);
+            }
+            //top
+            if (clear) {
+                currMaze.updateRoom("UP");
+                currRoom = currMaze.getCurrentRoom();
+                setX(7);
+                setY(14);
+            }
+        } else if (x == 0 && y == 7) {
+            if (checkMonstersDead()) {
+                addToVisitedRooms(currRoom);
+            }
+            //left
+            if (clear) {
+                currMaze.updateRoom("LEFT");
+                currRoom = currMaze.getCurrentRoom();
+                setX(14);
+                setY(7);
+            }
+        } else if (x == 7 && y == 14) {
+            if (checkMonstersDead()) {
+                addToVisitedRooms(currRoom);
+            }
+            //bottom
+            if (clear) {
+                currMaze.updateRoom("DOWN");
+                currRoom = currMaze.getCurrentRoom();
+                setX(7);
+                setY(0);
+            }
+        }
     }
 
     public int getHealth() {
