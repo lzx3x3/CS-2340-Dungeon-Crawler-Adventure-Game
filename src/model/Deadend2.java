@@ -128,7 +128,7 @@ public class Deadend2 extends Room {
     }
 
     @Override
-    public IItems removeItem(int index) {
-        return itemArray.remove(index);
+    public IItems removeItem() {
+        return itemArray.remove(0);
     }
 }
