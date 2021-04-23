@@ -5,7 +5,6 @@ import javafx.scene.text.Text;
 import model.*;
 
 import java.util.List;
-import java.util.Random;
 
 public class Draw {
 
@@ -64,20 +63,21 @@ public class Draw {
                         root = monster.drawMonster(root);
                     }
 
-//                    List<IItems> items = player.getCurrRoom().getItemArray();
-//                    if (monster.isDead() && items != null) {
-//                        Random rand = new Random();
-//                        int randItem = rand.nextInt(items.size());
-//                        root.getChildren().add(items.get(randItem).draw(monster.getX(), monster.getY()));
-//                    }
+                    //List<IItems> items = player.getCurrRoom().getItemArray();
+                    //if (monster.isDead() && items != null) {
+                    //  Random rand = new Random();
+                    //  int randItem = rand.nextInt(items.size());
+                    //  root.getChildren().add(items.get(randItem).draw(monster.getX(),
+                    //          monster.getY()));
+                    //}
                 }
             }
             List<IItems> items = player.getCurrRoom().getItemArray();
             if (items != null) {
                 for (IItems item : items) {
-//                    if (player.checkMonstersDead()) {
-//                        root.getChildren().add(item.draw(9, 7));
-//                    }
+                    //if (player.checkMonstersDead()) {
+                    //    root.getChildren().add(item.draw(9, 7));
+                    //}
                     for (IMonster monster : monsters) {
                         if (monster.isDead()) {
                             root.getChildren().add(item.draw(monster.getX(), monster.getY()));
