@@ -300,7 +300,7 @@ public class Player {
         for (IMonster monster : monsters) {
             if (x == monster.getX() && y == monster.getY() && monster.isDead()
                     && !currRoom.getItemArray().isEmpty()) {
-                IItems item = currRoom.removeItem(index);
+                IItems item = currRoom.removeItem();
                 if (item != null) {
                     inventory.add(item);
                 }

@@ -22,5 +22,5 @@ public abstract class Room {
     public abstract Pane drawRoom(Pane root, Player player);
     public abstract List<IMonster> getMonsterArray();
     public abstract List<IItems> getItemArray();
-    public abstract IItems removeItem(int index);
+    public abstract IItems removeItem();
 }
