@@ -63,7 +63,6 @@ public class Inventory extends Pane {
                 removeButton.setOnAction(e -> {
                     remove();
                     System.out.println("You are using item!");
-                    // item.use(player);
                 });
                 getChildren().add(removeButton);
             }

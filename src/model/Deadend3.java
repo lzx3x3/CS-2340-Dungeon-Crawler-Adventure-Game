@@ -70,7 +70,7 @@ public class Deadend3 extends Room {
         if (chest.getChestState() == 1 && !getMagicStone) {
             itemArray.add(new MagicStone());
             getMagicStone = true;
-            //chest.setChestState(2);
+            chest.setChestState(2);
         }
 
         //        for (Door one : doors) {

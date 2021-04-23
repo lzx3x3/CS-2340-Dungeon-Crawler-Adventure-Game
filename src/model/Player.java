@@ -34,7 +34,7 @@ public class Player {
     private boolean passExit;
 
     public Player() {
-        health = 250;
+        health = 500;
         money = 0;
         level = 1;
         name = "";
@@ -306,6 +306,14 @@ public class Player {
                 }
             }
             index++;
+        }
+        if (currRoom instanceof Deadend2 || currRoom instanceof Deadend3) {
+            if (!currRoom.getItemArray().isEmpty()) {
+                IItems item = currRoom.removeItem();
+                if (item != null) {
+                    inventory.add(item);
+                }
+            }
         }
     }
 

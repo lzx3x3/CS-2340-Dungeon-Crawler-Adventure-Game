@@ -25,16 +25,17 @@ public class Chest {
             //if(stone.isClick()) {
             //    this.state = 2;
             //}
+            root = stone.drawMagicStone(root);
             this.image = new Image("file:resources/chest_opened.png");
-            //stone.drawMagicStone(root);
         }
         if (this.state == 2) {
+            root = stone.removeMagicStone(root);
             this.image = new Image("file:resources/chest_empty.png");
         }
 
         ImageView vi = new ImageView();
         vi.setImage(image);
-        vi.setX((9 + 1.8) * 32);
+        vi.setX((7 + 1.8) * 32);
         vi.setY((7 + 1.5) * 32);
         vi.setFitHeight(30);
         vi.setFitWidth(30);

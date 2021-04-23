@@ -2,6 +2,7 @@ package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 import java.util.Random;
@@ -9,11 +10,9 @@ import java.util.Random;
 public class MagicStone implements IItems {
     private Image image;
     private ImageView imageView;
-    //private boolean click;
 
     public MagicStone() {
         this.image = new Image("file:resources/MagicStone.png");
-        //this.click = false;
     }
 
     @Override
@@ -50,7 +49,7 @@ public class MagicStone implements IItems {
         imageView = new ImageView();
         imageView.setImage(image);
         imageView.setX((x + 1.8) * 32);
-        imageView.setY((y + 1.4) * 32);
+        imageView.setY((y + 1.0) * 32);
         imageView.setFitHeight(25);
         imageView.setFitWidth(30);
         return imageView;
@@ -60,31 +59,13 @@ public class MagicStone implements IItems {
         return this.imageView;
     }
 
-    //    public Pane drawMagicStone(Pane root) {
-    //        ImageView V = draw(7, 6);
-    //        // set on Action
-    //        V.setPickOnBounds(true);
-    //        V.setOnMouseClicked(new EventHandler() {
-    //            @Override
-    //            public void handle(Event event) {
-    //                if(!click) {
-    //                    System.out.println("Congrat! You collect the Magic Stone!");
-    //                    click = true;
-    //                    root.getChildren().remove(V);   // remove magicStone when click!
-    //                }
-    //            }
-    //        });
-    //
-    //        if(!click)
-    //            root.getChildren().add(V);
-    //        return root;
-    //    }
+    public Pane drawMagicStone(Pane root) {
+        root.getChildren().add(draw(7, 7));
+        return root;
+    }
 
-    //    public boolean isClick() {
-    //        return this.click;
-    //    }
-    //
-    //    public void setClick(boolean click) {
-    //        this.click = click;
-    //    }
+    public Pane removeMagicStone(Pane root) {
+        root.getChildren().remove(draw(7, 7));
+        return root;
+    }
 }
