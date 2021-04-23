@@ -69,8 +69,9 @@ public class Motion {
                     scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                             controller));
                     stage.setScene(scene);
-                    if(player.getPassExit())
+                    if (player.getPassExit()) {
                         controller.initEndScreen();
+                    }
                 }
             }
             if (player.getHealth() <= 0) {

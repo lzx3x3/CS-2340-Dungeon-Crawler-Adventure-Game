@@ -20,7 +20,7 @@ public class ChallengeRoom extends Room {
     private ArrayList<IMonster> monsters;
     private List<IItems> itemArray;
     private Random rand;
-    boolean wantsChallenge;
+    private boolean wantsChallenge;
 
     public ChallengeRoom(int index, int height, int width) {
         super(index, height, width);

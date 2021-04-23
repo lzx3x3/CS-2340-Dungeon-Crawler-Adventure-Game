@@ -135,7 +135,9 @@ public class Player {
         return damageDealt;
     }
 
-    public int getMonstersKilled() { return monstersKilled; }
+    public int getMonstersKilled() {
+        return monstersKilled;
+    }
 
     public int getTimesAttack() {
         return timesAttack;
@@ -286,15 +288,15 @@ public class Player {
                 handleRoomChange(checkMonstersDead());
             }
         }
-//        if (x == 9 && y == 7) {
-//            if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
-//                //currRoom.removeItem();
-//                IItems item = currRoom.removeItem();
-//                if (item != null) {
-//                    inventory.add(item);
-//                }
-//            }
-//        }
+        //if (x == 9 && y == 7) {
+        //    if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
+        //        //currRoom.removeItem();
+        //        IItems item = currRoom.removeItem();
+        //        if (item != null) {
+        //            inventory.add(item);
+        //        }
+        //    }
+        //}
         List<IMonster> monsters = currRoom.getMonsterArray();
         int index = 0;
         for (IMonster monster : monsters) {
@@ -382,18 +384,22 @@ public class Player {
             }
         }
         if (currRoom instanceof ChallengeRoom) {
-            ((ChallengeRoom) currRoom).setWantsChallenge(false);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Challenge Room");
-            alert.setHeaderText("Challenge Room");
-            alert.setContentText("You have reached a Challenge Room! Would you like to take the challenge?");
-            alert.showAndWait().ifPresent((button) -> {
-                if (button == ButtonType.OK) {
-                    ((ChallengeRoom) currRoom).setWantsChallenge(true);
-                } else if (button == ButtonType.CANCEL) {
-                    ((ChallengeRoom) currRoom).setWantsChallenge(false);
-                }
-            });
+            if (!visitedRooms.contains(currRoom)) {
+                ((ChallengeRoom) currRoom).setWantsChallenge(false);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Challenge Room");
+                alert.setHeaderText("Challenge Room");
+                alert.setContentText("You have reached a Challenge Room!"
+                        + " Would you like to take the challenge?");
+                alert.showAndWait().ifPresent((button) -> {
+                    if (button == ButtonType.OK) {
+                        ((ChallengeRoom) currRoom).setWantsChallenge(true);
+                        money += 10000;
+                    } else if (button == ButtonType.CANCEL) {
+                        ((ChallengeRoom) currRoom).setWantsChallenge(false);
+                    }
+                });
+            }
         }
         //addToVisitedRooms(currRoom);
     }
