@@ -26,13 +26,13 @@ public class Monster1 implements IMonster {
     private Text monHealth;
 
 
-    public Monster1() {
+    public Monster1(int x, int y) {
         this.health = 100;
         this.damage = 10;
         this.weapon = "stick";
         this.radius = 2;
-        this.x = 9;
-        this.y = 7;
+        this.x = x;
+        this.y = y;
         this.currRoom = null;
         this.dead = false;
         this.monHealth = new Text();

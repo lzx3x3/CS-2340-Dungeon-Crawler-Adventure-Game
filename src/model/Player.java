@@ -286,14 +286,26 @@ public class Player {
                 handleRoomChange(checkMonstersDead());
             }
         }
-        if (x == 9 && y == 7) {
-            if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
-                //currRoom.removeItem();
-                IItems item = currRoom.removeItem();
+//        if (x == 9 && y == 7) {
+//            if (checkMonstersDead() && !currRoom.getItemArray().isEmpty()) {
+//                //currRoom.removeItem();
+//                IItems item = currRoom.removeItem();
+//                if (item != null) {
+//                    inventory.add(item);
+//                }
+//            }
+//        }
+        List<IMonster> monsters = currRoom.getMonsterArray();
+        int index = 0;
+        for (IMonster monster : monsters) {
+            if (x == monster.getX() && y == monster.getY() && monster.isDead()
+                    && !currRoom.getItemArray().isEmpty()) {
+                IItems item = currRoom.removeItem(index);
                 if (item != null) {
                     inventory.add(item);
                 }
             }
+            index++;
         }
     }
 
@@ -393,7 +405,7 @@ public class Player {
             }
             //right
             if (clear) {
-                currMaze.updateRoom("LEFT");
+                currMaze.updateRoom("RIGHT");
                 currRoom = currMaze.getCurrentRoom();
                 setX(0);
                 setY(7);
@@ -448,12 +460,14 @@ public class Player {
     }
 
     public void attack() {
+        System.out.println("attack");
         List<IMonster> monsters = currRoom.getMonsterArray();
         for (IMonster monster : monsters) {
             if (!monster.isDead()) {
                 if (Math.abs(monster.getX() - this.x) <= weapon.getRange() && monster.getY() == y) {
                     monster.setHealth(monster.getHealth() - weapon.getDamage());
                     damageDealt += damage;
+                    System.out.println("deduct health");
                     if (monster.isDead()) {
                         monstersKilled++;
                     }
@@ -462,6 +476,7 @@ public class Player {
                         && monster.getX() == x) {
                     monster.setHealth(monster.getHealth() - weapon.getDamage());
                     damageDealt += damage;
+                    System.out.println("deduct health");
                     if (monster.isDead()) {
                         monstersKilled++;
                     }

@@ -35,8 +35,8 @@ public class WoodenRoom extends Room {
         //=======
         allMonsters = new ArrayList<>();
         itemArray = new ArrayList<IItems>();
-        allMonsters.add(new Monster1());
-        allMonsters.add(new Monster2());
+        allMonsters.add(new Monster1(generateRandPos(), generateRandPos()));
+        allMonsters.add(new Monster2(generateRandPos(), generateRandPos()));
         rand = new Random();
         int randint = rand.nextInt(2);
         monsters = new ArrayList<>();
@@ -149,7 +149,13 @@ public class WoodenRoom extends Room {
         return itemArray;
     }
     @Override
-    public IItems removeItem() {
-        return itemArray.remove(0);
+    public IItems removeItem(int index) {
+        return itemArray.remove(index);
+    }
+
+    private int generateRandPos() {
+        Random rand = new Random();
+        int randPos = rand.nextInt(13) + 1;
+        return randPos;
     }
 }

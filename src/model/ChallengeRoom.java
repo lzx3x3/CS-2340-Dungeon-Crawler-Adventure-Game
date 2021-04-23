@@ -30,6 +30,7 @@ public class ChallengeRoom extends Room {
 
         rand = new Random();
         int randItem = rand.nextInt(7);
+
         if (randItem == 0 || randItem == 5) {
             itemArray.add(new AttackPotion());
         } else if (randItem == 1 || randItem == 6) {
@@ -41,6 +42,10 @@ public class ChallengeRoom extends Room {
         } else if (randItem == 4) {
             itemArray.add(new Bow());
         }
+
+        monsters.add(new Monster1(generateRandPos(), generateRandPos()));
+        monsters.add(new Monster2(generateRandPos(), generateRandPos()));
+        monsters.add(new Monster1(generateRandPos(), generateRandPos()));
     }
 
     @Override
@@ -126,8 +131,8 @@ public class ChallengeRoom extends Room {
         return itemArray;
     }
     @Override
-    public IItems removeItem() {
-        return itemArray.remove(0);
+    public IItems removeItem(int index) {
+        return itemArray.remove(index);
     }
 
     public boolean getWantsChallenge() {
@@ -138,4 +143,9 @@ public class ChallengeRoom extends Room {
         this.wantsChallenge = wantsChallenge;
     }
 
+    private int generateRandPos() {
+        Random rand = new Random();
+        int randPos = rand.nextInt(13) + 1;
+        return randPos;
+    }
 }

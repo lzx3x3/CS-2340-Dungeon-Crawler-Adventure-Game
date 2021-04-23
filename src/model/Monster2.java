@@ -26,13 +26,13 @@ public class Monster2 implements IMonster {
     private Maze maze;
     private Text monHealth;
 
-    public Monster2() {
+    public Monster2(int x, int y) {
         this.health = 100;
         this.damage = 15;
         this.weapon = "magic";
         this.radius = 3;
-        this.x = 9;
-        this.y = 7;
+        this.x = x;
+        this.y = y;
         this.currRoom = null;
         this.dead = false;
         this.monHealth = new Text();
