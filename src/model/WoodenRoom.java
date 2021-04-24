@@ -43,17 +43,19 @@ public class WoodenRoom extends Room {
         monsters.add(allMonsters.get(randint));
         //monsters.add(new Monster1());
 
+        int x = monsters.get(0).getX();
+        int y = monsters.get(0).getY();
         int randItem = rand.nextInt(7);
         if (randItem == 0 || randItem == 5) {
-            itemArray.add(new AttackPotion());
+            itemArray.add(new AttackPotion(x, y));
         } else if (randItem == 1 || randItem == 6) {
-            itemArray.add(new HealthPotion());
+            itemArray.add(new HealthPotion(x, y));
         } else if (randItem == 2) {
-            itemArray.add(new MagicStone());
+            itemArray.add(new MagicStone(x, y));
         } else if (randItem == 3) {
-            itemArray.add(new Sword());
+            itemArray.add(new Sword(x, y));
         } else if (randItem == 4) {
-            itemArray.add(new Bow());
+            itemArray.add(new Bow(x, y));
         }
     }
 
@@ -99,6 +101,18 @@ public class WoodenRoom extends Room {
         //            iV.setY(one.getY() * 32 + 50);
         //            root.getChildren().add(iV);
         //        }
+        ImageView iv = new ImageView();
+        for (IMonster monster : monsters) {
+            if (monster.isDead()) {
+                for (IItems item : itemArray) {
+                    if (item.getX() == monster.getX() && item.getY() == monster.getY()) {
+                        root.getChildren().addAll(item.draw());
+                    }
+                }
+            } else {
+                root = monster.drawMonster(root);
+            }
+        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
@@ -149,8 +163,8 @@ public class WoodenRoom extends Room {
         return itemArray;
     }
     @Override
-    public IItems removeItem() {
-        return itemArray.remove(0);
+    public void removeItem(IItems item) {
+        itemArray.remove(item);
     }
 
     private int generateRandPos() {

@@ -12,10 +12,10 @@ public class Shop {
 
     public Shop() {
         this.itemsList = new ArrayList<>();
-        itemsList.add(new MagicStone());
-        itemsList.add(new HealthPotion());
-        itemsList.add(new AttackPotion());
-        itemsList.add(new Stick());
+        itemsList.add(new MagicStone(9, 7));
+        itemsList.add(new HealthPotion(9, 7));
+        itemsList.add(new AttackPotion(9, 7));
+        itemsList.add(new Stick(9, 7));
     }
 
     public boolean checkMoney(Player player, int cost) {

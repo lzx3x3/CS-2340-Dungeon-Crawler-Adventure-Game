@@ -89,11 +89,11 @@ public class Player {
 
     public void setWeaponType(String wpn) {
         if (wpn == "Stick") {
-            this.weapon = new Stick();
+            this.weapon = new Stick(x, y);
         } else if (wpn == "Sword") {
-            this.weapon = new Sword();
+            this.weapon = new Sword(x, y);
         } else if (wpn == "Bow") {
-            this.weapon = new Bow();
+            this.weapon = new Bow(x, y);
         }
         inventory.add(this.weapon);
     }
@@ -257,7 +257,7 @@ public class Player {
 
         ImageView iV3 = new ImageView();
         if (weapon != null) {
-            iV3 = weapon.draw(x, y);
+            iV3 = weapon.draw();
         }
 
         System.out.println(iV3);
@@ -297,21 +297,26 @@ public class Player {
         //        }
         //    }
         //}
-        List<IMonster> monsters = currRoom.getMonsterArray();
-        int index = 0;
-        for (IMonster monster : monsters) {
-            if (x == monster.getX() && y == monster.getY() && monster.isDead()
-                    && !currRoom.getItemArray().isEmpty()) {
-                IItems item = currRoom.removeItem();
-                if (item != null) {
-                    inventory.add(item);
-                }
+//        List<IMonster> monsters = currRoom.getMonsterArray();
+//        for (IMonster monster : monsters) {
+//            if (x == monster.getX() && y == monster.getY() && monster.isDead()
+//                    && !currRoom.getItemArray().isEmpty()) {
+//                IItems item = currRoom.removeItem();
+//                if (item != null) {
+//                    inventory.add(item);
+//                }
+//            }
+//        }
+        for (IItems item : currRoom.getItemArray()) {
+            if (x == item.getX() && y == item.getY()) {
+                 currRoom.removeItem(item);
+                inventory.add(item);
             }
-            index++;
         }
+
         if (currRoom instanceof Deadend2 || currRoom instanceof Deadend3) {
             if (!currRoom.getItemArray().isEmpty()) {
-                IItems item = currRoom.removeItem();
+                IItems item = currRoom.getItemArray().get(0);
                 if (item != null) {
                     inventory.add(item);
                 }

@@ -74,7 +74,7 @@ public class PlayerTest extends ApplicationTest {
         clickOn("Medium");
         clickOn(".wpn1Button");
         clickOn("Start");
-        HealthPotion healthpotion = new HealthPotion();
+        HealthPotion healthpotion = new HealthPotion(9, 7);
         healthpotion.use(controller.getPlayer());
         assertEquals(270, controller.getPlayer().getHealth());
     }

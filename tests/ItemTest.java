@@ -23,7 +23,7 @@ public class ItemTest extends ApplicationTest {
     public void testMagicStoneUse() {
         type(KeyCode.S, 7);
         type(KeyCode.S, 6);
-        MagicStone stone = new MagicStone();
+        MagicStone stone = new MagicStone(9, 7);
         stone.use(player);
         assertEquals(true, player.checkMonstersDead());
     }

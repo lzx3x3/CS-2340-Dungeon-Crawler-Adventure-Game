@@ -67,6 +67,18 @@ public class ExitRoom extends Room {
         //            iV.setY(one.getY() * 32 + 50);
         //            root.getChildren().add(iV);
         //        }
+        ImageView iv = new ImageView();
+        for (IMonster monster : monsters) {
+            if (monster.isDead()) {
+                for (IItems item : itemArray) {
+                    if (item.getX() == monster.getX() && item.getY() == monster.getY()) {
+                        root.getChildren().addAll(item.draw());
+                    }
+                }
+            } else {
+                root = monster.drawMonster(root);
+            }
+        }
 
         Text money = new Text();
         money.textProperty().bind(new SimpleStringProperty(("Current Money: ")).concat(
@@ -120,8 +132,8 @@ public class ExitRoom extends Room {
     }
 
     @Override
-    public IItems removeItem() {
-        return itemArray.remove(0);
+    public void removeItem(IItems item) {
+        itemArray.remove(item);
     }
 
     public Pane drawExit(Pane root, Player player) {

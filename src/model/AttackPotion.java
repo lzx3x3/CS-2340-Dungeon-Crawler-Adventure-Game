@@ -7,11 +7,15 @@ public class AttackPotion implements IItems {
     private int newDamage;
     private Image image;
     private int oldDamage;
+    private int x;
+    private int y;
 
-    AttackPotion() {
+    public AttackPotion(int x, int y) {
         newDamage = 10;
         image = new Image("file:resources/AttackPotion.png");
         oldDamage = 0;
+        this.x = x;
+        this.y = y;
     }
 
     @Override
@@ -30,14 +34,17 @@ public class AttackPotion implements IItems {
         return image;
     }
 
-    public ImageView draw(int x, int y) {
+    public ImageView draw() {
         ImageView iV = new ImageView();
         iV.setImage(image);
-        iV.setX((x + 2) * 32);
-        iV.setY((y + 2) * 32);
+        iV.setX((x + 1.8) * 32);
+        iV.setY((y + 2.0) * 32);
         iV.setFitHeight(15);
         iV.setFitWidth(15);
         return iV;
     }
 
+    public int getX() { return x; }
+
+    public int getY() { return y; }
 }

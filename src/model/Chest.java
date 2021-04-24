@@ -12,7 +12,7 @@ public class Chest {
     public Chest() {
         this.image = new Image("file:resources/chest_closed.png");
         this.state = 0;
-        stone = new MagicStone();
+        stone = new MagicStone(9, 7);
     }
 
     public MagicStone getMagicStone() {
@@ -35,7 +35,7 @@ public class Chest {
 
         ImageView vi = new ImageView();
         vi.setImage(image);
-        vi.setX((7 + 1.8) * 32);
+        vi.setX((9 + 1.8) * 32);
         vi.setY((7 + 1.5) * 32);
         vi.setFitHeight(30);
         vi.setFitWidth(30);

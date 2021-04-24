@@ -28,24 +28,43 @@ public class ChallengeRoom extends Room {
         itemArray = new ArrayList<IItems>();
         monsters = new ArrayList<IMonster>();
 
-        rand = new Random();
-        int randItem = rand.nextInt(7);
-
-        if (randItem == 0 || randItem == 5) {
-            itemArray.add(new AttackPotion());
-        } else if (randItem == 1 || randItem == 6) {
-            itemArray.add(new HealthPotion());
-        } else if (randItem == 2) {
-            itemArray.add(new MagicStone());
-        } else if (randItem == 3) {
-            itemArray.add(new Sword());
-        } else if (randItem == 4) {
-            itemArray.add(new Bow());
-        }
+//        rand = new Random();
+//        int randItem = rand.nextInt(7);
+//
+//        if (randItem == 0 || randItem == 5) {
+//            itemArray.add(new AttackPotion());
+//        } else if (randItem == 1 || randItem == 6) {
+//            itemArray.add(new HealthPotion());
+//        } else if (randItem == 2) {
+//            itemArray.add(new MagicStone());
+//        } else if (randItem == 3) {
+//            itemArray.add(new Sword());
+//        } else if (randItem == 4) {
+//            itemArray.add(new Bow());
+//        }
 
         monsters.add(new Monster1(generateRandPos(), generateRandPos()));
         monsters.add(new Monster2(generateRandPos(), generateRandPos()));
         monsters.add(new Monster1(generateRandPos(), generateRandPos()));
+
+        for (IMonster monster : monsters) {
+            rand = new Random();
+            int randItem = rand.nextInt(7);
+            int x = monster.getX();
+            int y = monster.getY();
+
+            if (randItem == 0 || randItem == 5) {
+                itemArray.add(new AttackPotion(x, y));
+            } else if (randItem == 1 || randItem == 6) {
+                itemArray.add(new HealthPotion(x, y));
+            } else if (randItem == 2) {
+                itemArray.add(new MagicStone(x, y));
+            } else if (randItem == 3) {
+                itemArray.add(new Sword(x, y));
+            } else if (randItem == 4) {
+                itemArray.add(new Bow(x, y));
+            }
+        }
     }
 
     @Override
@@ -79,6 +98,19 @@ public class ChallengeRoom extends Room {
                 iV.setX(i * 32 + 50);
                 iV.setY(j * 32 + 50);
                 root.getChildren().add(iV);
+            }
+        }
+
+        ImageView iv = new ImageView();
+        for (IMonster monster : monsters) {
+            if (monster.isDead()) {
+                for (IItems item : itemArray) {
+                    if (item.getX() == monster.getX() && item.getY() == monster.getY()) {
+                        root.getChildren().addAll(item.draw());
+                    }
+                }
+            } else {
+                root = monster.drawMonster(root);
             }
         }
 
@@ -131,8 +163,8 @@ public class ChallengeRoom extends Room {
         return itemArray;
     }
     @Override
-    public IItems removeItem() {
-        return itemArray.remove(0);
+    public void removeItem(IItems item) {
+        itemArray.remove(item);
     }
 
     public boolean getWantsChallenge() {

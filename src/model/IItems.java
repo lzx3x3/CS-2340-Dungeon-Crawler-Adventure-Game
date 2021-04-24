@@ -6,5 +6,7 @@ import javafx.scene.image.ImageView;
 public interface IItems {
     void use(Player player);
     Image getImage();
-    ImageView draw(int x, int y);
+    ImageView draw();
+    int getX();
+    int getY();
 }

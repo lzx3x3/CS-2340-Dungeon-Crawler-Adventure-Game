@@ -67,7 +67,7 @@ public class Deadend2 extends Room {
         // add chest
         root = chest.drawChest(root);
         if (chest.getChestState() == 1 && !getMagicStone) {
-            itemArray.add(new MagicStone());
+            itemArray.add(new MagicStone(9, 7));
             getMagicStone = true;
             chest.setChestState(2);
         }
@@ -128,7 +128,7 @@ public class Deadend2 extends Room {
     }
 
     @Override
-    public IItems removeItem() {
-        return itemArray.remove(0);
+    public void removeItem(IItems item) {
+        itemArray.remove(item);
     }
 }

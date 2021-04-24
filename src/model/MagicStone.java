@@ -10,9 +10,13 @@ import java.util.Random;
 public class MagicStone implements IItems {
     private Image image;
     private ImageView imageView;
+    private int x;
+    private int y;
 
-    public MagicStone() {
+    public MagicStone(int x, int y) {
         this.image = new Image("file:resources/MagicStone.png");
+        this.x = x;
+        this.y = y;
     }
 
     @Override
@@ -45,11 +49,11 @@ public class MagicStone implements IItems {
     }
 
     @Override
-    public ImageView draw(int x, int y) {
+    public ImageView draw() {
         imageView = new ImageView();
         imageView.setImage(image);
-        imageView.setX((x + 1.8) * 32);
-        imageView.setY((y + 1.0) * 32);
+        imageView.setX((x + 1.6) * 32);
+        imageView.setY((y + 1.8) * 32);
         imageView.setFitHeight(25);
         imageView.setFitWidth(30);
         return imageView;
@@ -60,12 +64,16 @@ public class MagicStone implements IItems {
     }
 
     public Pane drawMagicStone(Pane root) {
-        root.getChildren().add(draw(7, 7));
+        root.getChildren().add(draw());
         return root;
     }
 
     public Pane removeMagicStone(Pane root) {
-        root.getChildren().remove(draw(7, 7));
+        root.getChildren().remove(draw());
         return root;
     }
+
+    public int getX() { return x; }
+
+    public int getY() { return y; }
 }

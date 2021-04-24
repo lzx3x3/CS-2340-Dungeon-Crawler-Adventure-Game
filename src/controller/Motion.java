@@ -28,21 +28,25 @@ public class Motion {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.W) {
                 player.decreaseY();
+                player.getWeapon().setY(player.getY());
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                          controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.A) {
                 player.decreaseX();
+                player.getWeapon().setX(player.getX());
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                         controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.S) {
                 player.increaseY();
+                player.getWeapon().setY(player.getY());
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                         controller));
                 stage.setScene(scene);
             } else if (event.getCode() == KeyCode.D) {
                 player.increaseX();
+                player.getWeapon().setX(player.getX());
                 scene.setRoot(draw.drawSprites(player, player.getCurrRoom().getMonsterArray(),
                         controller));
                 stage.setScene(scene);

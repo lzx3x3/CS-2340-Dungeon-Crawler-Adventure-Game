@@ -53,38 +53,8 @@ public class Draw {
     public Pane drawSprites(Player player, List<IMonster> monsters, Controller controller) {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
-        root = room.drawRoom(root, player); //draws either a start, wooden, challenge, or end room
         if (player.getHealth() > 0) {
-            if (monsters != null) {
-                for (IMonster monster : monsters) {
-                    if (player.checkIfVisited(room) && monster.isDead()) {
-                        root = draw(player, controller);
-                    } else  {
-                        root = monster.drawMonster(root);
-                    }
-
-                    //List<IItems> items = player.getCurrRoom().getItemArray();
-                    //if (monster.isDead() && items != null) {
-                    //  Random rand = new Random();
-                    //  int randItem = rand.nextInt(items.size());
-                    //  root.getChildren().add(items.get(randItem).draw(monster.getX(),
-                    //          monster.getY()));
-                    //}
-                }
-            }
-            List<IItems> items = player.getCurrRoom().getItemArray();
-            if (items != null) {
-                for (IItems item : items) {
-                    //if (player.checkMonstersDead()) {
-                    //    root.getChildren().add(item.draw(9, 7));
-                    //}
-                    for (IMonster monster : monsters) {
-                        if (monster.isDead()) {
-                            root.getChildren().add(item.draw(monster.getX(), monster.getY()));
-                        }
-                    }
-                }
-            }
+            root = room.drawRoom(root, player); //draws either a start, wooden, challenge, or end room
 
             root = player.drawPlayer(root);
             Text currentRoom = new Text("Current Room:"
