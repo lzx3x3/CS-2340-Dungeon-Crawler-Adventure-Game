@@ -28,20 +28,20 @@ public class ChallengeRoom extends Room {
         itemArray = new ArrayList<IItems>();
         monsters = new ArrayList<IMonster>();
 
-//        rand = new Random();
-//        int randItem = rand.nextInt(7);
-//
-//        if (randItem == 0 || randItem == 5) {
-//            itemArray.add(new AttackPotion());
-//        } else if (randItem == 1 || randItem == 6) {
-//            itemArray.add(new HealthPotion());
-//        } else if (randItem == 2) {
-//            itemArray.add(new MagicStone());
-//        } else if (randItem == 3) {
-//            itemArray.add(new Sword());
-//        } else if (randItem == 4) {
-//            itemArray.add(new Bow());
-//        }
+        //        rand = new Random();
+        //        int randItem = rand.nextInt(7);
+        //
+        //        if (randItem == 0 || randItem == 5) {
+        //            itemArray.add(new AttackPotion());
+        //        } else if (randItem == 1 || randItem == 6) {
+        //            itemArray.add(new HealthPotion());
+        //        } else if (randItem == 2) {
+        //            itemArray.add(new MagicStone());
+        //        } else if (randItem == 3) {
+        //            itemArray.add(new Sword());
+        //        } else if (randItem == 4) {
+        //            itemArray.add(new Bow());
+        //        }
 
         monsters.add(new Monster1(generateRandPos(), generateRandPos()));
         monsters.add(new Monster2(generateRandPos(), generateRandPos()));
@@ -90,7 +90,7 @@ public class ChallengeRoom extends Room {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 ImageView iV = new ImageView();
-                if (tileArray[j][i].getType() == "Wooden Floor") {
+                if (tileArray[j][i].getType().equals("Wooden Floor")) {
                     iV.setImage(tileArray[j][i].getImage(0));
                 } else if (tileArray[j][i].getType() == "Door") {
                     iV.setImage(tileArray[j][i].getImage(1));

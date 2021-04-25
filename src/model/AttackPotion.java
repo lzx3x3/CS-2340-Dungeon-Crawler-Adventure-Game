@@ -44,7 +44,11 @@ public class AttackPotion implements IItems {
         return iV;
     }
 
-    public int getX() { return x; }
+    public int getX() {
+        return x;
+    }
 
-    public int getY() { return y; }
+    public int getY() {
+        return y;
+    }
 }

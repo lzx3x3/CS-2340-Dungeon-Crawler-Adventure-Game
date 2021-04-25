@@ -297,19 +297,19 @@ public class Player {
         //        }
         //    }
         //}
-//        List<IMonster> monsters = currRoom.getMonsterArray();
-//        for (IMonster monster : monsters) {
-//            if (x == monster.getX() && y == monster.getY() && monster.isDead()
-//                    && !currRoom.getItemArray().isEmpty()) {
-//                IItems item = currRoom.removeItem();
-//                if (item != null) {
-//                    inventory.add(item);
-//                }
-//            }
-//        }
+        //List<IMonster> monsters = currRoom.getMonsterArray();
+        //for (IMonster monster : monsters) {
+        //    if (x == monster.getX() && y == monster.getY() && monster.isDead()
+        //            && !currRoom.getItemArray().isEmpty()) {
+        //        IItems item = currRoom.removeItem();
+        //        if (item != null) {
+        //            inventory.add(item);
+        //        }
+        //    }
+        //}
         for (IItems item : currRoom.getItemArray()) {
             if (x == item.getX() && y == item.getY()) {
-                 currRoom.removeItem(item);
+                currRoom.removeItem(item);
                 inventory.add(item);
             }
         }

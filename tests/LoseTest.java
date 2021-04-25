@@ -86,14 +86,4 @@ public class LoseTest extends ApplicationTest {
         verifyThat("Total Monsters Killed: 1", NodeMatchers.isNotNull());
     }
 
-//    @Test
-//    public void testLoseAndDamageDealt() {
-//        clickOn("Start");
-//        write("test");
-//        clickOn("Select your difficulty");
-//        clickOn("Medium");
-//        clickOn(".wpn2Button");
-//        clickOn("Start");
-//        type(KeyCode.D, 7);
-//    }
 }

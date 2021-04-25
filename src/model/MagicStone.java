@@ -29,8 +29,9 @@ public class MagicStone implements IItems {
             // (except for the final monster)
             List<IMonster> monsters = player.getCurrRoom().getMonsterArray();
             for (IMonster monster : monsters) {
-                if (monster.isDead())
+                if (monster.isDead()) {
                     continue;
+                }
                 if (monster instanceof Monster1) {
                     Monster1 m1 = (Monster1) monster;
                     m1.setHealth(0);
@@ -41,15 +42,15 @@ public class MagicStone implements IItems {
                     break;
                 }
             }
-//            List<IMonster> monsters = player.getCurrRoom().getMonsterArray();
-//            IMonster monster = monsters.get(0);
-//            if (monster instanceof Monster1) {
-//                Monster1 m1 = (Monster1) monster;
-//                m1.setHealth(0);
-//            } else if (monster instanceof Monster2) {
-//                Monster2 m2 = (Monster2) monster;
-//                m2.setHealth(0);
-//            }
+        //            List<IMonster> monsters = player.getCurrRoom().getMonsterArray();
+        //            IMonster monster = monsters.get(0);
+        //            if (monster instanceof Monster1) {
+        //                Monster1 m1 = (Monster1) monster;
+        //                m1.setHealth(0);
+        //            } else if (monster instanceof Monster2) {
+        //                Monster2 m2 = (Monster2) monster;
+        //                m2.setHealth(0);
+        //            }
 
         } else {  //while use stone, there is 30% chance that decrease the player's health by 50%
             player.setHealth(-player.getHealth() / 2);
@@ -87,7 +88,11 @@ public class MagicStone implements IItems {
         return root;
     }
 
-    public int getX() { return x; }
+    public int getX() {
+        return x;
+    }
 
-    public int getY() { return y; }
+    public int getY() {
+        return y;
+    }
 }

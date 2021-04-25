@@ -32,7 +32,8 @@ public class Draw {
         Pane root = new Pane();
         Room room = player.getCurrRoom();
         if (player.getHealth() > 0) {
-            root = room.drawRoom(root, player); //draws either a start, wooden, challenge, or end room
+            root = room.drawRoom(root, player);
+            //draws either a start, wooden, challenge, or end room
 
             root = player.drawPlayer(root);
             Text currentRoom = new Text("Current Room:"
@@ -48,13 +49,15 @@ public class Draw {
         // open chest when player enters deadends
         if (player.getCurrRoom() instanceof Deadend2) {
             Deadend2 deadend2 = (Deadend2) player.getCurrRoom();
-            if (deadend2.getChest().getChestState()!=2 && (player.getX() == 7 && player.getY() == 7)) {
+            if (deadend2.getChest().getChestState() != 2
+                    && (player.getX() == 7 && player.getY() == 7)) {
                 deadend2.getChest().setChestState(1);
             }
         }
         if (player.getCurrRoom() instanceof Deadend3) {
             Deadend3 deadend3 = (Deadend3) player.getCurrRoom();
-            if (deadend3.getChest().getChestState()!=2 && (player.getX() == 7 && player.getY() == 7)) {
+            if (deadend3.getChest().getChestState() != 2
+                    && (player.getX() == 7 && player.getY() == 7)) {
                 deadend3.getChest().setChestState(1);
             }
         }
