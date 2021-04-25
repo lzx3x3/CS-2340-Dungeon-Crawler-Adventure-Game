@@ -307,13 +307,17 @@ public class Player {
         //        }
         //    }
         //}
+        IItems removedItem = null;
         for (IItems item : currRoom.getItemArray()) {
             if (x == item.getX() && y == item.getY()) {
-                currRoom.removeItem(item);
+                removedItem = item;
                 inventory.add(item);
             }
         }
 
+        if (removedItem != null) {
+            currRoom.removeItem(removedItem);
+        }
         if (currRoom instanceof Deadend2 || currRoom instanceof Deadend3) {
             if (!currRoom.getItemArray().isEmpty()) {
                 IItems item = currRoom.getItemArray().get(0);

@@ -40,7 +40,10 @@ public class WelcomeScreen {
     public Scene getScene()  {
         StackPane root = new StackPane();
         Image background = new Image("file:resources/WelcomeScreenImage.png");
-        root.getChildren().add(new ImageView(background));
+        ImageView backgroundImageView = new ImageView(background);
+        backgroundImageView.setFitWidth(width);
+        backgroundImageView.setFitHeight(height);
+        root.getChildren().add(backgroundImageView);
         BorderPane welcomeScreen = new BorderPane();
         // Title screen Title text
         Label gameTitle = new Label("Dungeon Crawler Game");
