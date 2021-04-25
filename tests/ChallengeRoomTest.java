@@ -16,6 +16,7 @@ public class ChallengeRoomTest extends ApplicationTest {
         controller.start(stage);
     }
 
+    // Edited by Jason
     @Test
     public void testChallengeRoomAlert() {
         clickOn("Start");
@@ -49,6 +50,47 @@ public class ChallengeRoomTest extends ApplicationTest {
         type(KeyCode.D, 14);
         clickOn("OK");
         verifyThat("health: 100", NodeMatchers.isNotNull());
+    }
+
+    // Edited by Siying
+    @Test
+    public void testChallengeRoomCancel() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn2Button");
+        clickOn("Start");
+        type(KeyCode.D, 7);
+        Player player = controller.getPlayer();
+        player.killMonster();
+        type(KeyCode.D, 14);
+        player.killMonster();
+        type(KeyCode.D, 14);
+        clickOn("Cancel");
+        type(KeyCode.D, 1);
+        type(KeyCode.A, 3);
+        verifyThat("Current Room:31", NodeMatchers.isNotNull());
+    }
+
+    @Test
+    public void testChallengeRoomOK() {
+        clickOn("Start");
+        write("test");
+        clickOn("Select your difficulty");
+        clickOn("Medium");
+        clickOn(".wpn2Button");
+        clickOn("Start");
+        type(KeyCode.D, 7);
+        Player player = controller.getPlayer();
+        player.killMonster();
+        type(KeyCode.D, 14);
+        player.killMonster();
+        type(KeyCode.D, 14);
+        clickOn("OK");
+        type(KeyCode.D, 1);
+        type(KeyCode.A, 3);
+        verifyThat("Current Room:41", NodeMatchers.isNotNull());
     }
 
 }
