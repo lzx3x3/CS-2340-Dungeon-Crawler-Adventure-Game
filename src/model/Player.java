@@ -564,4 +564,7 @@ public class Player {
     public void setPassExit(boolean pass) {
         this.passExit = pass;
     }
+    public void killMonster() {
+        currRoom.getMonsterArray().remove(0);
+    }
 }
