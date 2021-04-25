@@ -34,7 +34,7 @@ public class Player {
     private boolean passExit;
 
     public Player() {
-        health = 500;
+        health = 300;
         money = 0;
         level = 1;
         name = "";

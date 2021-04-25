@@ -12,7 +12,7 @@ public class Chest {
     public Chest() {
         this.image = new Image("file:resources/chest_closed.png");
         this.state = 0;
-        stone = new MagicStone(9, 7);
+        stone = new MagicStone(7, 7);
     }
 
     public MagicStone getMagicStone() {
@@ -22,9 +22,6 @@ public class Chest {
     public Pane drawChest(Pane root) {
         // change the state of chest
         if (this.state == 1) {
-            //if(stone.isClick()) {
-            //    this.state = 2;
-            //}
             root = stone.drawMagicStone(root);
             this.image = new Image("file:resources/chest_opened.png");
         }
@@ -35,7 +32,7 @@ public class Chest {
 
         ImageView vi = new ImageView();
         vi.setImage(image);
-        vi.setX((9 + 1.8) * 32);
+        vi.setX((7 + 1.8) * 32);
         vi.setY((7 + 1.5) * 32);
         vi.setFitHeight(30);
         vi.setFitWidth(30);

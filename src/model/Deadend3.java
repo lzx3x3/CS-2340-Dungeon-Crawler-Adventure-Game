@@ -68,7 +68,7 @@ public class Deadend3 extends Room {
         // add chest
         root = chest.drawChest(root);
         if (chest.getChestState() == 1 && !getMagicStone) {
-            itemArray.add(new MagicStone(9, 7));
+            itemArray.add(new MagicStone(7, 7));
             getMagicStone = true;
             chest.setChestState(2);
         }

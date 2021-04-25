@@ -27,28 +27,6 @@ public class Draw {
     }
 
 
-    //    public Pane drawEndMonster(Player player, Controller controller, EndMonster endMonster) {
-    //        Pane root = new Pane();
-    //        Room room = player.getCurrRoom();
-    //        root = room.drawRoom(root, player);
-    //
-    //        endMonster.drawMonster(root);
-    //
-    //        if (player.getHealth() > 0) {
-    //            root = player.drawPlayer(root);
-    //            Text currentRoom = new Text("Current Room:"
-    //                    + Integer.toString(player.getMaze().getX())
-    //                    + Integer.toString(player.getMaze().getY()));
-    //            currentRoom.setX(650);
-    //            currentRoom.setY(400);
-    //            root.getChildren().add(currentRoom);
-    //        } else {
-    //            root = player.drawDeadPlayer(root);
-    //        }
-    //        return root;
-    //    }
-
-
     //DRAW both the player and the monster and the chest
     public Pane drawSprites(Player player, List<IMonster> monsters, Controller controller) {
         Pane root = new Pane();
